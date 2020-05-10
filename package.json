@@ -1,0 +1,20 @@
+{
+  "name": "my-gatsby-starter",
+  "version": "1.0.0",
+  "repository": "git@github.com:lucasjohnson/my-gatsby-starter.git",
+  "author": "Lucas Johnson <contact@lucasjohnson.co.nz (@_lucasjohnson)>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "prettier": "^2.0.5"
+  },
+  "dependencies": {
+    "gatsby": "^2.21.21",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "scripts": {
+    "dev": "gatsby develop",
+    "build": "gatsby build"
+  }
+}
