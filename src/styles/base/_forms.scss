@@ -1,0 +1,107 @@
+
+
+fieldset {
+  background-color: transparent;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+legend {
+  font-weight: $font-weight-medium;
+  margin-bottom: $spacing-small;
+  padding: 0;
+}
+
+label {
+  display: block;
+  font-weight: $font-weight-medium;
+  margin-bottom: $spacing-small;
+}
+
+input,
+select,
+textarea {
+  display: block;
+  font-family: $font-family-base;
+  font-size: 1rem;
+}
+
+[type="color"],
+[type="date"],
+[type="datetime"],
+[type="datetime-local"],
+[type="email"],
+[type="month"],
+[type="number"],
+[type="password"],
+[type="search"],
+[type="tel"],
+[type="text"],
+[type="time"],
+[type="url"],
+[type="week"],
+input:not([type]),
+textarea {
+  appearance: none;
+  background-color: transparent;
+  border: $border;
+  border-radius: $border-radius;
+  box-shadow: $form-box-shadow;
+  box-sizing: border-box;
+  margin-bottom: $spacing-small;
+  padding: calc($spacing--large / 3);
+  transition: border-color $animation-duration $animation-timing;
+  width: 100%;
+
+  &:focus {
+    box-shadow: $form-box-shadow;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+
+    &:hover {
+      border: $border;
+    }
+  }
+
+  &::placeholder {
+    color: $font-color-base;
+    opacity: 0.25;
+  }
+}
+
+[type="search"] {
+  -webkit-appearance: textfield;
+}
+
+textarea {
+  resize: vertical;
+}
+
+[type="checkbox"],
+[type="radio"] {
+  display: inline;
+  margin-right: $spacing-small;
+}
+
+[type="file"] {
+  margin-bottom: $spacing-small;
+  width: 100%;
+}
+
+select {
+  margin-bottom: $spacing-small;
+  width: 100%;
+}
+
+[type="checkbox"],
+[type="radio"],
+[type="file"],
+select {
+  &:focus {
+    outline: $focus-outline;
+    outline-offset: $focus-outline;
+  }
+}

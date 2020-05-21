@@ -1,0 +1,49 @@
+// Colors
+$black: #111111;
+$blue: #1565c0;
+$blue-light: #3b83d5;
+$gray: rgba(#000, 0.6);
+$white: #ffffff;
+
+// Font Colors
+$font-color-base: $gray;
+$font-color-header: $black;
+$action-color: $blue;
+$action-color-hover: $blue-light;
+$action-color-contrast: $white;
+
+// Background Colors
+$viewport-background-color: $white;
+
+// Typography
+$font-family-base: inter, Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+$font-family-heading: $font-family-base;
+
+$font-weight-light: 300;
+$font-weight-medium: 500;
+$font-weight-bold: 900;
+
+$line-height-base: 1.5;
+$line-height-heading: 1.25;
+
+// Borders
+$border-width: 0.1rem;
+$border-radius: 0.2rem;
+$border: $border-width solid currentColor;
+
+// Focus
+$focus-outline-width: 0.2rem;
+$focus-outline-offset: 0.2rem;
+$focus-outline: $focus-outline-width solid $action-color;
+
+// Animations
+$animation-duration: 300ms;
+$animation-timing: ease;
+
+// Spacing
+$spacing-small: 1.5rem;
+$spacing-large: 3rem;
+
+// Forms {
+$form-box-shadow: inset 0 $border-width 0.1875rem $gray;
+$form-box-shadow-focus: $form-box-shadow, 0 0 0.3125rem $action-color;
