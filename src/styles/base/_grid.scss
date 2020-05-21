@@ -1,0 +1,10 @@
+.grid {
+  display: grid;
+  grid-column-gap: $spacing-small;
+  padding: 0 $spacing-small;
+
+  @include respond-to(LARGE) {
+    grid-column-gap: $spacing-large;
+    padding: 0 $spacing-large;
+  }
+}

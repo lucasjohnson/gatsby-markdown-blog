@@ -37,6 +37,39 @@
 	position: $position;
 }
 
+@mixin respond-to($size) {
+  @if $size == 'SMALL' {
+    @media screen and (min-width: $breakpoint-small) {
+        @content;
+    }
+  }
+  @else if $size == 'MEDIUM' {
+    @media screen and (min-width: $breakpoint-medium) {
+        @content;
+    }
+  }
+  @else if $size == 'LARGE' {
+    @media screen and (min-width: $breakpoint-large) {
+        @content;
+    }
+  }
+ @else if $size == 'XLARGE' {
+    @media screen and (min-width: $breakpoint-xlarge) {
+        @content;
+    }
+  }
+
+  @else if $size == 'XXLARGE' {
+     @media screen and (min-width: $breakpoint-xxlarge) {
+         @content;
+     }
+   }
+
+  @else {
+    @content;
+  }
+}
+
 @mixin size($width, $height) {
   width: $width;
   height: $height;
