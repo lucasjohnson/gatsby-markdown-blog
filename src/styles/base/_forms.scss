@@ -50,7 +50,7 @@ textarea {
   box-shadow: $form-box-shadow;
   box-sizing: border-box;
   margin-bottom: $spacing-small;
-  padding: calc($spacing--large / 3);
+  padding: calc($spacing-large / 3);
   transition: border-color $animation-duration $animation-timing;
   width: 100%;
 
