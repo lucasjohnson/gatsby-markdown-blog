@@ -61,7 +61,7 @@
 
   @else if $size == 'XXLARGE' {
      @media screen and (min-width: $breakpoint-xxlarge) {
-         @content;
+        @content;
      }
    }
 
