@@ -1,11 +1,15 @@
 module.exports = {
 	siteMetadata: {
 		siteName: `My Gatsby Starter`,
+		siteUrl: `https://www.example.com`,
 		description: ``,
 		author: ``
 	},
 	plugins: [
 		`gatsby-plugin-sass`,
+		`gatsby-plugin-react-helmet`,
+		`gatsby-plugin-netlify`,
+		`gatsby-plugin-sitemap`,
 		{
 			resolve: `gatsby-plugin-manifest`,
 			options: {
