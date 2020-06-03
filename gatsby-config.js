@@ -16,7 +16,16 @@ module.exports = {
 				theme_color: `#7f1980`,
 				display: `standalone`,
 				icon: `src/images/icon.png`,
-				crossOrigin: `use-credentials`
+				crossOrigin: `use-credentials`,
+				cache_busting_mode: `none`
+			}
+		},
+		{
+			resolve: `gatsby-plugin-offline`,
+			options: {
+				workboxConfig: {
+					globPatterns: [`**/*`]
+				}
 			}
 		}
 	]
