@@ -1,2 +1,2 @@
-import "normalize.css"
+import 'normalize.css';
 import './src/styles/global.scss';

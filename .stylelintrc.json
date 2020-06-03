@@ -1,0 +1,9 @@
+{
+	"extends": "stylelint-config-standard",
+	"rules": {
+		"unit-whitelist": ["rem", "deg", "%", "vw", "vh", "ms"],
+		"length-zero-no-unit": true,
+		"selector-pseudo-element-colon-notation": "double",
+		"indentation": "tab"
+	}
+}

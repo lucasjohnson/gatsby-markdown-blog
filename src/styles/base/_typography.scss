@@ -1,21 +1,21 @@
 html {
-  font-family: $font-family-base;
-  color: $font-color-base;
-  line-height: $line-height-base;
+	font-family: $font-family-base;
+	color: $font-color-base;
+	line-height: $line-height-base;
 }
 
 *,
 *::before,
 *::after {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  margin: 0;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin: 0;
 }
 
 h1,
@@ -25,29 +25,29 @@ h4,
 h5,
 h6,
 p {
-  font-weight: normal;
-  margin: 0;
+	font-weight: normal;
+	margin: 0;
 }
 
 a {
-  color: $action-color;
-  text-decoration-skip-ink: auto;
-  transition: color $animation-duration $animation-timing;
+	color: $action-color;
+	text-decoration-skip-ink: auto;
+	transition: color $animation-duration $animation-timing;
 
-  &:hover {
-    color: $action-color-hover;
-  }
+	&:hover {
+		color: $action-color-hover;
+	}
 
-  &:focus {
-    outline: $focus-outline;
-    outline-offset: $focus-outline-offset;
-  }
+	&:focus {
+		outline: $focus-outline;
+		outline-offset: $focus-outline-offset;
+	}
 }
 
 hr {
-  border-bottom: $border;
-  border-left: 0;
-  border-right: 0;
-  border-top: 0;
-  margin: $spacing-small 0;
+	border-bottom: $border;
+	border-left: 0;
+	border-right: 0;
+	border-top: 0;
+	margin: $spacing-small 0;
 }
