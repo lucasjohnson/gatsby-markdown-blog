@@ -29,6 +29,8 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
+    "@testing-library/jest-dom": "^5.9.0",
+    "@testing-library/react": "^10.2.0",
     "framer-motion": "^1.11.0",
     "gatsby": "^2.21.21",
     "gatsby-plugin-manifest": "^2.4.10",
