@@ -5,7 +5,7 @@ const IndexPage: FunctionComponent = () => (
 	<Layout>
 		<div className="container">
 			<div className="grid">
-				<h2>Hello World</h2>
+				<h1 className="heading-1">Homepage</h1>
 			</div>
 		</div>
 	</Layout>

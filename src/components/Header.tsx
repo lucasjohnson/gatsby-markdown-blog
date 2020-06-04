@@ -18,7 +18,7 @@ const Header = (): ReactElement => {
 		<header>
 			<div className="block">
 				<div className="grid">
-					<h1 className="heading-1">{siteName}</h1>
+					<h4 className="heading-4">{siteName}</h4>
 				</div>
 			</div>
 		</header>

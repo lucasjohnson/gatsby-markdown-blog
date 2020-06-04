@@ -19,18 +19,21 @@ $action-color-contrast: $white;
 $viewport-background-color: $white;
 
 // Typography
-$font-family-body: 'Inter', -apple-system, blinkmacsystemfont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
-	'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$font-family-body: -apple-system, blinkmacsystemfont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+	'Droid Sans', 'Helvetica Neue', sans-serif;
 $font-family-heading: $font-family-body;
 
 $font-size-base: 1.6rem;
 
-$font-weight-light: 300;
-$font-weight-medium: 500;
+$font-weight-light: 100;
+$font-weight-medium: 400;
 $font-weight-bold: 700;
 
-$line-height-body: 1.5;
-$line-height-heading: 1.25;
+$line-height-body: 1.7;
+$line-height-heading: 1;
+
+$letter-spacing-body: -0.01rem;
+$letter-spacing-heading: $letter-spacing-body;
 
 // Borders
 $border-width: 0.1rem;

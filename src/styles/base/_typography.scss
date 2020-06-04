@@ -1,7 +1,7 @@
 html {
-	font-family: $font-family-base;
+	font-family: $font-family-body;
 	color: $font-color-base;
-	line-height: $line-height-base;
+	line-height: $line-height-body;
 }
 
 *,
@@ -23,10 +23,20 @@ h2,
 h3,
 h4,
 h5,
-h6,
+h6 {
+	font-family: $font-family-heading;
+	font-weight: $font-weight-bold;
+	line-height: $line-height-heading;
+	letter-spacing: $letter-spacing-heading;
+	color: $font-color-header;
+	margin: 0 0 3rem;
+}
+
 p {
-	font-weight: normal;
-	margin: 0;
+	font-size: $font-size-base;
+	font-weight: $font-weight-medium;
+	letter-spacing: $letter-spacing-body;
+	margin: 0 0 2rem;
 }
 
 a {
@@ -50,4 +60,12 @@ hr {
 	border-right: 0;
 	border-top: 0;
 	margin: $spacing-small 0;
+}
+
+$heading-scale: 1.1;
+
+@for $i from 1 through 6 {
+	.heading-#{$i} {
+		font-size: 0.1rem + $heading-scale * (6 - $i);
+	}
 }
