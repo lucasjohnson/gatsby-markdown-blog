@@ -2,11 +2,11 @@
 $zLayout: default, overlay;
 
 // Colors
-$black: #111111;
+$black: #111;
 $blue: #1565c0;
 $blue-light: #3b83d5;
 $gray: rgba(#000, 0.6);
-$white: #ffffff;
+$white: #fff;
 
 // Font Colors
 $font-color-base: $gray;
@@ -19,14 +19,17 @@ $action-color-contrast: $white;
 $viewport-background-color: $white;
 
 // Typography
-$font-family-base: inter, Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
-$font-family-heading: $font-family-base;
+$font-family-body: 'Inter', -apple-system, blinkmacsystemfont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+	'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$font-family-heading: $font-family-body;
+
+$font-size-base: 1.6rem;
 
 $font-weight-light: 300;
 $font-weight-medium: 500;
-$font-weight-bold: 900;
+$font-weight-bold: 700;
 
-$line-height-base: 1.5;
+$line-height-body: 1.5;
 $line-height-heading: 1.25;
 
 // Borders
@@ -52,13 +55,11 @@ $form-box-shadow: inset 0 $border-width 0.1875rem $gray;
 $form-box-shadow-focus: $form-box-shadow, 0 0 0.3125rem $action-color;
 
 // Breakpoints
-$breakpoint-small: 375px;
-$breakpoint-medium: 768px;
-$breakpoint-large: 1024px;
-$breakpoint-xlarge: 1200px;
-$breakpoint-xxlarge: 1400px;
+$breakpoint-small: 37.5rem;
+$breakpoint-medium: 76.8rem;
+$breakpoint-large: 102.4rem;
+$breakpoint-xlarge: 120rem;
+$breakpoint-xxlarge: 140rem;
 
 // Layout
-$containerMaxWidth: 144rem;
-$containerMarginMobile: $spacing-small;
-$containerMarginDesktop: $spacing-large;
+$blockMaxWidth: $breakpoint-large;

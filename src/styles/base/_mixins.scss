@@ -1,34 +1,32 @@
 @mixin background($color) {
-  background: $color;
-  background-color: $color;
+	background: $color;
+	background-color: $color;
 }
 
 @mixin center($position) {
-  position: absolute;
-  @if $position == "VERTICAL" {
-    top: 50%;
-    transform: translateY(-50%);
-  } @else if $position == "HORIZONTAL" {
-    left: 50%;
-    transform: translateX(-50%);
-  } @else if $position == "BOTH" {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
+	position: absolute;
+	@if $position == 'VERTICAL' {
+		top: 50%;
+		transform: translateY(-50%);
+	} @else if $position == 'HORIZONTAL' {
+		left: 50%;
+		transform: translateX(-50%);
+	} @else if $position == 'BOTH' {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
 }
 
 @mixin font-face($font-name, $file-name, $weight: normal, $style: normal) {
-  @font-face {
-    font-family: $font-name;
-    font-weight: $weight;
-    font-style: $style;
-    font-display: swap;
-    unicode-range: U+000-5FF;
-    src: local($font-name),
-      url($file-name + '.woff') format('woff'),
-      url($file-name + '.woff2')  format('woff2');
-  }
+	@font-face {
+		font-family: $font-name;
+		font-weight: $weight;
+		font-style: $style;
+		font-display: swap;
+		unicode-range: U+000-5FF;
+		src: local($font-name), url($file-name + '.woff') format('woff'), url($file-name + '.woff2') format('woff2');
+	}
 }
 
 @mixin pseudo($display: block, $position: absolute, $content: '') {
@@ -38,39 +36,32 @@
 }
 
 @mixin respond-to($size) {
-  @if $size == 'SMALL' {
-    @media screen and (min-width: $breakpoint-small) {
-        @content;
-    }
-  }
-  @else if $size == 'MEDIUM' {
-    @media screen and (min-width: $breakpoint-medium) {
-        @content;
-    }
-  }
-  @else if $size == 'LARGE' {
-    @media screen and (min-width: $breakpoint-large) {
-        @content;
-    }
-  }
- @else if $size == 'XLARGE' {
-    @media screen and (min-width: $breakpoint-xlarge) {
-        @content;
-    }
-  }
-
-  @else if $size == 'XXLARGE' {
-     @media screen and (min-width: $breakpoint-xxlarge) {
-        @content;
-     }
-   }
-
-  @else {
-    @content;
-  }
+	@if $size == 'SMALL' {
+		@media screen and (min-width: $breakpoint-small) {
+			@content;
+		}
+	} @else if $size == 'MEDIUM' {
+		@media screen and (min-width: $breakpoint-medium) {
+			@content;
+		}
+	} @else if $size == 'LARGE' {
+		@media screen and (min-width: $breakpoint-large) {
+			@content;
+		}
+	} @else if $size == 'XLARGE' {
+		@media screen and (min-width: $breakpoint-xlarge) {
+			@content;
+		}
+	} @else if $size == 'XXLARGE' {
+		@media screen and (min-width: $breakpoint-xxlarge) {
+			@content;
+		}
+	} @else {
+		@content;
+	}
 }
 
 @mixin size($width, $height) {
-  width: $width;
-  height: $height;
+	width: $width;
+	height: $height;
 }

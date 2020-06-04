@@ -1,38 +1,38 @@
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  appearance: none;
-  background-color: $action-color;
-  border: 0;
-  border-radius: $border-radius;
-  color: $action-color-contrast;
-  cursor: pointer;
-  display: inline-block;
-  font-family: $font-family-base;
-  font-size: 1.6rem;
-  -webkit-font-smoothing: antialiased;
-  font-weight: 600;
-  line-height: 1;
-  padding: $spacing-small $spacing-large;
-  text-align: center;
-  text-decoration: none;
-  transition: background-color $animation-duration $animation-timing;
-  user-select: none;
-  vertical-align: middle;
-  white-space: nowrap;
+[type='button'],
+[type='reset'],
+[type='submit'] {
+	appearance: none;
+	background-color: $action-color;
+	border: 0;
+	border-radius: $border-radius;
+	color: $action-color-contrast;
+	cursor: pointer;
+	display: inline-block;
+	font-family: $font-family-body;
+	font-size: $font-size-base;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 600;
+	line-height: 1;
+	padding: $spacing-small $spacing-large;
+	text-align: center;
+	text-decoration: none;
+	transition: background-color $animation-duration $animation-timing;
+	user-select: none;
+	vertical-align: middle;
+	white-space: nowrap;
 
-  &:hover {
-    background-color: $action-color-hover;
-  }
+	&:hover {
+		background-color: $action-color-hover;
+	}
 
-  &:focus {
-    outline: $focus-outline;
-    outline-offset: $focus-outline-offset;
-  }
+	&:focus {
+		outline: $focus-outline;
+		outline-offset: $focus-outline-offset;
+	}
 
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
+	&:disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
 }
