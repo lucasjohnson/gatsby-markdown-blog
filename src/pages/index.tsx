@@ -3,7 +3,11 @@ import Layout from '../components/layout';
 
 const IndexPage: FunctionComponent = () => (
 	<Layout>
-		<h2>Hello World</h2>
+		<div className="container">
+			<div className="grid">
+				<h2>Hello World</h2>
+			</div>
+		</div>
 	</Layout>
 );
 

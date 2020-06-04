@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 
 const Header = (): ReactElement => {
 	const data = useStaticQuery(graphql`
@@ -16,7 +16,11 @@ const Header = (): ReactElement => {
 
 	return (
 		<header>
-			<h1>{siteName}</h1>
+			<div className="block">
+				<div className="grid">
+					<h1 className="heading-1">{siteName}</h1>
+				</div>
+			</div>
 		</header>
 	);
 };

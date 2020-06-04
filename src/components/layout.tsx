@@ -3,7 +3,7 @@ import Header from './Header';
 import Footer from './Footer';
 
 const Layout: FunctionComponent = ({ children }) => (
-	<div className="layout">
+	<div className="block">
 		<Header />
 		<main id="mainContent">{children}</main>
 		<Footer />

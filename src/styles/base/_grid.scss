@@ -1,10 +1,12 @@
 .grid {
-  display: grid;
-  grid-column-gap: $spacing-small;
-  padding: 0 $spacing-small;
+	display: grid;
+	grid-column-gap: $spacing-small;
+	padding: 0 $spacing-small;
+	margin: $spacing-small 0;
 
-  @include respond-to(LARGE) {
-    grid-column-gap: $spacing-large;
-    padding: 0 $spacing-large;
-  }
+	@include respond-to(LARGE) {
+		grid-column-gap: $spacing-large;
+		padding: 0 $spacing-large;
+		margin: $spacing-large 0;
+	}
 }
