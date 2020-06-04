@@ -4,6 +4,28 @@
 		"unit-whitelist": ["rem", "deg", "%", "vw", "vh", "ms"],
 		"length-zero-no-unit": true,
 		"selector-pseudo-element-colon-notation": "double",
-		"indentation": "tab"
+		"indentation": "tab",
+		"at-rule-no-unknown": [
+			true,
+			{
+				"ignoreAtRules": [
+					"extend",
+					"at-root",
+					"debug",
+					"warn",
+					"error",
+					"if",
+					"else",
+					"for",
+					"each",
+					"while",
+					"mixin",
+					"include",
+					"content",
+					"return",
+					"function"
+				]
+			}
+		]
 	}
 }
