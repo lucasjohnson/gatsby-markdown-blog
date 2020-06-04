@@ -1,7 +1,7 @@
 module.exports = {
 	siteMetadata: {
 		siteName: `My Gatsby Starter`,
-		siteUrl: `https://www.example.com`,
+		siteUrl: `https://example.com`,
 		description: ``,
 		author: ``
 	},
