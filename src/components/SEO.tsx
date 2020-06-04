@@ -77,7 +77,7 @@ const SEO = ({ title, description, banner, bannerAlt }: SEOProps) => {
 			<Twitter
 				title={metaTitle}
 				description={metaDescription}
-				url={window.location.href}
+				url={typeof window !== `undefined` && window.location.href}
 				banner={metaBanner}
 				bannerAlt={metaBannerAlt}
 				twitter={twitter}
