@@ -1,13 +1,16 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
+import Twitter from './Twitter';
 
 const defaultProps = {
 	title: ``,
-	description: ``
+	description: ``,
+	banner: ``,
+	bannerAlt: ``
 };
 
-type SEOProps = { title: string; description: string } & typeof defaultProps;
+type SEOProps = { title: string; description: string; banner: string; bannerAlt: sting } & typeof defaultProps;
 
 type SiteProps = {
 	site: {
@@ -26,13 +29,12 @@ type SiteProps = {
 	};
 };
 
-const SEO = ({ title, description }: SEOProps) => {
+const SEO = ({ title, description, banner, bannerAlt }: SEOProps) => {
 	const { site } = useStaticQuery<SiteProps>(graphql`
 		query {
 			site {
 				siteMetadata {
 					siteName
-					siteUrl
 					siteDescription
 					siteAuthor
 					siteBanner
@@ -48,7 +50,6 @@ const SEO = ({ title, description }: SEOProps) => {
 
 	const {
 		siteName,
-		siteUrl,
 		siteDescription,
 		siteAuthor,
 		siteBanner,
@@ -59,16 +60,29 @@ const SEO = ({ title, description }: SEOProps) => {
 		ogLanguage
 	} = site.siteMetadata;
 
+	const metaTitle = title || siteName;
 	const metaDescription = description || siteDescription;
+	const metaBanner = banner || siteBanner;
+	const metaBannerAlt = bannerAlt || siteDescription;
 
 	return (
-		<Helmet
-			htmlAttributes={{
-				lang: siteLanguage
-			}}
-			title={title}
-			titleTemplate={`%s | ${siteName}`}
-		/>
+		<React.Fragment>
+			<Helmet
+				htmlAttributes={{
+					lang: siteLanguage
+				}}
+				title={title}
+				titleTemplate={`%s | ${siteName}`}
+			/>
+			<Twitter
+				title={metaTitle}
+				description={metaDescription}
+				url={window.location.href}
+				banner={metaBanner}
+				bannerAlt={metaBannerAlt}
+				twitter={twitter}
+			/>
+		</React.Fragment>
 	);
 };
 

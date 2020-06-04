@@ -1,8 +1,10 @@
 import React, { FunctionComponent } from 'react';
 import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 
 const IndexPage: FunctionComponent = () => (
 	<Layout>
+		<SEO title="Homepage" />
 		<div className="container">
 			<div className="grid">
 				<h1 className="heading-1">Homepage</h1>
