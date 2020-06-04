@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react';
 
-const Header: FunctionComponent = ({ children }) => (
-	<div className="layout">{children}</div>
-);
+const Header: FunctionComponent = () => <p>Header</p>;
 
 export default Header;
