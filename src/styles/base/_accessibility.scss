@@ -1,28 +1,25 @@
-* {
-	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-	-webkit-tap-highlight-color: transparent;
+.skip-button {
+	font-weight: 800;
+	font-size: 1.2rem;
+	line-height: 1;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+	text-align: center;
+	color: #fff;
+	padding: 1.9rem 3rem;
+	background-color: #000;
+	border-radius: 0.2rem;
+	position: absolute;
+	top: -6rem;
+	left: 50%;
+	transform: translateX(-50%);
+	transition: all 200ms ease;
+	opacity: 0;
 }
 
-body {
-	&.user-is-tabbing *:focus {
-		outline-width: 0.4rem;
-		outline-style: solid;
-		outline-color: $action-color;
-		-webkit-tap-highlight-color: $action-color;
-	}
-}
-
-button {
-	&:focus {
-		-webkit-focus-ring-color: transparent;
-		outline: transparent auto 0;
-	}
-}
-
-a,
-input {
-	&:focus {
-		-webkit-focus-ring-color: transparent;
-		outline: -webkit-focus-ring-color auto 0;
-	}
+.skip-button:focus,
+.skip-button:active {
+	text-decoration: none;
+	top: $spacing-small;
+	opacity: 1;
 }
