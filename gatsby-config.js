@@ -1,15 +1,21 @@
 module.exports = {
 	siteMetadata: {
 		siteName: `My Gatsby Starter`,
-		siteUrl: `https://example.com`,
-		siteDescription: ``,
-		siteAuthor: ``,
-		siteBanner: ``,
+		siteUrl: `https://my-gatsby-starter.now.sh/`,
+		siteDescription: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
+		siteAuthor: `Lucas Johnson`,
+		siteBanner: `https://placekitten.com/600/600`,
 		siteLanguage: `en`,
-		siteLogo: ``,
+		siteLogo: `https://placekitten.com/200/200`,
 		facebook: ``,
-		twitter: ``,
-		ogLanguage: `en_CA`
+		twitter: `@_lucasjohnson`,
+		ogLanguage: `en_CA`,
+		businessStreet: ``,
+		businessLocality: ``,
+		businessRegion: ``,
+		businessPostalCode: ``,
+		businessCountry: ``,
+		businesstelephone: ``
 	},
 	plugins: [
 		`gatsby-plugin-sass`,

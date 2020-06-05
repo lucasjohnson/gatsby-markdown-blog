@@ -41,9 +41,14 @@ const SEO = ({ title, description, banner, bannerAlt, contentType }: SEOProps) =
 					siteBanner
 					siteLanguage
 					siteLogo
-					facebook
 					twitter
 					ogLanguage
+					businessStreet
+					businessLocality
+					businessRegion
+					businessPostalCode
+					businessCountry
+					businesstelephone
 				}
 			}
 		}
@@ -57,10 +62,65 @@ const SEO = ({ title, description, banner, bannerAlt, contentType }: SEOProps) =
 		siteBanner,
 		siteLanguage,
 		siteLogo,
-		facebook,
 		twitter,
-		ogLanguage
+		ogLanguage,
+		businessStreet,
+		businessLocality,
+		businessRegion,
+		businessPostalCode,
+		businessCountry,
+		businesstelephone
 	} = site.siteMetadata;
+
+	const schemaWebPage = {
+		'@context': `http://schema.org`,
+		'@type': `WebPage`,
+		url: siteUrl,
+		description: siteDescription,
+		inLanguage: siteLanguage,
+		mainEntityOfPage: siteUrl,
+		name: siteName,
+		author: {
+			'@type': `Person`,
+			name: siteAuthor
+		},
+		copyrightHolder: {
+			'@type': `Person`,
+			name: siteAuthor
+		},
+		copyrightYear: `2019`,
+		creator: {
+			'@type': `Person`,
+			name: siteAuthor
+		},
+		publisher: {
+			'@type': `Person`,
+			name: siteAuthor
+		},
+		datePublished: ``,
+		dateModified: ``,
+		image: {
+			'@type': `ImageObject`,
+			url: siteLogo
+		}
+	};
+
+	const schemaBusiness = {
+		'@context': `https://schema.org`,
+		'@type': `Organization`,
+		'@id': siteUrl,
+		name: siteName,
+		address: {
+			'@type': `PostalAddress`,
+			streetAddress: businessStreet,
+			addressLocality: businessLocality,
+			addressRegion: businessRegion,
+			postalCode: businessPostalCode,
+			addressCountry: businessCountry
+		},
+		url: siteUrl,
+		telephone: businesstelephone
+	};
 
 	const metaTitle = title || siteName;
 	const metaDescription = description || siteDescription;
@@ -78,7 +138,12 @@ const SEO = ({ title, description, banner, bannerAlt, contentType }: SEOProps) =
 				}}
 				title={title}
 				titleTemplate={`%s | ${siteName}`}
-			/>
+			>
+				<meta name="description" content={metaDescription} />
+				<meta name="image" content={metaBanner} />
+				<script type="application/ld+json">{JSON.stringify(schemaBusiness)}</script>
+				<script type="application/ld+json">{JSON.stringify(schemaWebPage)}</script>
+			</Helmet>
 			<Twitter
 				title={metaTitle}
 				description={metaDescription}
