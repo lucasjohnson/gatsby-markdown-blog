@@ -1,7 +1,6 @@
 html {
 	font-family: $font-family-body;
 	color: $font-color-base;
-	line-height: $line-height-body;
 }
 
 *,
@@ -35,6 +34,7 @@ h6 {
 p {
 	font-size: $font-size-base;
 	font-weight: $font-weight-medium;
+	line-height: $line-height-body;
 	letter-spacing: $letter-spacing-body;
 	margin: 0 0 2rem;
 }
