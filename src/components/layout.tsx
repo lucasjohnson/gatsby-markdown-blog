@@ -3,11 +3,11 @@ import Header from './Header';
 import Footer from './Footer';
 
 const Layout: FunctionComponent = ({ children }) => (
-	<div className="block">
+	<React.Fragment>
 		<Header />
 		<main id="mainContent">{children}</main>
 		<Footer />
-	</div>
+	</React.Fragment>
 );
 
 export default Layout;

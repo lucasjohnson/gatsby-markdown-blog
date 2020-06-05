@@ -5,7 +5,7 @@ import SEO from '../components/SEO';
 const IndexPage: FunctionComponent = () => (
 	<Layout>
 		<SEO title="Homepage" />
-		<div className="container">
+		<div className="block">
 			<div className="grid">
 				<h1 className="heading-1">Homepage</h1>
 			</div>
