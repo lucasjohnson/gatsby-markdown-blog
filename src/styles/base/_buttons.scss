@@ -2,8 +2,9 @@ button,
 [type='button'],
 [type='reset'],
 [type='submit'] {
+	@include background($action-color);
+
 	appearance: none;
-	background-color: $action-color;
 	border: 0;
 	border-radius: $border-radius;
 	color: $action-color-contrast;
@@ -35,4 +36,24 @@ button,
 		cursor: not-allowed;
 		opacity: 0.5;
 	}
+}
+
+.buttons {
+	> .button {
+		margin-right: $spacing-small;
+
+		&:last-of-type {
+			margin-right: 0;
+		}
+	}
+}
+
+.primary,
+.secondary {
+	line-height: $line-height-body;
+	padding: 0.8rem 5rem;
+}
+
+.secondary {
+	@include background($black);
 }
