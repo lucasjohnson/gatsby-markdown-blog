@@ -4,21 +4,13 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Twitter from './Twitter';
 import Facebook from './Facebook';
 
-const defaultProps = {
-	title: ``,
-	description: ``,
-	banner: ``,
-	bannerAlt: ``,
-	contentType: ``
-};
-
 type SEOProps = {
 	title: string;
-	description: string;
-	banner: string;
-	bannerAlt: sting;
-	contentType: sting;
-} & typeof defaultProps;
+	description?: string;
+	banner?: string;
+	bannerAlt?: string;
+	contentType?: string;
+};
 
 type SiteProps = {
 	site: {
@@ -43,6 +35,7 @@ const SEO = ({ title, description, banner, bannerAlt, contentType }: SEOProps) =
 			site {
 				siteMetadata {
 					siteName
+					siteUrl
 					siteDescription
 					siteAuthor
 					siteBanner
@@ -58,6 +51,7 @@ const SEO = ({ title, description, banner, bannerAlt, contentType }: SEOProps) =
 
 	const {
 		siteName,
+		siteUrl,
 		siteDescription,
 		siteAuthor,
 		siteBanner,
@@ -70,7 +64,8 @@ const SEO = ({ title, description, banner, bannerAlt, contentType }: SEOProps) =
 
 	const metaTitle = title || siteName;
 	const metaDescription = description || siteDescription;
-	const metaUrl = typeof window !== `undefined` && window.location.href;
+	// UPDATE URL WITH PAGE AND POST PROPS
+	const metaUrl = `${siteUrl}`;
 	const metaBanner = banner || siteBanner;
 	const metaBannerAlt = bannerAlt || siteDescription;
 	const metaContentType = contentType || `Website`;
@@ -107,5 +102,3 @@ const SEO = ({ title, description, banner, bannerAlt, contentType }: SEOProps) =
 };
 
 export default SEO;
-
-SEO.defaultProps = defaultProps;

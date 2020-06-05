@@ -1,17 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-const defaultProps = {
-	type: ``,
-	title: ``,
-	description: ``,
-	url: ``,
-	locale: ``,
-	banner: ``,
-	bannerAlt: ``,
-	twitter: ``
-};
-
 type FacebookProps = {
 	type: string;
 	title: string;
@@ -20,10 +9,10 @@ type FacebookProps = {
 	locale: string;
 	banner: string;
 	bannerAlt: string;
-	twitter: string;
-} & typeof defaultProps;
+	siteName: string;
+};
 
-const Facebook = ({ type, title, description, url, locale, banner, bannerAlt, siteName }) => (
+const Facebook = ({ type, title, description, url, locale, banner, bannerAlt, siteName }: FacebookProps) => (
 	<Helmet>
 		<meta property="og:type" content={type} />
 		<meta property="og:title" content={title} />
@@ -37,5 +26,3 @@ const Facebook = ({ type, title, description, url, locale, banner, bannerAlt, si
 );
 
 export default Facebook;
-
-Facebook.defaultProps = defaultProps;

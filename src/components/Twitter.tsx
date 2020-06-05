@@ -1,15 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 
-const defaultProps = {
-	title: ``,
-	description: ``,
-	url: ``,
-	banner: ``,
-	bannerAlt: ``,
-	twitter: ``
-};
-
 type TwitterProps = {
 	title: string;
 	description: string;
@@ -17,9 +8,9 @@ type TwitterProps = {
 	banner: string;
 	bannerAlt: string;
 	twitter: string;
-} & typeof defaultProps;
+};
 
-const Twitter = ({ title, description, url, banner, bannerAlt, twitter }) => (
+const Twitter = ({ title, description, url, banner, bannerAlt, twitter }: TwitterProps) => (
 	<Helmet>
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={title} />
@@ -33,5 +24,3 @@ const Twitter = ({ title, description, url, banner, bannerAlt, twitter }) => (
 );
 
 export default Twitter;
-
-Twitter.defaultProps = defaultProps;
