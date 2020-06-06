@@ -3,12 +3,18 @@ import React from 'react';
 type ButtonProps = {
 	value: string;
 	variant: string;
+	handleClick?: () => void;
 };
 
-const Button = ({ value, variant }: ButtonProps) => {
+const Button = ({ value, variant, handleClick }: ButtonProps) => {
 	return (
 		<React.Fragment>
-			<button className={`button ${variant === `primary` ? variant : `secondary`}`}>{value}</button>
+			<button
+				className={`${variant === `primary` ? `button primary` : `button secondary`}`}
+				onClick={handleClick && handleClick}
+			>
+				{value}
+			</button>
 		</React.Fragment>
 	);
 };

@@ -3,6 +3,8 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import Button from '../blocks/elements/Button';
 
+const handleClick = (): void => {};
+
 const IndexPage: FunctionComponent = () => (
 	<Layout>
 		<SEO title="Homepage" />
@@ -29,8 +31,8 @@ const IndexPage: FunctionComponent = () => (
 					tortor id aliquet lectus proin.
 				</p>
 				<div className="buttons">
-					<Button value="primary" variant="primary" />
-					<Button value="secondary" variant="secondary" />
+					<Button value="button primary" variant="primary" handleClick={handleClick} />
+					<Button value="button secondary" variant="secondary" />
 				</div>
 			</div>
 		</div>
