@@ -4,15 +4,15 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Twitter from './Twitter';
 import Facebook from './Facebook';
 
-type SEOProps = {
+interface PropsTypes {
 	title: string;
 	description?: string;
 	banner?: string;
 	bannerAlt?: string;
 	contentType?: string;
-};
+}
 
-type SiteProps = {
+interface SiteQuery {
 	site: {
 		siteMetadata: {
 			siteName: string;
@@ -25,12 +25,18 @@ type SiteProps = {
 			facebook: string;
 			twitter: string;
 			ogLanguage: string;
+			businessStreet: string;
+			businessLocality: string;
+			businessRegion: string;
+			businessPostalCode: string;
+			businessCountry: string;
+			businesstelephone: string;
 		};
 	};
-};
+}
 
-const SEO = ({ title, description, banner, bannerAlt, contentType }: SEOProps) => {
-	const { site } = useStaticQuery<SiteProps>(graphql`
+const SEO = ({ title, description, banner, bannerAlt, contentType }: PropsTypes) => {
+	const { site } = useStaticQuery<SiteQuery>(graphql`
 		query {
 			site {
 				siteMetadata {
@@ -122,13 +128,13 @@ const SEO = ({ title, description, banner, bannerAlt, contentType }: SEOProps) =
 		telephone: businesstelephone
 	};
 
-	const metaTitle = title || siteName;
-	const metaDescription = description || siteDescription;
+	const metaTitle: string = title || siteName;
+	const metaDescription: string = description || siteDescription;
 	// UPDATE URL WITH PAGE AND POST PROPS
 	const metaUrl = `${siteUrl}`;
-	const metaBanner = banner || siteBanner;
-	const metaBannerAlt = bannerAlt || siteDescription;
-	const metaContentType = contentType || `Website`;
+	const metaBanner: string = banner || siteBanner;
+	const metaBannerAlt: string = bannerAlt || siteDescription;
+	const metaContentType: string = contentType || `Website`;
 
 	return (
 		<React.Fragment>
