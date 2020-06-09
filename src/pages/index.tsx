@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import Button from '../blocks/elements/Button';
+import ButtonLink from '../blocks/elements/ButtonLink';
 
 const handleClick = (): void => {};
 
@@ -37,6 +38,28 @@ const IndexPage: FunctionComponent = () => (
 					<Button variant="secondary" onClick={handleClick}>
 						Button Secondary
 					</Button>
+				</div>
+				<div className="buttons">
+					<ButtonLink variant="primary" url="/page/" title="Page">
+						Button Primary
+					</ButtonLink>
+					<ButtonLink
+						variant="primary external"
+						url="https://www.gatsbyjs.org/"
+						title="Gatsby homepage opens in new tab"
+					>
+						Button Primary
+					</ButtonLink>
+					<ButtonLink variant="secondary" url="/page/" title="Page">
+						Button Secondary
+					</ButtonLink>
+					<ButtonLink
+						variant="secondary external"
+						url="https://www.gatsbyjs.org/"
+						title="Gatsby homepage opens in new tab"
+					>
+						Button Secondary
+					</ButtonLink>
 				</div>
 			</div>
 		</div>
