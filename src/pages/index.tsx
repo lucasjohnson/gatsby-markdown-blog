@@ -31,8 +31,12 @@ const IndexPage: FunctionComponent = () => (
 					tortor id aliquet lectus proin.
 				</p>
 				<div className="buttons">
-					<Button value="button primary" variant="primary" handleClick={handleClick} />
-					<Button value="button secondary" variant="secondary" />
+					<Button variant="primary" onClick={handleClick}>
+						Button Primary
+					</Button>
+					<Button variant="secondary" onClick={handleClick}>
+						Button Secondary
+					</Button>
 				</div>
 			</div>
 		</div>
