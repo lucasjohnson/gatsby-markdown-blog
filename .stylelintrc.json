@@ -1,7 +1,7 @@
 {
 	"extends": "stylelint-config-standard",
 	"rules": {
-		"unit-whitelist": ["rem", "deg", "%", "vw", "vh", "ms"],
+		"unit-whitelist": ["rem", "deg", "%", "vw", "vh", "ms", "fr", "ch"],
 		"length-zero-no-unit": true,
 		"selector-pseudo-element-colon-notation": "double",
 		"indentation": "tab",
