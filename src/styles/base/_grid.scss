@@ -1,12 +1,58 @@
 .grid {
-	display: grid;
-	grid-column-gap: $spacing-small;
-	padding: 0 $spacing-small;
-	margin: $spacing-small 0;
+	display: flex;
+	flex-wrap: wrap;
+}
 
-	@include respond-to(LARGE) {
-		grid-column-gap: $spacing-large;
-		padding: 0 $spacing-large;
-		margin: $spacing-large 0;
+@mixin column($columns-wanted, $total: 12) {
+	flex: 0 0 auto;
+	width: 100%;
+	padding: 0 #{$grid-spacking};
+	max-width: percentage($columns-wanted / $total);
+	flex-basis: percentage($columns-wanted / $total);
+}
+
+@for $i from 0 through $grid-columns {
+	.column-#{$i} {
+		@include column($i, $grid-columns);
+	}
+}
+
+@include respond-to(SMALL) {
+	@for $i from 0 through $grid-columns {
+		.column-sm-#{$i} {
+			@include column($i, $grid-columns);
+		}
+	}
+}
+
+@include respond-to(MEDIUM) {
+	@for $i from 0 through $grid-columns {
+		.column-md-#{$i} {
+			@include column($i, $grid-columns);
+		}
+	}
+}
+
+@include respond-to(LARGE) {
+	@for $i from 0 through $grid-columns {
+		.column-lg-#{$i} {
+			@include column($i, $grid-columns);
+		}
+	}
+}
+
+@include respond-to(XLARGE) {
+	@for $i from 0 through $grid-columns {
+		.column-xl-#{$i} {
+			@include column($i, $grid-columns);
+		}
+	}
+}
+
+@include respond-to(XXLARGE) {
+	@for $i from 0 through $grid-columns {
+		.column-xx-#{$i} {
+			@include column($i, $grid-columns);
+		}
 	}
 }
