@@ -1,19 +1,14 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 
-type ButtonProps = {
-	value: string;
-	variant: string;
-	handleClick?: () => void;
-};
-
-const Button = ({ value, variant, handleClick }: ButtonProps) => {
+const Button: FunctionComponent<{ variant: string; handleClick?: () => void }> = ({
+	variant,
+	handleClick,
+	children
+}) => {
 	return (
 		<React.Fragment>
-			<button
-				className={`${variant === `primary` ? `button primary` : `button secondary`}`}
-				onClick={handleClick && handleClick}
-			>
-				{value}
+			<button className={`button ${variant}`} onClick={handleClick}>
+				{children}
 			</button>
 		</React.Fragment>
 	);
