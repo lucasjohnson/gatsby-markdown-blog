@@ -48,6 +48,11 @@
 	&.secondary {
 		@include background($black);
 	}
+
+	> .icon {
+		vertical-align: middle;
+		margin-left: $spacing-small;
+	}
 }
 
 .buttons {

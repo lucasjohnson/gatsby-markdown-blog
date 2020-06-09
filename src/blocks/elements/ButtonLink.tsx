@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import { Link as GatsbyLink } from 'gatsby';
+import { GoLinkExternal } from 'react-icons/go';
 
 interface ButtonLinkProps {
 	title: string;
@@ -21,6 +22,7 @@ const ButtonLink: FunctionComponent<ButtonLinkProps> = ({ title, url, variant, c
 	return (
 		<a className={`button-link ${variant}`} href={url} title={title} target="_blank" rel="noopener noreferrer">
 			{children}
+			<GoLinkExternal className="icon" />
 		</a>
 	);
 };
