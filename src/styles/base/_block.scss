@@ -1,11 +1,11 @@
 .block {
 	position: relative;
 	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
+	margin: $block-margin-mobile auto;
 
 	@include respond-to(LARGE) {
-		max-width: $blockMaxWidth;
+		max-width: $block-max-width;
+		margin: $block-margin-desktop auto;
 	}
 }
 
@@ -13,4 +13,9 @@
 	width: 100%;
 	max-width: 100%;
 	position: relative;
+	margin: $block-margin-mobile auto;
+
+	@include respond-to(LARGE) {
+		margin: $block-margin-desktop auto;
+	}
 }

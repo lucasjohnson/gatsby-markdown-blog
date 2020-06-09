@@ -70,5 +70,9 @@ $breakpoint-xxlarge: 1400px;
 $grid-columns: 12;
 $grid-spacking: $spacing-small;
 
+// Block
+$block-margin-mobile: $spacing-small;
+$block-margin-desktop: $spacing-large;
+
 // Layout
-$blockMaxWidth: $breakpoint-large;
+$block-max-width: $breakpoint-large;
