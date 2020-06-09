@@ -1,18 +1,19 @@
 import React, { FunctionComponent } from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import Button from '../blocks/elements/Button';
-import ButtonLink from '../blocks/elements/ButtonLink';
 
-const handleClick = (): void => {};
-
-const IndexPage: FunctionComponent = () => (
+const TypographyPage: FunctionComponent = () => (
 	<Layout>
-		<SEO title="Homepage" />
+		<SEO title="Typography" />
 		<section className="block">
 			<div className="grid">
 				<div className="column-12">
-					<h1 className="heading-1">Homepage</h1>
+					<h1 className="heading-1">Header 1</h1>
+					<h1 className="heading-2">Header 2</h1>
+					<h1 className="heading-3">Header 3</h1>
+					<h1 className="heading-4">Header 4</h1>
+					<h1 className="heading-5">Header 5</h1>
+					<h1 className="heading-6">Header 6</h1>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
 						dolore magna aliqua. Elementum sagittis vitae et leo duis ut diam quam. Ornare massa eget egestas purus
@@ -32,41 +33,10 @@ const IndexPage: FunctionComponent = () => (
 						nisl nunc mi ipsum. Enim ut sem viverra aliquet. Leo integer malesuada nunc vel risus commodo viverra
 						maecenas. Id nibh tortor id aliquet lectus proin.
 					</p>
-
-					<div className="buttons">
-						<Button variant="primary" onClick={handleClick}>
-							Button Primary
-						</Button>
-						<Button variant="secondary" onClick={handleClick}>
-							Button Secondary
-						</Button>
-					</div>
-					<div className="buttons">
-						<ButtonLink variant="primary" url="/page/" title="Page">
-							Button Primary
-						</ButtonLink>
-						<ButtonLink
-							variant="primary external"
-							url="https://www.gatsbyjs.org/"
-							title="Gatsby homepage opens in new tab"
-						>
-							Button Primary
-						</ButtonLink>
-						<ButtonLink variant="secondary" url="/page/" title="Page">
-							Button Secondary
-						</ButtonLink>
-						<ButtonLink
-							variant="secondary external"
-							url="https://www.gatsbyjs.org/"
-							title="Gatsby homepage opens in new tab"
-						>
-							Button Secondary
-						</ButtonLink>
-					</div>
 				</div>
 			</div>
 		</section>
 	</Layout>
 );
 
-export default IndexPage;
+export default TypographyPage;

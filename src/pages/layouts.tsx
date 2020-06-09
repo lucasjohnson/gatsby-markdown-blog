@@ -2,17 +2,17 @@ import React, { FunctionComponent } from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const ErrorPage: FunctionComponent = () => (
+const LayoutsPage: FunctionComponent = () => (
 	<Layout>
-		<SEO title="Error Page" />
+		<SEO title="Layouts" />
 		<section className="block">
 			<div className="grid">
 				<div className="column-12">
-					<h1>Error Page</h1>
+					<h1 className="heading-1">Layouts</h1>
 				</div>
 			</div>
 		</section>
 	</Layout>
 );
 
-export default ErrorPage;
+export default LayoutsPage;

@@ -4,9 +4,7 @@ const Footer: FunctionComponent = () => (
 	<footer>
 		<div className="block">
 			<div className="grid">
-				<div className="column-12">
-					<p>Footer</p>
-				</div>
+				<div className="column-12"></div>
 			</div>
 		</div>
 	</footer>
