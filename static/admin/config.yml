@@ -20,7 +20,6 @@ collections:
     fields:
       - { name: title, label: Title }
       - { name: date, label: Date, widget: date }
-      - { name: featured, label: Featured, widget: boolean, default: false }
       - { name: banner, label: Banner, widget: image, allow_multiple: false }
       - {
           name: abstract,
