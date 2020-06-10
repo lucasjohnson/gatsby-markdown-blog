@@ -25,6 +25,21 @@ module.exports = {
 		`gatsby-plugin-typescript`,
 		`gatsby-plugin-netlify-cms`,
 		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `images`,
+				path: `${__dirname}/src/images`
+			}
+		},
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
+				name: `posts`,
+				path: `${__dirname}/posts`
+			}
+		},
+		`gatsby-transformer-remark`,
+		{
 			resolve: `gatsby-plugin-manifest`,
 			options: {
 				name: `My Gatsby Starter`,
