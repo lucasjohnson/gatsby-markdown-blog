@@ -9,7 +9,7 @@ $gray: rgba(#000, 0.6);
 $white: #fff;
 
 // Font Colors
-$font-color-base: $gray;
+$font-color-base: $black;
 $font-color-header: $black;
 $action-color: $blue;
 $action-color-hover: $blue-light;
@@ -24,6 +24,7 @@ $font-family-body: -apple-system, blinkmacsystemfont, 'Segoe UI', 'Roboto', 'Oxy
 $font-family-heading: $font-family-body;
 
 $font-size-base: 1.6rem;
+$font-size-small: 1.2rem;
 
 $font-weight-light: 100;
 $font-weight-medium: 400;
@@ -40,6 +41,9 @@ $border-width: 0.1rem;
 $border-radius: 0.2rem;
 $border: $border-width solid currentColor;
 
+// Box Shadow
+$box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.1);
+
 // Focus
 $focus-outline-width: 0.2rem;
 $focus-outline-offset: 0.2rem;
@@ -48,6 +52,7 @@ $focus-outline: $focus-outline-width solid $action-color;
 // Animations
 $animation-duration: 300ms;
 $animation-timing: ease;
+$animation-base: all $animation-duration $animation-timing;
 
 // Spacing
 $spacing-small: 1.5rem;

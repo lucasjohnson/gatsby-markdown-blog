@@ -31,12 +31,20 @@ h6 {
 	margin: 0 0 3rem;
 }
 
-p {
+p,
+.body-copy,
+.tag {
 	font-size: $font-size-base;
 	font-weight: $font-weight-medium;
 	line-height: $line-height-body;
 	letter-spacing: $letter-spacing-body;
 	margin: 0 0 2rem;
+}
+
+.tag {
+	font-size: $font-size-small;
+	text-transform: uppercase;
+	margin: 0;
 }
 
 a {
