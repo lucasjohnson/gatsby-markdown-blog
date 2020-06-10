@@ -1,17 +1,39 @@
 backend:
   name: github
-  repo: lucasjohnson/my-gatsby-starter
+  repo: lucasjohnson/gatsby-netlify-cms-starter
 
 media_folder: static/assets
 public_folder: /assets
+publish_mode: editorial_workflow
+
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+  sanitize_replacement: '-'
 
 collections:
-  - name: blog
-    label: Blog
-    folder: blog
+  - name: posts
+    label: Post
+    folder: posts
     create: true
+    slug: '{{slug}}'
     fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: datetime }
       - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
+      - { name: date, label: Date, widget: date }
+      - { name: featured, label: Featured, widget: boolean, default: false }
+      - { name: banner, label: Banner, widget: image, allow_multiple: false }
+      - {
+          name: abstract,
+          label: Abstract,
+          widget: text,
+          hint: 'Short description that will display under post title on Blog page, as well as being placed in the post meta data for SEO',
+        }
+      - {
+          name: body,
+          label: Body,
+          widget: markdown,
+          buttons: ['bold', 'italic', 'link', 'heading-one', 'heading-two', 'quote', 'bulleted-list', 'numbered-list'],
+          hint: 'Do not add image to this editor, it will not display if you do.',
+        }
+    editor:
+      preview: true
