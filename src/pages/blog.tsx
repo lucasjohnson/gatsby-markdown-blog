@@ -9,6 +9,9 @@ interface BlogQuery {
 	allMarkdownRemark: {
 		edges: {
 			node: {
+				fields: {
+					slug: string;
+				};
 				frontmatter: {
 					abstract: string;
 					banner: string;
@@ -26,6 +29,9 @@ const BlogPage = () => {
 			allMarkdownRemark {
 				edges {
 					node {
+						fields {
+							slug
+						}
 						frontmatter {
 							abstract
 							banner
@@ -49,6 +55,7 @@ const BlogPage = () => {
 					{edges.map((edge: object[], index: number) => {
 						const { node } = edge;
 						const { frontmatter } = node;
+						frontmatter.slug = node.fields.slug;
 						return <GridCard data={frontmatter} key={index} />;
 					})}
 				</GridBox>
