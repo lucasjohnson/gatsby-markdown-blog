@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react';
 
-interface GridProps {
+interface GridBoxProps {
 	column: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 	columnSm?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
 	columnMd?: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
@@ -10,7 +10,7 @@ interface GridProps {
 	variant: 'grid-box';
 }
 
-const Grid: FunctionComponent<GridProps> = ({
+const GridBox: FunctionComponent<GridBoxProps> = ({
 	column,
 	columnSm,
 	columnMd,
@@ -37,4 +37,4 @@ const Grid: FunctionComponent<GridProps> = ({
 	);
 };
 
-export default Grid;
+export default GridBox;
