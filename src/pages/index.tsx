@@ -10,7 +10,7 @@ const IndexPage: FunctionComponent = () => (
 	<Layout>
 		<SEO title="Homepage" />
 		<section className="block">
-			<div className="grid">
+			<div className="grid-flex">
 				<div className="column-12">
 					<h1 className="heading-1">Homepage</h1>
 					<p>
