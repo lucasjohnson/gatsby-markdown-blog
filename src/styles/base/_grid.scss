@@ -2,6 +2,11 @@
 	display: grid;
 	grid-template-rows: auto;
 	grid-gap: $spacing-large;
+	margin-bottom: $spacing-small;
+
+	@include respond-to(MEDIUM) {
+		margin-bottom: $spacing-large;
+	}
 
 	@for $i from 0 through $grid-columns {
 		&.column-#{$i} {
