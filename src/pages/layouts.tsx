@@ -49,6 +49,7 @@ const LayoutsPage: FunctionComponent = () => (
 			<Grid variant="grid-flex">
 				<div className="column-12">
 					<h1 className="heading-1">Layouts</h1>
+					<h2 className="heading-2">Grid Cards</h2>
 					<Grid variant="grid">
 						{data.map((item, index) => {
 							return <GridCard data={item} key={index} />;
