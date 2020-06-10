@@ -23,6 +23,7 @@ module.exports = {
 		`gatsby-plugin-netlify`,
 		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-typescript`,
+		`gatsby-plugin-netlify-cms`,
 		{
 			resolve: `gatsby-plugin-manifest`,
 			options: {
