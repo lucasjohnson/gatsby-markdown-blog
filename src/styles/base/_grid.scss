@@ -1,4 +1,39 @@
 .grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr;
+	grid-template-rows: auto;
+	grid-gap: 2rem;
+
+	.grid-card {
+		min-height: 100%;
+		text-decoration: none;
+		color: $font-color-base;
+		display: flex;
+		flex-direction: column;
+		box-shadow: $box-shadow;
+		transition: $animation-base;
+		position: relative;
+		top: 0;
+
+		&:hover {
+			top: -0.5rem;
+		}
+
+		> .card-content {
+			padding: 2rem;
+			display: flex;
+			flex: 1;
+			justify-content: space-between;
+			flex-direction: column;
+
+			> .body-copy {
+				flex: 1;
+			}
+		}
+	}
+}
+
+.grid-flex {
 	display: flex;
 	flex-wrap: wrap;
 }

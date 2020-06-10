@@ -6,7 +6,7 @@ const TypographyPage: FunctionComponent = () => (
 	<Layout>
 		<SEO title="Typography" />
 		<section className="block">
-			<div className="grid">
+			<div className="grid-flex">
 				<div className="column-12">
 					<h1 className="heading-1">Header 1</h1>
 					<h1 className="heading-2">Header 2</h1>
