@@ -14,12 +14,21 @@ interface BlogQuery {
 				};
 				frontmatter: {
 					abstract: string;
-					banner: string;
 					date: string;
 					title: string;
+					banner: {
+						childImageSharp: {
+							fluid: {
+								aspectRatio: number;
+								base64: string;
+								sizes: string;
+								srcSet: string;
+							};
+						};
+					};
 				};
 			};
-		};
+		}[];
 	};
 }
 
@@ -34,9 +43,16 @@ const BlogPage = () => {
 						}
 						frontmatter {
 							abstract
-							banner
 							date
+							featured
 							title
+							banner {
+								childImageSharp {
+									fluid {
+										...GatsbyImageSharpFluid
+									}
+								}
+							}
 						}
 					}
 				}
@@ -50,15 +66,19 @@ const BlogPage = () => {
 		<Layout>
 			<SEO title="Blog" />
 			<section className="block">
-				<h1 className="heading-1">Blog</h1>
-				<GridBox variant="grid-box" column={1} columnMd={2} columnLg={3}>
-					{edges.map((edge: object[], index: number) => {
-						const { node } = edge;
-						const { frontmatter } = node;
-						frontmatter.slug = node.fields.slug;
-						return <GridCard data={frontmatter} key={index} />;
-					})}
-				</GridBox>
+				<div className="grid-flex">
+					<div className="column-12">
+						<h1 className="heading-1">Blog</h1>
+						<GridBox variant="grid-box" column={1} columnMd={2} columnLg={3}>
+							{edges.map((edge: object[], index: number) => {
+								const { node } = edge;
+								const { frontmatter } = node;
+								frontmatter.slug = node.fields.slug;
+								return <GridCard data={frontmatter} key={index} />;
+							})}
+						</GridBox>
+					</div>
+				</div>
 			</section>
 		</Layout>
 	);
