@@ -55,7 +55,6 @@
 	}
 
 	> .grid-card {
-		min-height: 100%;
 		text-decoration: none;
 		color: $font-color-base;
 		display: flex;
@@ -70,14 +69,27 @@
 		}
 
 		> .card-content {
-			padding: 2rem;
 			display: flex;
 			flex: 1;
 			justify-content: space-between;
 			flex-direction: column;
 
+			> .gatsby-image-wrapper {
+				height: 20rem;
+				margin-bottom: $spacing-large;
+			}
+
 			> .body-copy {
+				padding: 0 $spacing-large;
 				flex: 1;
+			}
+
+			> .heading-4 {
+				padding: 0 $spacing-large;
+			}
+
+			> .tag {
+				padding: 0 $spacing-large $spacing-large;
 			}
 		}
 	}
