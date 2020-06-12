@@ -34,11 +34,29 @@ module.exports = {
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
+				name: `assets`,
+				path: `${__dirname}/static/assets`
+			}
+		},
+		{
+			resolve: `gatsby-source-filesystem`,
+			options: {
 				name: `posts`,
 				path: `${__dirname}/posts`
 			}
 		},
-		`gatsby-transformer-remark`,
+		{
+			resolve: `gatsby-transformer-remark`,
+			options: {
+				plugins: [
+					{
+						resolve: `gatsby-remark-relative-images`
+					}
+				]
+			}
+		},
+		`gatsby-transformer-sharp`,
+		`gatsby-plugin-sharp`,
 		{
 			resolve: `gatsby-plugin-manifest`,
 			options: {
