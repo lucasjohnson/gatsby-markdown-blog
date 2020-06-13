@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { StatelessComponent } from 'react';
 import Layout from '../components/Layout';
 import GridBox from '../blocks/elements/GridBox';
 import GridCard from '../blocks/elements/GridCard';
@@ -28,11 +28,11 @@ interface BlogQuery {
 					};
 				};
 			};
-		}[];
+		};
 	};
 }
 
-const BlogPage = () => {
+const BlogPage: StatelessComponent = () => {
 	const { allMarkdownRemark } = useStaticQuery<BlogQuery>(graphql`
 		query {
 			allMarkdownRemark {
@@ -44,7 +44,6 @@ const BlogPage = () => {
 						frontmatter {
 							abstract
 							date
-							featured
 							title
 							banner {
 								childImageSharp {
@@ -62,6 +61,15 @@ const BlogPage = () => {
 
 	const { edges } = allMarkdownRemark;
 
+	const renderCard = (): StatelessComponent =>
+		edges.map((edge: object, index: number) => {
+			const { node } = edge;
+			const { frontmatter } = node;
+			frontmatter.slug = node.fields.slug;
+
+			return <GridCard data={frontmatter} key={index} />;
+		});
+
 	return (
 		<Layout>
 			<SEO title="Blog" />
@@ -70,12 +78,7 @@ const BlogPage = () => {
 					<div className="column-12">
 						<h1 className="heading-1">Blog</h1>
 						<GridBox variant="grid-box" column={1} columnMd={2} columnLg={3}>
-							{edges.map((edge: object[], index: number) => {
-								const { node } = edge;
-								const { frontmatter } = node;
-								frontmatter.slug = node.fields.slug;
-								return <GridCard data={frontmatter} key={index} />;
-							})}
+							{renderCard()}
 						</GridBox>
 					</div>
 				</div>
