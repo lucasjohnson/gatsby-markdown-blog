@@ -5,11 +5,12 @@ import Twitter from './Twitter';
 import Facebook from './Facebook';
 
 interface PropsTypes {
-	title: string;
-	description?: string;
 	banner?: string;
 	bannerAlt?: string;
 	contentType?: string;
+	description?: string;
+	pathname?: string;
+	title: string;
 }
 
 interface SiteQuery {
@@ -35,7 +36,7 @@ interface SiteQuery {
 	};
 }
 
-const SEO = ({ title, description, banner, bannerAlt, contentType }: PropsTypes) => {
+const SEO = ({ banner, bannerAlt, contentType, description, pathname, title }: PropsTypes) => {
 	const { site } = useStaticQuery<SiteQuery>(graphql`
 		query {
 			site {
@@ -128,13 +129,12 @@ const SEO = ({ title, description, banner, bannerAlt, contentType }: PropsTypes)
 		telephone: businesstelephone
 	};
 
-	const metaTitle: string = title || siteName;
-	const metaDescription: string = description || siteDescription;
-	// UPDATE URL WITH PAGE AND POST PROPS
-	const metaUrl = `${siteUrl}`;
-	const metaBanner: string = banner || siteBanner;
-	const metaBannerAlt: string = bannerAlt || siteDescription;
-	const metaContentType: string = contentType || `Website`;
+	const metaTitle: string = title ? title : siteName;
+	const metaDescription: string = description ? description : siteDescription;
+	const metaUrl: string = pathname ? `${siteUrl}${pathname}` : siteUrl;
+	const metaBanner: string = banner ? banner : siteBanner;
+	const metaBannerAlt: string = bannerAlt ? bannerAlt : siteDescription;
+	const metaContentType: string = contentType ? contentType : `Website`;
 
 	return (
 		<React.Fragment>
