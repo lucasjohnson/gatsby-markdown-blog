@@ -71,13 +71,6 @@ module.exports = {
 				cache_busting_mode: `none`
 			}
 		},
-		{
-			resolve: `gatsby-plugin-offline`,
-			options: {
-				workboxConfig: {
-					globPatterns: [`**/*`]
-				}
-			}
-		}
+		`gatsby-plugin-offline`
 	]
 };
