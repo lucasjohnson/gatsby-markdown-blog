@@ -1,7 +1,7 @@
 module.exports = {
 	siteMetadata: {
-		siteName: `My Gatsby Starter`,
-		siteUrl: `https://my-gatsby-starter.now.sh/`,
+		siteName: `Gatsby Netlify CMS Starter`,
+		siteUrl: `https://gatsby-and.netlify.app/`,
 		siteDescription: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
 		siteAuthor: `Lucas Johnson`,
 		siteBanner: `https://placekitten.com/600/600`,
