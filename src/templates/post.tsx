@@ -1,17 +1,26 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-const Post = ({ data }) => {
+const Post = ({ data }): ReactElement => {
 	const { markdownRemark } = data;
-	const { frontmatter, html } = markdownRemark;
-	const { banner, date, title } = frontmatter;
+	const { fields, frontmatter, html } = markdownRemark;
+	const { abstract, banner, date, title } = frontmatter;
 	const { fluid } = banner.childImageSharp;
+	const { slug } = fields;
 
 	return (
 		<Layout>
+			<SEO
+				banner={fluid.src}
+				bannerAlt={title}
+				contentType={`Article`}
+				description={abstract}
+				pathname={slug}
+				title={title}
+			/>
 			<article className="Post">
 				<div className="block">
 					<div className="grid-flex">
@@ -47,7 +56,6 @@ export const pageQuery = graphql`
 			frontmatter {
 				abstract
 				date(formatString: "MMMM DD, YYYY")
-				featured
 				title
 				banner {
 					childImageSharp {
