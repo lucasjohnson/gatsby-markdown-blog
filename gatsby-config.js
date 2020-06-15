@@ -1,12 +1,7 @@
 module.exports = {
 	siteMetadata: {
 		siteLanguage: `en`,
-		businessStreet: ``,
-		businessLocality: ``,
-		businessRegion: ``,
-		businessPostalCode: ``,
-		businessCountry: ``,
-		businesstelephone: ``
+		siteUrl: `https://gatsby-and.netlify.app/`
 	},
 	plugins: [
 		`gatsby-plugin-sass`,
@@ -33,7 +28,7 @@ module.exports = {
 			resolve: `gatsby-source-filesystem`,
 			options: {
 				name: `content`,
-				path: `${__dirname}/content`
+				path: `${__dirname}/content/`
 			}
 		},
 		{
