@@ -37,6 +37,8 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 		}
 	`);
 
+	console.log(socialData);
+
 	const { siteTitle, siteUrl, siteDescription, siteAuthor, siteBanner, siteLogo } = siteData;
 	const { siteLanguage } = site.siteMetadata;
 	const { buildTime } = site;

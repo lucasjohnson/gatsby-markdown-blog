@@ -1,5 +1,6 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
+import socialData from '../../content/site/social.yml';
 
 type TwitterProps = {
 	title: string;
@@ -7,10 +8,9 @@ type TwitterProps = {
 	url: string;
 	banner: string;
 	bannerAlt: string;
-	twitter: string;
 };
 
-const Twitter = ({ title, description, url, banner, bannerAlt, twitter }: TwitterProps) => (
+const Twitter = ({ title, description, url, banner, bannerAlt }: TwitterProps) => (
 	<Helmet>
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={title} />
@@ -18,8 +18,8 @@ const Twitter = ({ title, description, url, banner, bannerAlt, twitter }: Twitte
 		<meta name="twitter:url" content={url} />
 		<meta name="twitter:image" content={banner} />
 		<meta name="twitter:image:alt" content={bannerAlt} />
-		<meta name="twitter:site" content={twitter} />
-		<meta name="twitter:creator" content={twitter} />
+		<meta name="twitter:site" content={`@_lucasjohnson`} />
+		<meta name="twitter:creator" content={`@_lucasjohnson`} />
 	</Helmet>
 );
 

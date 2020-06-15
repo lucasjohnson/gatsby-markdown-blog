@@ -68,6 +68,7 @@ collections:
         label: 'Social Media Accounts'
         name: 'socialMediaAccounts'
         fields:
+          - { label: Twitter Handle, name: twitterHandle, widget: string, required: false }
           - label: 'Social Media Accounts'
             name: 'socialMediaAccounts'
             minimize_collapsed: true
