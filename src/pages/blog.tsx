@@ -73,13 +73,15 @@ const BlogPage: StatelessComponent = () => {
 	return (
 		<Layout>
 			<SEO title="Blog" />
-			<section className="block">
-				<div className="grid-flex">
-					<div className="column-12">
-						<h1 className="heading-1">Blog</h1>
-						<GridBox variant="grid-box" column={1} columnMd={2} columnLg={3}>
-							{renderCard()}
-						</GridBox>
+			<section className="Blog">
+				<div className="block">
+					<div className="grid-flex">
+						<div className="column-12">
+							<h1 className="heading-1">Blog</h1>
+							<GridBox variant="grid-box" column={1} columnMd={2} columnLg={3}>
+								{renderCard()}
+							</GridBox>
+						</div>
 					</div>
 				</div>
 			</section>

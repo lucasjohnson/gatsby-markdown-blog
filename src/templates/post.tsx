@@ -27,11 +27,11 @@ const Post = ({ data }): ReactElement => {
 						<div className="column-12">
 							<h1 className="heading-1">{title}</h1>
 							<Img fluid={fluid} alt={title} />
-							<p className="article-date">{date}</p>
+							<p className="post-date">{date}</p>
 							<div dangerouslySetInnerHTML={{ __html: html }}></div>
-							<ul className="tag-items">
-								<li className="tag-item">
-									<Link className="tag-link" to="/">
+							<ul className="post-tags">
+								<li className="post-tag">
+									<Link className="post-tag-link" to="/">
 										Tag
 									</Link>
 								</li>
