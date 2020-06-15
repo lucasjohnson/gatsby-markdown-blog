@@ -8,6 +8,7 @@ interface PropsTypes {
 	banner?: string;
 	bannerAlt?: string;
 	contentType?: 'Article';
+	date?: string;
 	description?: string;
 	pathname?: string;
 	title: string;
@@ -36,7 +37,7 @@ interface SiteQuery {
 	};
 }
 
-const SEO = ({ banner, bannerAlt, contentType, description, pathname, title }: PropsTypes) => {
+const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, title }: PropsTypes) => {
 	const { site } = useStaticQuery<SiteQuery>(graphql`
 		query {
 			site {
@@ -95,7 +96,7 @@ const SEO = ({ banner, bannerAlt, contentType, description, pathname, title }: P
 			'@type': `Person`,
 			name: siteAuthor
 		},
-		// copyrightYear: `2019`,
+		copyrightYear: `2020`,
 		creator: {
 			'@type': `Person`,
 			name: siteAuthor
@@ -162,7 +163,7 @@ const SEO = ({ banner, bannerAlt, contentType, description, pathname, title }: P
 				'@type': `Person`,
 				name: siteAuthor
 			},
-			// copyrightYear: ``,
+			copyrightYear: date && date.substr(date.length - 4),
 			creator: {
 				'@type': `Person`,
 				name: siteAuthor
@@ -184,8 +185,8 @@ const SEO = ({ banner, bannerAlt, contentType, description, pathname, title }: P
 				'@type': `ImageObject`,
 				url: `${siteUrl}${banner}`
 			},
-			mainEntityOfPage: `${siteUrl}${pathname}`
-			// datePublished: buildTime,
+			mainEntityOfPage: `${siteUrl}${pathname}`,
+			datePublished: date
 			// dateModified: buildTime
 		};
 

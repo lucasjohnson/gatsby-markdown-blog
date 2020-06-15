@@ -17,6 +17,7 @@ const Post = ({ data }): ReactElement => {
 				banner={fluid.src}
 				bannerAlt={title}
 				contentType={`Article`}
+				date={date}
 				description={abstract}
 				pathname={slug}
 				title={title}
