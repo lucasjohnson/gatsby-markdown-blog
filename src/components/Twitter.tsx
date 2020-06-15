@@ -2,8 +2,6 @@ import React from 'react';
 import { Helmet } from 'react-helmet';
 import socialData from '../../content/site/social.yml';
 
-console.log(socialData);
-
 type TwitterProps = {
 	title: string;
 	description: string;

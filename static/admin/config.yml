@@ -14,7 +14,7 @@ slug:
 collections:
   - name: posts
     label: Post
-    folder: content/posts/
+    folder: content/blog/
     create: true
     slug: '{{slug}}'
     fields:
