@@ -7,7 +7,7 @@ import Facebook from './Facebook';
 interface PropsTypes {
 	banner?: string;
 	bannerAlt?: string;
-	contentType?: string;
+	contentType?: 'Article';
 	description?: string;
 	pathname?: string;
 	title: string;
@@ -129,6 +129,84 @@ const SEO = ({ banner, bannerAlt, contentType, description, pathname, title }: P
 		telephone: businesstelephone
 	};
 
+	const itemListElement = [
+		{
+			'@type': `ListItem`,
+			item: {
+				'@id': siteUrl,
+				name: `Homepage`
+			},
+			position: 1
+		},
+		{
+			'@type': `ListItem`,
+			item: {
+				'@id': `${siteUrl}/blog`,
+				name: `Blog`
+			},
+			position: 1
+		}
+	];
+
+	let schemaArticle = null;
+
+	if (contentType) {
+		schemaArticle = {
+			'@context': `http://schema.org`,
+			'@type': `Article`,
+			author: {
+				'@type': `Person`,
+				name: siteAuthor
+			},
+			copyrightHolder: {
+				'@type': `Person`,
+				name: siteAuthor
+			},
+			// copyrightYear: ``,
+			creator: {
+				'@type': `Person`,
+				name: siteAuthor
+			},
+			publisher: {
+				'@type': `Organization`,
+				name: siteAuthor,
+				logo: {
+					'@type': `ImageObject`,
+					url: `${siteUrl}${siteLogo}`
+				}
+			},
+			description: description,
+			headline: title,
+			inLanguage: siteLanguage,
+			url: `${siteUrl}${pathname}`,
+			name: title,
+			image: {
+				'@type': `ImageObject`,
+				url: `${siteUrl}${banner}`
+			},
+			mainEntityOfPage: `${siteUrl}${pathname}`
+			// datePublished: buildTime,
+			// dateModified: buildTime
+		};
+
+		itemListElement.push({
+			'@type': `ListItem`,
+			item: {
+				'@id': `${siteUrl}${pathname}`,
+				name: title
+			},
+			position: 2
+		});
+	}
+
+	const breadcrumb = {
+		'@context': `http://schema.org`,
+		'@type': `BreadcrumbList`,
+		description: `Breadcrumbs list`,
+		name: `Breadcrumbs`,
+		itemListElement
+	};
+
 	const metaTitle: string = title ? title : siteName;
 	const metaDescription: string = description ? description : siteDescription;
 	const metaUrl: string = pathname ? `${siteUrl}${pathname}` : siteUrl;
@@ -148,7 +226,9 @@ const SEO = ({ banner, bannerAlt, contentType, description, pathname, title }: P
 				<meta name="description" content={metaDescription} />
 				<meta name="image" content={metaBanner} />
 				<script type="application/ld+json">{JSON.stringify(schemaBusiness)}</script>
-				<script type="application/ld+json">{JSON.stringify(schemaWebPage)}</script>
+				{!contentType && <script type="application/ld+json">{JSON.stringify(schemaWebPage)}</script>}
+				{contentType && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
+				<script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
 			</Helmet>
 			<Twitter
 				title={metaTitle}
