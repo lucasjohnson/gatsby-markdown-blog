@@ -16,7 +16,7 @@ const Post = ({ data }): ReactElement => {
 			<SEO
 				banner={fluid.src}
 				bannerAlt={title}
-				contentType={`Article`}
+				contentType={`NewsArticle`}
 				date={date}
 				description={abstract}
 				pathname={slug}

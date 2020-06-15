@@ -7,7 +7,7 @@ import Facebook from './Facebook';
 interface PropsTypes {
 	banner?: string;
 	bannerAlt?: string;
-	contentType?: 'Article';
+	contentType?: 'NewsArticle';
 	date?: string;
 	description?: string;
 	pathname?: string;
@@ -26,7 +26,6 @@ interface SiteQuery {
 			siteLogo: string;
 			facebook: string;
 			twitter: string;
-			ogLanguage: string;
 			businessStreet: string;
 			businessLocality: string;
 			businessRegion: string;
@@ -50,7 +49,6 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 					siteLanguage
 					siteLogo
 					twitter
-					ogLanguage
 					businessStreet
 					businessLocality
 					businessRegion
@@ -71,7 +69,6 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 		siteLanguage,
 		siteLogo,
 		twitter,
-		ogLanguage,
 		businessStreet,
 		businessLocality,
 		businessRegion,
@@ -115,7 +112,7 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 
 	const schemaBusiness = {
 		'@context': `https://schema.org`,
-		'@type': `Organization`,
+		'@type': `ProfessionalService`,
 		'@id': siteUrl,
 		name: siteName,
 		address: {
@@ -154,7 +151,7 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 	if (contentType) {
 		schemaArticle = {
 			'@context': `http://schema.org`,
-			'@type': `Article`,
+			'@type': contentType,
 			author: {
 				'@type': `Person`,
 				name: siteAuthor
@@ -244,7 +241,7 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 				title={metaTitle}
 				description={metaDescription}
 				url={metaUrl}
-				locale={ogLanguage}
+				locale={siteLanguage}
 				banner={metaBanner}
 				bannerAlt={metaBannerAlt}
 				siteName={siteName}
