@@ -2,12 +2,12 @@
 title: JAMstack PWA — Let’s Build a Polling App. with Gatsby.js, Firebase, and
   Styled-components Pt. 1
 date: 2020-06-10T19:42:55.686Z
-featured: false
 banner: /assets/1_yioxuih9i9oplswp5jcgoq.png
 abstract: In this three-part tutorial, We will show you how to get up and
   running with a progressive web application (PWA) that makes use of a powerful
   web architecture pattern called the JAMstack.
 ---
+
 ## Performance
 
 With the markup being rendered at build-time, there is no server runtime to generate the markup. The HTML files are already there ready to be sent over to the client. Granted the performance gains here aren’t groundbreaking as most web server implementations utilize page caching, but any gains to time to first byte is a plus.

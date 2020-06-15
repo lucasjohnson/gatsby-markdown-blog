@@ -20,6 +20,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	posts.forEach(({ node }, index) => {
 		const slug = node.fields.slug;
+
 		actions.createPage({
 			path: slug,
 			component: require.resolve(`./src/templates/post.tsx`),
@@ -42,6 +43,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 exports.onCreateNode = ({ node, actions, getNode }) => {
 	fmImagesToRelative(node);
 	const { createNodeField } = actions;
+
 	if (node.internal.type === `MarkdownRemark`) {
 		const value = createFilePath({ node, getNode });
 		createNodeField({
