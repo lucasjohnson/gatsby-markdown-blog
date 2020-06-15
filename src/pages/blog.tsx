@@ -1,4 +1,4 @@
-import React, { StatelessComponent } from 'react';
+import React, { FunctionComponent } from 'react';
 import Layout from '../components/Layout';
 import GridBox from '../blocks/elements/GridBox';
 import GridCard from '../blocks/elements/GridCard';
@@ -32,7 +32,7 @@ interface BlogQuery {
 	};
 }
 
-const BlogPage: StatelessComponent = () => {
+const BlogPage: FunctionComponent = () => {
 	const { allMarkdownRemark } = useStaticQuery<BlogQuery>(graphql`
 		query {
 			allMarkdownRemark {
@@ -61,7 +61,7 @@ const BlogPage: StatelessComponent = () => {
 
 	const { edges } = allMarkdownRemark;
 
-	const renderCard = (): StatelessComponent =>
+	const renderCard = (): FunctionComponent =>
 		edges.map((edge: object, index: number) => {
 			const { node } = edge;
 			const { frontmatter } = node;

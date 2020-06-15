@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 import socialData from '../../content/site/social.yml';
 
@@ -10,7 +10,7 @@ type TwitterProps = {
 	bannerAlt: string;
 };
 
-const Twitter = ({ title, description, url, banner, bannerAlt }: TwitterProps) => (
+const Twitter = ({ title, description, url, banner, bannerAlt }: TwitterProps): ReactElement => (
 	<Helmet>
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:title" content={title} />

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
 
 type FacebookProps = {
@@ -12,7 +12,16 @@ type FacebookProps = {
 	siteTitle: string;
 };
 
-const Facebook = ({ type, title, description, url, locale, banner, bannerAlt, siteTitle }: FacebookProps) => (
+const Facebook = ({
+	type,
+	title,
+	description,
+	url,
+	locale,
+	banner,
+	bannerAlt,
+	siteTitle
+}: FacebookProps): ReactElement => (
 	<Helmet>
 		<meta property="og:type" content={type} />
 		<meta property="og:title" content={title} />

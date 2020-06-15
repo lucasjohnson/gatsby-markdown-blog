@@ -1,10 +1,6 @@
 import React, { FunctionComponent } from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
-import Button from '../blocks/elements/Button';
-import ButtonLink from '../blocks/elements/ButtonLink';
-
-const handleClick = (): void => {};
 
 const IndexPage: FunctionComponent = () => (
 	<Layout>
