@@ -5,7 +5,7 @@ module.exports = {
 		siteDescription: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
 		siteAuthor: `Lucas Johnson`,
 		siteBanner: `/logo.png`,
-		siteLanguage: `en_CA`,
+		siteLanguage: `en`,
 		siteLogo: `/logo.png`,
 		facebook: ``,
 		twitter: `@_lucasjohnson`,
