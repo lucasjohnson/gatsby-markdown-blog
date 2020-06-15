@@ -95,7 +95,7 @@ const SEO = ({ banner, bannerAlt, contentType, description, pathname, title }: P
 			'@type': `Person`,
 			name: siteAuthor
 		},
-		copyrightYear: `2019`,
+		// copyrightYear: `2019`,
 		creator: {
 			'@type': `Person`,
 			name: siteAuthor
@@ -210,7 +210,7 @@ const SEO = ({ banner, bannerAlt, contentType, description, pathname, title }: P
 	const metaTitle: string = title ? title : siteName;
 	const metaDescription: string = description ? description : siteDescription;
 	const metaUrl: string = pathname ? `${siteUrl}${pathname}` : siteUrl;
-	const metaBanner: string = banner ? banner : siteBanner;
+	const metaBanner: string = banner ? `${siteUrl}${banner}` : `${siteUrl}${siteBanner}`;
 	const metaBannerAlt: string = bannerAlt ? bannerAlt : siteDescription;
 	const metaContentType: string = contentType ? contentType : `Website`;
 
