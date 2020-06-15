@@ -2,7 +2,7 @@ import React, { StatelessComponent } from 'react';
 import Layout from '../components/Layout';
 import GridBox from '../blocks/elements/GridBox';
 import GridCard from '../blocks/elements/GridCard';
-import SEO from '../components/SEO';
+import SEO from '../components/Head/SEO';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface BlogQuery {
