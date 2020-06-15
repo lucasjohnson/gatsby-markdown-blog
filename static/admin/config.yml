@@ -14,7 +14,7 @@ slug:
 collections:
   - name: posts
     label: Post
-    folder: content/posts
+    folder: content/posts/
     create: true
     slug: '{{slug}}'
     fields:
@@ -36,15 +36,15 @@ collections:
         }
     editor:
       preview: true
-  - name: 'site_data'
+  - name: site_data
     label: 'Site Data'
     delete: false
     editor:
       preview: false
     files:
       - file: 'content/site/data.yml'
-        label: 'Global Data'
-        name: 'global-settings'
+        label: 'Site Data'
+        name: 'siteData'
         fields:
           - { label: Site Title, name: siteTitle, widget: string }
           - { label: Site URL, name: siteUrl, widget: string }
