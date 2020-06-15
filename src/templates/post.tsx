@@ -56,7 +56,7 @@ export const pageQuery = graphql`
 			}
 			frontmatter {
 				abstract
-				date(formatString: "MMMM DD, YYYY")
+				date
 				title
 				banner {
 					childImageSharp {

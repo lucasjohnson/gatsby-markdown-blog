@@ -16,6 +16,7 @@ interface PropsTypes {
 
 interface SiteQuery {
 	site: {
+		buildTime: string;
 		siteMetadata: {
 			siteName: string;
 			siteUrl: string;
@@ -40,6 +41,7 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 	const { site } = useStaticQuery<SiteQuery>(graphql`
 		query {
 			site {
+				buildTime
 				siteMetadata {
 					siteName
 					siteUrl
@@ -76,6 +78,10 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 		businessCountry,
 		businesstelephone
 	} = site.siteMetadata;
+
+	const { buildTime } = site;
+
+	console.log(buildTime, date);
 
 	const schemaWebPage = {
 		'@context': `http://schema.org`,
@@ -183,8 +189,8 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 				url: `${siteUrl}${banner}`
 			},
 			mainEntityOfPage: `${siteUrl}${pathname}`,
-			datePublished: date
-			// dateModified: buildTime
+			datePublished: date,
+			dateModified: buildTime
 		};
 
 		itemListElement.push({
