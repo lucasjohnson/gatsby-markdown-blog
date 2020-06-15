@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import Layout from '../components/Layout';
-import GridBox from '../blocks/elements/GridBox';
-import GridCard from '../blocks/elements/GridCard';
+import GridBox from '../templates/elements/GridBox';
+import GridCard from '../templates/elements/GridCard';
 import SEO from '../components/Head/SEO';
 import { useStaticQuery, graphql } from 'gatsby';
 

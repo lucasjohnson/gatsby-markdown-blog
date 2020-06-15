@@ -169,7 +169,7 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 		});
 	}
 
-	const breadcrumb = {
+	const breadcrumbs = {
 		'@context': `http://schema.org`,
 		'@type': `BreadcrumbList`,
 		description: `Breadcrumbs list`,
@@ -198,7 +198,7 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 				<script type="application/ld+json">{JSON.stringify(schemaBusiness)}</script>
 				{!contentType && <script type="application/ld+json">{JSON.stringify(schemaWebPage)}</script>}
 				{contentType && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
-				<script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
+				<script type="application/ld+json">{JSON.stringify(breadcrumbs)}</script>
 			</Helmet>
 			<Twitter
 				title={metaTitle}
