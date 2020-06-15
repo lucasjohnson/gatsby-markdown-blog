@@ -118,7 +118,7 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 
 	const schemaBusiness = {
 		'@context': `https://schema.org`,
-		'@type': `ProfessionalService`,
+		'@type': `Organization`,
 		'@id': siteUrl,
 		name: siteName,
 		address: {

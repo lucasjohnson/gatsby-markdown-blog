@@ -14,7 +14,7 @@ slug:
 collections:
   - name: posts
     label: Post
-    folder: posts
+    folder: content/posts
     create: true
     slug: '{{slug}}'
     fields:
@@ -36,3 +36,52 @@ collections:
         }
     editor:
       preview: true
+  - name: 'site_data'
+    label: 'Site Data'
+    delete: false
+    editor:
+      preview: false
+    files:
+      - file: 'content/site/data.yml'
+        label: 'Global Data'
+        name: 'global-settings'
+        fields:
+          - { label: Site Title, name: siteTitle, widget: string }
+          - { label: Site URL, name: siteUrl, widget: string }
+          - { label: Site Description, name: siteDescription, widget: text, required: false }
+          - { label: Site Author, name: author, widget: string, required: false }
+          - Label: 'Site Banner'
+            name: siteBanner
+            widget: object
+            required: false
+            fields:
+              - { label: Image, name: image, widget: image, required: false }
+              - { label: Alt Text, name: imageAlt, widget: string, required: false }
+          - Label: 'Site Logo'
+            name: siteLogo
+            widget: object
+            required: false
+            fields:
+              - { label: Image, name: image, widget: image, required: false }
+              - { label: Alt Text, name: imageAlt, widget: string, required: false }
+      - file: 'content/site/social.yml'
+        label: 'Social Media Accounts'
+        name: 'socialMediaAccounts'
+        fields:
+          - label: 'Social Media Accounts'
+            name: 'socialMediaAccounts'
+            minimize_collapsed: true
+            widget: 'list'
+            summary: '{{fields.type}}: {{fields.url}}'
+            fields:
+              - { label: Type, name: type, widget: string }
+              - { label: URL, name: url, widget: string }
+      - file: 'content/site/business.yml'
+        label: 'Business Details'
+        name: 'businessDetails'
+        fields:
+          - { label: Street Address, name: businessStreet, widget: string, required: false }
+          - { label: City, name: businessCity, widget: string, required: false }
+          - { label: Province, name: businessProvince, widget: string, required: false }
+          - { label: Country, name: businessCountry, widget: string, required: false }
+          - { label: Telephone Number, name: businessTelephone, widget: string, required: false }
