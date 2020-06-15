@@ -1,0 +1,11 @@
+siteTitle: Gatsby Netlify CMS Starter
+siteUrl: https://gatsby-and.netlify.app/
+siteDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+  eiusmod tempor incididunt ut labore et dolore magna aliqua.
+author: Lucas Johnson
+siteBanner:
+  image: /assets/kate-trysh-dnkr_lmdki8-unsplash.jpg
+  imageAlt: Image of billboard
+siteLogo:
+  image: /assets/logo.png
+  imageAlt: Website logo
