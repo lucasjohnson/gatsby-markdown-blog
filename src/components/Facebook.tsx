@@ -9,10 +9,10 @@ type FacebookProps = {
 	locale: string;
 	banner: string;
 	bannerAlt: string;
-	siteName: string;
+	siteTitle: string;
 };
 
-const Facebook = ({ type, title, description, url, locale, banner, bannerAlt, siteName }: FacebookProps) => (
+const Facebook = ({ type, title, description, url, locale, banner, bannerAlt, siteTitle }: FacebookProps) => (
 	<Helmet>
 		<meta property="og:type" content={type} />
 		<meta property="og:title" content={title} />
@@ -21,7 +21,7 @@ const Facebook = ({ type, title, description, url, locale, banner, bannerAlt, si
 		<meta property="og:locale" content={locale} />
 		<meta property="og:image" content={banner} />
 		<meta property="og:image:alt" content={bannerAlt} />
-		<meta property="og:site_name" content={siteName} />
+		<meta property="og:site_name" content={siteTitle} />
 	</Helmet>
 );
 

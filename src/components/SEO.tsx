@@ -3,6 +3,8 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import Twitter from './Twitter';
 import Facebook from './Facebook';
+import siteData from '../../content/site/data.yml';
+import businessData from '../../content/site/business.yml';
 
 interface PropsTypes {
 	banner?: string;
@@ -18,21 +20,7 @@ interface SiteQuery {
 	site: {
 		buildTime: string;
 		siteMetadata: {
-			siteName: string;
-			siteUrl: string;
-			siteDescription: string;
-			siteAuthor: string;
-			siteBanner: string;
 			siteLanguage: string;
-			siteLogo: string;
-			facebook: string;
-			twitter: string;
-			businessStreet: string;
-			businessLocality: string;
-			businessRegion: string;
-			businessPostalCode: string;
-			businessCountry: string;
-			businesstelephone: string;
 		};
 	};
 }
@@ -43,45 +31,23 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 			site {
 				buildTime
 				siteMetadata {
-					siteName
-					siteUrl
-					siteDescription
-					siteAuthor
-					siteBanner
 					siteLanguage
-					siteLogo
-					twitter
-					businessStreet
-					businessLocality
-					businessRegion
-					businessPostalCode
-					businessCountry
-					businesstelephone
 				}
 			}
 		}
 	`);
 
+	const { siteTitle, siteUrl, siteDescription, siteAuthor, siteBanner, siteLogo } = siteData;
+	const { siteLanguage } = site.siteMetadata;
+	const { buildTime } = site;
 	const {
-		siteName,
-		siteUrl,
-		siteDescription,
-		siteAuthor,
-		siteBanner,
-		siteLanguage,
-		siteLogo,
-		twitter,
 		businessStreet,
-		businessLocality,
-		businessRegion,
+		businessCity,
+		businessProvince,
 		businessPostalCode,
 		businessCountry,
-		businesstelephone
-	} = site.siteMetadata;
-
-	const { buildTime } = site;
-
-	console.log(buildTime, date);
+		businessTelephone
+	} = businessData;
 
 	const schemaWebPage = {
 		'@context': `http://schema.org`,
@@ -90,7 +56,7 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 		description: siteDescription,
 		inLanguage: siteLanguage,
 		mainEntityOfPage: siteUrl,
-		name: siteName,
+		name: siteTitle,
 		author: {
 			'@type': `Person`,
 			name: siteAuthor
@@ -112,7 +78,7 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 		dateModified: ``,
 		image: {
 			'@type': `ImageObject`,
-			url: siteLogo
+			url: siteLogo.image
 		}
 	};
 
@@ -120,17 +86,17 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 		'@context': `https://schema.org`,
 		'@type': `Organization`,
 		'@id': siteUrl,
-		name: siteName,
+		name: siteTitle,
 		address: {
 			'@type': `PostalAddress`,
 			streetAddress: businessStreet,
-			addressLocality: businessLocality,
-			addressRegion: businessRegion,
+			addressLocality: businessCity,
+			addressRegion: businessProvince,
 			postalCode: businessPostalCode,
 			addressCountry: businessCountry
 		},
 		url: siteUrl,
-		telephone: businesstelephone
+		telephone: businessTelephone
 	};
 
 	const itemListElement = [
@@ -211,11 +177,11 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 		itemListElement
 	};
 
-	const metaTitle: string = title ? title : siteName;
+	const metaTitle: string = title ? title : siteTitle;
 	const metaDescription: string = description ? description : siteDescription;
 	const metaUrl: string = pathname ? `${siteUrl}${pathname}` : siteUrl;
-	const metaBanner: string = banner ? `${siteUrl}${banner}` : `${siteUrl}${siteBanner}`;
-	const metaBannerAlt: string = bannerAlt ? bannerAlt : siteDescription;
+	const metaBanner: string = banner ? `${siteUrl}${banner}` : `${siteUrl}${siteBanner.image}`;
+	const metaBannerAlt: string = bannerAlt ? bannerAlt : siteBanner.imageAlt;
 	const metaContentType: string = contentType ? contentType : `Website`;
 
 	return (
@@ -225,7 +191,7 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 					lang: siteLanguage
 				}}
 				title={title}
-				titleTemplate={`%s | ${siteName}`}
+				titleTemplate={`%s | ${siteTitle}`}
 			>
 				<meta name="description" content={metaDescription} />
 				<meta name="image" content={metaBanner} />
@@ -240,7 +206,6 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 				url={metaUrl}
 				banner={metaBanner}
 				bannerAlt={metaBannerAlt}
-				twitter={twitter}
 			/>
 			<Facebook
 				type={metaContentType}
@@ -250,7 +215,7 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 				locale={siteLanguage}
 				banner={metaBanner}
 				bannerAlt={metaBannerAlt}
-				siteName={siteName}
+				siteTitle={siteTitle}
 			/>
 		</React.Fragment>
 	);

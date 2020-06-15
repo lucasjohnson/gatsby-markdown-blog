@@ -1,25 +1,15 @@
 import React, { ReactElement } from 'react';
-import { useStaticQuery, graphql } from 'gatsby';
+import siteData from '../../content/site/data.yml';
 
 const Header = (): ReactElement => {
-	const data = useStaticQuery(graphql`
-		query {
-			site {
-				siteMetadata {
-					siteName
-				}
-			}
-		}
-	`);
-
-	const { siteName } = data.site.siteMetadata;
+	const { siteTitle } = siteData;
 
 	return (
 		<header>
 			<div className="block">
 				<div className="grid-flex">
 					<div className="column-12">
-						<h4 className="heading-4">{siteName}</h4>
+						<h4 className="heading-4">{siteTitle}</h4>
 					</div>
 				</div>
 			</div>

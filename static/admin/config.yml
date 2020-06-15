@@ -49,7 +49,7 @@ collections:
           - { label: Site Title, name: siteTitle, widget: string }
           - { label: Site URL, name: siteUrl, widget: string }
           - { label: Site Description, name: siteDescription, widget: text, required: false }
-          - { label: Site Author, name: author, widget: string, required: false }
+          - { label: Site Author, name: siteAuthor, widget: string, required: false }
           - Label: 'Site Banner'
             name: siteBanner
             widget: object
@@ -83,5 +83,6 @@ collections:
           - { label: Street Address, name: businessStreet, widget: string, required: false }
           - { label: City, name: businessCity, widget: string, required: false }
           - { label: Province, name: businessProvince, widget: string, required: false }
+          - { label: Postal Code, name: businessPostalCode, widget: string, required: false }
           - { label: Country, name: businessCountry, widget: string, required: false }
           - { label: Telephone Number, name: businessTelephone, widget: string, required: false }

@@ -1,14 +1,6 @@
 module.exports = {
 	siteMetadata: {
-		siteName: `Gatsby Netlify CMS Starter`,
-		siteUrl: `https://gatsby-and.netlify.app/`,
-		siteDescription: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.`,
-		siteAuthor: `Lucas Johnson`,
-		siteBanner: `/logo.png`,
 		siteLanguage: `en`,
-		siteLogo: `/logo.png`,
-		facebook: ``,
-		twitter: `@_lucasjohnson`,
 		businessStreet: ``,
 		businessLocality: ``,
 		businessRegion: ``,
