@@ -4,7 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Twitter from './Twitter';
 import Facebook from './Facebook';
 import siteData from '../../../content/site/data.yml';
-import businessData from '../../../content/site/business.yml';
+import companyData from '../../../content/site/company.yml';
 
 interface PropsTypes {
 	banner?: string;
@@ -40,14 +40,6 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 	const { siteTitle, siteUrl, siteDescription, siteAuthor, siteBanner, siteLogo } = siteData;
 	const { siteLanguage } = site.siteMetadata;
 	const { buildTime } = site;
-	const {
-		businessStreet,
-		businessCity,
-		businessProvince,
-		businessPostalCode,
-		businessCountry,
-		businessTelephone
-	} = businessData;
 
 	const schemaWebPage = {
 		'@context': `http://schema.org`,
@@ -82,6 +74,15 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 		}
 	};
 
+	const {
+		companyStreetAddress,
+		companyCity,
+		companyProvince,
+		companyPostalCode,
+		companyCountry,
+		companyTelephone
+	} = companyData;
+
 	const schemaBusiness = {
 		'@context': `https://schema.org`,
 		'@type': `Organization`,
@@ -89,14 +90,14 @@ const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, titl
 		name: siteTitle,
 		address: {
 			'@type': `PostalAddress`,
-			streetAddress: businessStreet,
-			addressLocality: businessCity,
-			addressRegion: businessProvince,
-			postalCode: businessPostalCode,
-			addressCountry: businessCountry
+			streetAddress: companyStreetAddress,
+			addressLocality: companyCity,
+			addressRegion: companyProvince,
+			postalCode: companyPostalCode,
+			addressCountry: companyCountry
 		},
 		url: siteUrl,
-		telephone: businessTelephone
+		telephone: companyTelephone
 	};
 
 	const itemListElement = [
