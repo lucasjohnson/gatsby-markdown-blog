@@ -42,30 +42,6 @@ collections:
     editor:
       preview: false
     files:
-      - file: content/site/authors.yml
-        label: Authors
-        name: authors
-        fields:
-          - label: Authors
-            name: authors
-            collapsed: false
-            minimize_collapsed: false
-            widget: list
-            fields:
-              - { label: Name, name: name, widget: string }
-              - { label: Email, name: email, widget: string, required: false }
-              - { label: Twiiter Handle, name: url, widget: string, required: false }
-              - { label: Website, name: website, widget: string, required: false }
-      - file: content/site/company.yml
-        label: Company Details
-        name: companyDetails
-        fields:
-          - { label: Street Address, name: companyStreetAddress, widget: string, required: false }
-          - { label: City, name: companyCity, widget: string, required: false }
-          - { label: Province, name: companyProvince, widget: string, required: false }
-          - { label: Postal Code, name: companyPostalCode, widget: string, required: false }
-          - { label: Country, name: companyCountry, widget: string, required: false }
-          - { label: Telephone Number, name: companyTelephone, widget: string, required: false }
       - file: content/site/data.yml
         label: Site Data
         name: siteData
@@ -88,6 +64,52 @@ collections:
             fields:
               - { label: Image, name: image, widget: image, required: false }
               - { label: Alt Text, name: imageAlt, widget: string, required: false }
+      - file: content/site/company.yml
+        label: Company Details
+        name: companyDetails
+        fields:
+          - { label: Street Address, name: companyStreetAddress, widget: string, required: false }
+          - { label: City, name: companyCity, widget: string, required: false }
+          - { label: Province, name: companyProvince, widget: string, required: false }
+          - { label: Postal Code, name: companyPostalCode, widget: string, required: false }
+          - { label: Country, name: companyCountry, widget: string, required: false }
+          - { label: Telephone Number, name: companyTelephone, widget: string, required: false }
+      - file: content/site/authors.yml
+        label: Authors
+        name: authors
+        fields:
+          - label: Authors
+            name: authors
+            collapsed: false
+            minimize_collapsed: false
+            widget: list
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Email, name: email, widget: string, required: false }
+              - { label: Twiiter Handle, name: url, widget: string, required: false }
+              - { label: Website, name: website, widget: string, required: false }
+      - file: content/site/services.yml
+        label: Services
+        name: services
+        fields:
+          - label: Service
+            name: service
+            collapsed: false
+            minimize_collapsed: false
+            widget: list
+            fields:
+              - { label: Service Name, name: name, widget: string }
+      - file: content/site/topics.yml
+        label: Topics
+        name: topics
+        fields:
+          - label: Topic
+            name: topic
+            collapsed: false
+            minimize_collapsed: false
+            widget: list
+            fields:
+              - { label: Topic Name, name: name, widget: string }
       - file: content/site/social.yml
         label: Social Media Account
         name: socialMediaAccounts
