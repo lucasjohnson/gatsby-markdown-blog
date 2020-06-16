@@ -17,6 +17,8 @@ collections:
     create: true
     slug: '{{slug}}'
     preview_path: 'blog/{{slug}}'
+    editor:
+      preview: true
     fields:
       - { label: Title, name: title, widget: string }
       - { label: Slug, name: slug, widget: string }
@@ -38,14 +40,12 @@ collections:
           widget: markdown,
           buttons: [bold, italic, link, heading-one, heading-two, heading-three, quote, bulleted-list, numbered-list],
         }
-    editor:
-      preview: true
   - label: Authors
     name: authors
     folder: content/authors/
     create: true
-    slug: '{{slug}}'
-    preview_path: 'authors/{{slug}}'
+    editor:
+      preview: true
     fields:
       - { label: Name, name: name, widget: string }
       - { label: Email, name: email, widget: string, required: false }
@@ -55,16 +55,17 @@ collections:
     name: services
     folder: content/services/
     create: true
-    slug: '{{slug}}'
-    preview_path: 'services/{{slug}}'
+    editor:
+      preview: true
     fields:
       - { label: Service Name, name: name, widget: string }
+
   - label: Topics
     name: topics
     folder: content/topics/
     create: true
-    slug: '{{slug}}'
-    preview_path: 'topics/{{slug}}'
+    editor:
+      preview: true
     fields:
       - { label: Topic Name, name: name, widget: string }
   - name: site-data
