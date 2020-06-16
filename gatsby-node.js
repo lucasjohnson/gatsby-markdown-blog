@@ -1,3 +1,6 @@
+const { fmImagesToRelative } = require(`gatsby-remark-relative-images`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
 	const { data } = await graphql(`
 		query {
@@ -36,9 +39,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		return;
 	}
 };
-
-const { fmImagesToRelative } = require(`gatsby-remark-relative-images`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
 	fmImagesToRelative(node);
