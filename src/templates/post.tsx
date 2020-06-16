@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import Layout from '../components/Layout';
-import SEO from '../components/SEO';
+import SEO from '../components/Head/SEO';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 

@@ -7,6 +7,7 @@
 
 ## To Do
 
+- [ ] Image optimization
 - [ ] Posts: RSS feed
 - [ ] Posts: Prev/Next links
 - [ ] Posts: Categories

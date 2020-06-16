@@ -3,8 +3,8 @@ import { Helmet } from 'react-helmet';
 import { useStaticQuery, graphql } from 'gatsby';
 import Twitter from './Twitter';
 import Facebook from './Facebook';
-import siteData from '../../content/site/data.yml';
-import businessData from '../../content/site/business.yml';
+import siteData from '../../../content/site/data.yml';
+import businessData from '../../../content/site/business.yml';
 
 interface PropsTypes {
 	banner?: string;

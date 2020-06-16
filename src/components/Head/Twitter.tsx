@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Helmet } from 'react-helmet';
-import socialData from '../../content/site/social.yml';
+import socialData from '../../../content/site/social.yml';
 
 type TwitterProps = {
 	title: string;
