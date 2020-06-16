@@ -3,7 +3,7 @@ title: How We Used Gatsby.js to Build a Blazing Fast E-Commerce Site
 slug: /Test
 date: 2020-06-10T19:41:16.558Z
 Author: Lucas Johnson
-Topic: Topic 1
+Topic: Topic
 banner: /assets/0_cpilgydm8vqtsrko.png
 bannerAlt: Rocket
 abstract: Flamingo has landed! Harry’s, Flamingo’s parent company, serves over
