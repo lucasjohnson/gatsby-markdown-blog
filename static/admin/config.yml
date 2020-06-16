@@ -44,6 +44,7 @@ collections:
     name: authors
     folder: content/authors/
     create: true
+    identifier_field: name
     editor:
       preview: true
     fields:
@@ -55,15 +56,16 @@ collections:
     name: services
     folder: content/services/
     create: true
+    identifier_field: name
     editor:
       preview: true
     fields:
       - { label: Service Name, name: name, widget: string }
-
   - label: Topics
     name: topics
     folder: content/topics/
     create: true
+    identifier_field: name
     editor:
       preview: true
     fields:
