@@ -18,9 +18,18 @@ collections:
     slug: '{{slug}}'
     preview_path: 'blog/{{slug}}'
     fields:
-      - { name: title, label: Title }
-      - { name: date, label: Date, widget: date }
-      - { name: banner, label: Banner, widget: image, allow_multiple: false }
+      - { label: Title, name: title, widget: string }
+      - { label: Slug, name: slug, widget: string }
+      - { label: Date, name: date, widget: date }
+      - label: Author
+        name: author
+        widget: 'relation'
+        collection: 'authors'
+        searchFields: [author.name, author.twitter]
+        valueField: author.name
+        displayFields: [author.twitter]
+      - { label: Banner, name: banner, widget: image, allow_multiple: false }
+      - { label: Alt Text, name: bannerAlt, widget: string }
       - {
           name: abstract,
           label: Abstract,
@@ -32,7 +41,7 @@ collections:
           name: body,
           label: Body,
           widget: markdown,
-          buttons: [bold, italic, link, heading-one, heading-two, quote, bulleted-list, numbered-list],
+          buttons: [bold, italic, link, heading-one, heading-two, heading-three, quote, bulleted-list, numbered-list],
         }
     editor:
       preview: true
@@ -78,8 +87,8 @@ collections:
         label: Authors
         name: authors
         fields:
-          - label: Authors
-            name: authors
+          - label: Author
+            name: author
             collapsed: false
             minimize_collapsed: false
             widget: list
