@@ -3,7 +3,6 @@ backend:
   repo: lucasjohnson/gatsby-netlify-cms-starter
 media_folder: static/assets
 public_folder: /assets
-publish_mode: editorial_workflow
 site_url: https://gatsby-and.netlify.app/
 display_url: https://gatsby-and.netlify.app/
 slug:
@@ -16,7 +15,6 @@ collections:
     folder: content/blog/
     create: true
     slug: '{{slug}}'
-    preview_path: 'blog/{{slug}}'
     editor:
       preview: true
     fields:
