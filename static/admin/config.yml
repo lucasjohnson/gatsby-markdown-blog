@@ -24,7 +24,15 @@ collections:
       - { label: Slug, name: slug, widget: string }
       - { label: Date, name: date, widget: date }
       - { label: Author, name: Author, widget: relation, collection: authors, searchFields: [name], valueField: name }
-      - { label: Topic, name: Topic, widget: relation, collection: topics, searchFields: [name], valueField: name }
+      - {
+          label: Topic,
+          name: Topic,
+          widget: relation,
+          collection: topics,
+          searchFields: [name],
+          valueField: name,
+          multiple: true,
+        }
       - { label: Banner, name: banner, widget: image, allow_multiple: false }
       - { label: Alt Text, name: bannerAlt, widget: string }
       - {
