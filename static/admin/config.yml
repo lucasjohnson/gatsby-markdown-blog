@@ -14,7 +14,6 @@ collections:
     label: Post
     folder: content/blog/
     create: true
-    slug: '{{slug}}'
     editor:
       preview: true
     fields:

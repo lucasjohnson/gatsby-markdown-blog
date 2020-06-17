@@ -4,12 +4,11 @@ import SEO from '../components/Head/SEO';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-const Post = ({ data }): ReactElement => {
+const Post = ({ data, pageContext }): ReactElement => {
 	const { markdownRemark } = data;
-	const { fields, frontmatter, html } = markdownRemark;
-	const { abstract, banner, date, title } = frontmatter;
+	const { frontmatter, html } = markdownRemark;
+	const { abstract, banner, date, slug, title } = frontmatter;
 	const { fluid } = banner.childImageSharp;
-	const { slug } = fields;
 
 	return (
 		<Layout>
@@ -48,15 +47,13 @@ const Post = ({ data }): ReactElement => {
 export default Post;
 
 export const pageQuery = graphql`
-	query($path: String!) {
-		markdownRemark(fields: { slug: { eq: $path } }) {
+	query($pathSlug: String!) {
+		markdownRemark(frontmatter: { slug: { eq: $pathSlug } }) {
 			html
-			fields {
-				slug
-			}
 			frontmatter {
 				abstract
 				date
+				slug
 				title
 				banner {
 					childImageSharp {

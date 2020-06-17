@@ -38,12 +38,10 @@ const BlogPage: FunctionComponent = () => {
 			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "content/blog/" } }) {
 				edges {
 					node {
-						fields {
-							slug
-						}
 						frontmatter {
 							abstract
 							date
+							slug
 							title
 							banner {
 								childImageSharp {
@@ -65,8 +63,6 @@ const BlogPage: FunctionComponent = () => {
 		edges.map((edge: object, index: number) => {
 			const { node } = edge;
 			const { frontmatter } = node;
-
-			frontmatter.slug = node.fields.slug;
 
 			return <GridCard data={frontmatter} key={index} />;
 		});
