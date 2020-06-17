@@ -1,7 +1,7 @@
 import React, { ReactElement } from 'react';
 import Layout from '../components/Layout';
-const Topic = (): ReactElement => {
+const Tags = (): ReactElement => {
 	return <Layout></Layout>;
 };
 
-export default Topic;
+export default Tags;

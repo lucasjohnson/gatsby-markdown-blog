@@ -21,12 +21,12 @@ collections:
       - { label: Title, name: title, widget: string }
       - { label: Slug, name: slug, widget: string }
       - { label: Date, name: date, widget: date }
-      - { label: Author, name: Author, widget: relation, collection: authors, searchFields: [name], valueField: name }
+      - { label: Author, name: author, widget: relation, collection: authors, searchFields: [name], valueField: name }
       - {
-          label: Topic,
-          name: Topic,
+          label: Tags,
+          name: tags,
           widget: relation,
-          collection: topics,
+          collection: tags,
           searchFields: [name],
           valueField: name,
           multiple: true,
@@ -67,15 +67,15 @@ collections:
       preview: true
     fields:
       - { label: Service Name, name: name, widget: string }
-  - label: Topics
-    name: topics
-    folder: content/topics/
+  - label: Tags
+    name: tags
+    folder: content/tags/
     create: true
     identifier_field: name
     editor:
       preview: true
     fields:
-      - { label: Topic Name, name: name, widget: string }
+      - { label: Tag Name, name: name, widget: string }
   - name: site-data
     label: Site Data
     delete: false
