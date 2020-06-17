@@ -1,12 +1,13 @@
 ---
 title: Implementing a Web Push Notification System with Subscribers, Gatsby JS
   and Netlify
-slug: netlify
+slug: gatsby
 date: 2020-06-10T19:39:13.612Z
 author: Lucas
 tags:
   - Tag 2
 banner: /assets/1_w0x47uzlj01lrut2qzd1zg.png
+bannerAlt: cloud
 abstract: Web Push notifications are content messages that are sent to a device
   by a web application or website.
 ---

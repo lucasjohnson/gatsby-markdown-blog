@@ -1,8 +1,12 @@
 ---
 title: Test Blog Post
-slug: the-other
+slug: blog-post
 date: 2020-06-15T18:37:11.499Z
+author: Lucas
+tags:
+  - Tag 2
 banner: /assets/kate-trysh-dnkr_lmdki8-unsplash.jpg
+bannerAlt: billboard
 abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
   eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
   veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
