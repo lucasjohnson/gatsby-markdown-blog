@@ -35,7 +35,7 @@ interface BlogQuery {
 const BlogPage: FunctionComponent = () => {
 	const { allMarkdownRemark } = useStaticQuery<BlogQuery>(graphql`
 		query {
-			allMarkdownRemark {
+			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "content/blog/" } }) {
 				edges {
 					node {
 						fields {
@@ -65,6 +65,7 @@ const BlogPage: FunctionComponent = () => {
 		edges.map((edge: object, index: number) => {
 			const { node } = edge;
 			const { frontmatter } = node;
+
 			frontmatter.slug = node.fields.slug;
 
 			return <GridCard data={frontmatter} key={index} />;

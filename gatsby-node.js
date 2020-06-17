@@ -4,7 +4,7 @@ const { createFilePath } = require(`gatsby-source-filesystem`);
 exports.createPages = async ({ actions, graphql, reporter }) => {
 	const { data } = await graphql(`
 		query {
-			allMarkdownRemark {
+			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "content/blog/" } }) {
 				edges {
 					node {
 						fields {
@@ -12,6 +12,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 						}
 						frontmatter {
 							title
+							slug
 						}
 					}
 				}
