@@ -1,6 +1,6 @@
 ---
 title: How We Used Gatsby.js to Build a Blazing Fast E-Commerce Site
-slug: /test
+slug: test
 date: 2020-06-10T19:41:16.558Z
 author: Lucas
 tags:
