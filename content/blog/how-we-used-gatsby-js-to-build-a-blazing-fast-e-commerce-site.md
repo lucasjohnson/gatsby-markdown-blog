@@ -2,14 +2,13 @@
 title: How We Used Gatsby.js to Build a Blazing Fast E-Commerce Site
 slug: /Test
 date: 2020-06-10T19:41:16.558Z
-Author: Lucas Johnson
-Topic: Topic
 banner: /assets/0_cpilgydm8vqtsrko.png
 bannerAlt: Rocket
 abstract: Flamingo has landed! Harry’s, Flamingo’s parent company, serves over
   one million female customers. We believe that women deserve high-quality,
   reasonably priced, and simple body care products too.
 ---
+
 [Flamingo](https://www.shopflamingo.com/?utm_source=medium&utm_medium=post&utm_campaign=eng-blog&utm_content=architecture)has landed, Flamingo’s xxx parent company, serves over one million female customers. We believe that women deserve high-quality, reasonably priced, and simple body care products too.
 
 As an engineering team, we are committed to providing women with a body care experience tailored to their specific needs. It’s important to us that our customers enjoy their interactions with us not only while they’re in the shower, but also when they shop for their blades, wax kits, or razor handles online too.
