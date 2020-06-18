@@ -1,4 +1,4 @@
 ---
-name: Lucas
-twitter: "@_lucasjohnson"
+title: Lucas
+twitter: '@_lucasjohnson'
 ---

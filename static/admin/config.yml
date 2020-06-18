@@ -20,7 +20,7 @@ collections:
       - { label: Title, name: title, widget: string }
       - { label: Pathname, name: path, widget: string }
       - { label: Date, name: date, widget: date }
-      - { label: Author, name: author, widget: relation, collection: authors, searchFields: [name], valueField: name }
+      - { label: Author, name: author, widget: relation, collection: authors, searchFields: [title], valueField: title }
       - {
           label: Topics,
           name: topics,
@@ -93,11 +93,10 @@ collections:
     name: topics
     folder: content/topics/
     create: true
-    identifier_field: name
     editor:
       preview: false
     fields:
-      - { label: Tag Name, name: name, widget: string }
+      - { label: Title, title: name, widget: string }
   - name: site-data
     label: Site Data
     delete: false
