@@ -12,7 +12,7 @@ interface BlogQuery {
 				frontmatter: {
 					abstract: string;
 					date: string;
-					slug: string;
+					path: string;
 					title: string;
 					topics?: string[];
 					banner: {
@@ -40,7 +40,7 @@ const BlogPage: FunctionComponent = () => {
 						frontmatter {
 							abstract
 							date
-							slug
+							path
 							title
 							topics
 							banner {

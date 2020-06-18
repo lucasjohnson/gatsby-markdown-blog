@@ -1,7 +1,7 @@
 ---
 title: JAMstack PWA — Let’s Build a Polling App. with Gatsby.js, Firebase, and
   Styled-components Pt. 1
-slug: jamstack
+path: jamstack
 date: 2020-06-10T19:42:55.686Z
 author: Lucas
 topics:

@@ -39,7 +39,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 					node {
 						frontmatter {
 							title
-							slug
+							path
 							topics
 						}
 					}
@@ -52,13 +52,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	createTopicPages(actions.createPage, posts);
 
 	posts.forEach(({ node }, index) => {
-		const { slug } = node.frontmatter;
+		const { path } = node.frontmatter;
 
 		actions.createPage({
-			path: `/blog/${slug}`,
+			path: `/blog/${path}`,
 			component: require.resolve(`./src/templates/post.tsx`),
 			context: {
-				pathSlug: `${slug}`,
+				pathSlug: `${path}`,
 				prev: index === 0 ? null : posts[index - 1].node,
 				next: index === posts.length - 1 ? null : posts[index + 1].node
 			}

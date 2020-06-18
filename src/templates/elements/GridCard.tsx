@@ -5,7 +5,7 @@ import Img from 'gatsby-image';
 interface GridCardProps {
 	data: {
 		abstract: string;
-		slug: string;
+		path: string;
 		title: string;
 		topic?: string[];
 		banner: {
@@ -22,7 +22,7 @@ interface GridCardProps {
 }
 
 const GridCard: FunctionComponent<GridCardProps> = ({ data }) => {
-	const { abstract, banner, slug, title, topics } = data;
+	const { abstract, banner, path, title, topics } = data;
 	const { fluid } = banner.childImageSharp;
 
 	const renderTopics = (): FunctionComponent =>
@@ -35,7 +35,7 @@ const GridCard: FunctionComponent<GridCardProps> = ({ data }) => {
 		});
 
 	return (
-		<Link className="grid-card" to={slug} title={title}>
+		<Link className="grid-card" to={path} title={title}>
 			<article className="card-content">
 				<Img fluid={fluid} alt={title} />
 				<h4 className="heading-4">{title}</h4>

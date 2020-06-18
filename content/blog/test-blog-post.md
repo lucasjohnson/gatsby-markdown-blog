@@ -1,6 +1,6 @@
 ---
 title: Test Blog Post
-slug: blog-post
+path: blog-post
 date: 2020-06-15T18:37:11.499Z
 author: Lucas
 topics:
