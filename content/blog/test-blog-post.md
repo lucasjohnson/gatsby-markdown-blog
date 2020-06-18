@@ -3,7 +3,7 @@ title: Test Blog Post
 slug: blog-post
 date: 2020-06-15T18:37:11.499Z
 author: Lucas
-tags:
+topics:
   - Tag 2
 banner: /assets/kate-trysh-dnkr_lmdki8-unsplash.jpg
 bannerAlt: billboard

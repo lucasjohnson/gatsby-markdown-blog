@@ -22,10 +22,10 @@ collections:
       - { label: Date, name: date, widget: date }
       - { label: Author, name: author, widget: relation, collection: authors, searchFields: [name], valueField: name }
       - {
-          label: Tags,
-          name: tags,
+          label: Topics,
+          name: topics,
           widget: relation,
-          collection: tags,
+          collection: topics,
           searchFields: [name],
           valueField: name,
           multiple: true,
@@ -66,9 +66,9 @@ collections:
       preview: true
     fields:
       - { label: Service Name, name: name, widget: string }
-  - label: Tags
-    name: tags
-    folder: content/tags/
+  - label: Topics
+    name: topics
+    folder: content/topics/
     create: true
     identifier_field: name
     editor:

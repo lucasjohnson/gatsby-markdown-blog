@@ -1,31 +1,31 @@
 const { fmImagesToRelative } = require(`gatsby-remark-relative-images`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
-const createTagPages = (createPage, posts) => {
-	const postsByTag = {};
+const createTopicPages = (createPage, posts) => {
+	const postsByTopic = {};
 
 	posts.forEach(({ node }) => {
-		if (node.frontmatter.tags) {
-			node.frontmatter.tags.forEach((tag) => {
-				if (!postsByTag[tag]) {
-					postsByTag[tag] = [];
+		if (node.frontmatter.topics) {
+			node.frontmatter.topics.forEach((topic) => {
+				if (!postsByTopic[topic]) {
+					postsByTopic[topic] = [];
 				}
 
-				postsByTag[tag].push(node);
+				postsByTopic[topic].push(node);
 			});
 		}
 	});
 
-	const tags = Object.keys(postsByTag);
+	const topics = Object.keys(postsByTopic);
 
-	tags.forEach((tag) => {
-		tag = tag.replace(/ /g, `-`);
+	topics.forEach((topic) => {
+		topic = topic.replace(/ /g, `-`);
 		createPage({
-			path: `/tags/${tag.toLowerCase()}`,
-			component: require.resolve(`./src/templates/tag.tsx`),
+			path: `/topic/${topic.toLowerCase()}`,
+			component: require.resolve(`./src/templates/topic.tsx`),
 			context: {
 				posts,
-				tag
+				topic
 			}
 		});
 	});
@@ -40,7 +40,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 						frontmatter {
 							title
 							slug
-							tags
+							topics
 						}
 					}
 				}
@@ -49,7 +49,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	`);
 
 	const posts = data.allMarkdownRemark.edges;
-	createTagPages(actions.createPage, posts);
+	createTopicPages(actions.createPage, posts);
 
 	posts.forEach(({ node }, index) => {
 		const { slug } = node.frontmatter;

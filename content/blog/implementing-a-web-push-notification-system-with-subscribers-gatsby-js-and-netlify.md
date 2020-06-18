@@ -4,7 +4,7 @@ title: Implementing a Web Push Notification System with Subscribers, Gatsby JS
 slug: gatsby
 date: 2020-06-10T19:39:13.612Z
 author: Lucas
-tags:
+topics:
   - Tag 2
 banner: /assets/1_w0x47uzlj01lrut2qzd1zg.png
 bannerAlt: cloud
