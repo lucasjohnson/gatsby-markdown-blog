@@ -7,7 +7,7 @@ const Breadcrumbs: FunctionComponent = () => {
 
 	pathname.length === 1 && pathCrumbs.pop();
 
-	const renderBreadcrumbs = () =>
+	const renderBreadcrumbs: Function = () =>
 		pathCrumbs.map((crumb: string, index: number) => {
 			return (
 				<li className="breadcrumb-item" key={index}>
