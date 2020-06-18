@@ -4,6 +4,7 @@ import SEO from '../components/Head/SEO';
 
 const Topic = ({ pageContext }): ReactElement => {
 	const { topic } = pageContext;
+
 	return (
 		<Layout>
 			<SEO title={topic} />

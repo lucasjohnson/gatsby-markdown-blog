@@ -17,11 +17,11 @@ const createTopicPages = (createPage, posts) => {
 	});
 
 	const topics = Object.keys(postsByTopic);
+	const { path } = node.fields;
 
 	topics.forEach((topic) => {
-		topic = topic.replace(/ /g, `-`);
 		createPage({
-			path: `/topic/${topic.toLowerCase()}`,
+			path: path,
 			component: require.resolve(`./src/templates/topic.tsx`),
 			context: {
 				posts,
@@ -37,6 +37,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "content/blog/" } }) {
 				edges {
 					node {
+						fields {
+							path
+						}
 						frontmatter {
 							title
 							path
@@ -72,14 +75,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
-	fmImagesToRelative(node);
 	const { createNodeField } = actions;
+	fmImagesToRelative(node);
 
 	if (node.internal.type === `MarkdownRemark`) {
-		const value = createFilePath({ node, getNode });
+		const path = createFilePath({ node, getNode });
+
 		createNodeField({
 			node,
-			value
+			name: `path`,
+			value: path
 		});
 	}
 };
