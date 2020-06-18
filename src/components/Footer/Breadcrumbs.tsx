@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
 
-const Footer: FunctionComponent = () => {
+const Breadcrumbs: FunctionComponent = () => {
 	const pathname: string = typeof window !== `undefined` ? window.location.pathname : ``;
 	const pathCrumbs: string[] = pathname.split(`/`);
 
@@ -23,18 +23,10 @@ const Footer: FunctionComponent = () => {
 		});
 
 	return (
-		<footer>
-			<div className="block">
-				<div className="grid-flex">
-					<div className="column-12">
-						<nav className="breadcrumb-navigation">
-							<ul className="breadcrumb-items">{renderBreadcrumbs()}</ul>
-						</nav>
-					</div>
-				</div>
-			</div>
-		</footer>
+		<nav className="breadcrumb-navigation">
+			<ul className="breadcrumb-items">{renderBreadcrumbs()}</ul>
+		</nav>
 	);
 };
 
-export default Footer;
+export default Breadcrumbs;
