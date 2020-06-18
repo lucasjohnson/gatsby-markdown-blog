@@ -26,8 +26,8 @@ collections:
           name: topics,
           widget: relation,
           collection: topics,
-          searchFields: [name],
-          valueField: name,
+          searchFields: [title],
+          valueField: title,
           multiple: true,
         }
       - { label: Banner, name: banner, widget: image, allow_multiple: false }
@@ -69,8 +69,8 @@ collections:
           name: topics,
           widget: relation,
           collection: topics,
-          searchFields: [name],
-          valueField: name,
+          searchFields: [title],
+          valueField: title,
           multiple: true,
           required: false,
         }
