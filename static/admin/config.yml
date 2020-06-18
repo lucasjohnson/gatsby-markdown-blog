@@ -51,7 +51,7 @@ collections:
     create: true
     identifier_field: name
     editor:
-      preview: true
+      preview: false
     fields:
       - { label: Name, name: name, widget: string }
       - { label: Email, name: email, widget: string, required: false }
@@ -63,7 +63,7 @@ collections:
     create: true
     identifier_field: name
     editor:
-      preview: true
+      preview: false
     fields:
       - { label: Service Name, name: name, widget: string }
   - label: Topics
@@ -72,7 +72,7 @@ collections:
     create: true
     identifier_field: name
     editor:
-      preview: true
+      preview: false
     fields:
       - { label: Tag Name, name: name, widget: string }
   - name: site-data
