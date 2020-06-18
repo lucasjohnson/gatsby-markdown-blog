@@ -16,7 +16,7 @@ const Post = ({ data, pageContext }): ReactElement => {
 
 			return (
 				<li className="post-tag" key={index}>
-					<Link className="link" to={`/topic/${topic.toLowerCase()}`} title={`Link to ${topic}`}>
+					<Link className="link" to={`/topics/${topic.toLowerCase()}`} title={`Link to ${topic}`}>
 						{topic}
 					</Link>
 				</li>

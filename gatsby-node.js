@@ -78,7 +78,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		actions.createPage({
 			path: slug,
 			component: require.resolve(`./src/templates/topic.tsx`),
-			text: {
+			context: {
 				title,
 				posts
 			}
