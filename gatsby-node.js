@@ -100,7 +100,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 	});
 
-	if (postsData.errors || servicesData.errors) {
+	if (postsData.errors || servicesData.errors || topicssData.errors) {
 		reporter.panicOnBuild(`Error while running GraphQL query.`);
 		return;
 	}
