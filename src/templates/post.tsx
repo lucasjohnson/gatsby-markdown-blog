@@ -4,7 +4,13 @@ import SEO from '../components/Head/SEO';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
-const Post = ({ data, pageContext }): ReactElement => {
+interface PostProps {
+	pageContext: object;
+	location: object;
+}
+
+const Post: FunctionComponent<PostProps> = ({ data, pageContext, location }) => {
+	console.log(location);
 	const { markdownRemark } = data;
 	const { frontmatter, html } = markdownRemark;
 	const { author, abstract, banner, date, path, title, topics } = frontmatter;
@@ -12,6 +18,7 @@ const Post = ({ data, pageContext }): ReactElement => {
 
 	const renderTopics = (): FunctionComponent =>
 		topics.map((topic: string, index: number) => {
+			console.log(topic);
 			topic = topic.replace(/ /g, `-`);
 
 			return (
