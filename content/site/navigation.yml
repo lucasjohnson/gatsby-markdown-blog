@@ -1,3 +1,7 @@
 mainNavigation:
   - page: Blog
   - page: Services
+    dropdown:
+      - page: Service 1
+      - page: Service 2
+      - page: Service 3
