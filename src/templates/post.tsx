@@ -7,7 +7,7 @@ import Img from 'gatsby-image';
 const Post = ({ data, pageContext }): ReactElement => {
 	const { markdownRemark } = data;
 	const { frontmatter, html } = markdownRemark;
-	const { abstract, banner, date, path, title, topics } = frontmatter;
+	const { author, abstract, banner, date, path, title, topics } = frontmatter;
 	const { fluid } = banner.childImageSharp;
 
 	const renderTopics = (): FunctionComponent =>
@@ -40,6 +40,7 @@ const Post = ({ data, pageContext }): ReactElement => {
 						<div className="column-12">
 							<h1 className="heading-1">{title}</h1>
 							<Img fluid={fluid} alt={title} />
+							<div className="post-author">{author}</div>
 							<p className="post-date">{date}</p>
 							<div dangerouslySetInnerHTML={{ __html: html }}></div>
 							<ul className="post-tags">{renderTopics()}</ul>
@@ -58,6 +59,7 @@ export const pageQuery = graphql`
 		markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
 			html
 			frontmatter {
+				author
 				abstract
 				date
 				path
