@@ -9,13 +9,12 @@ interface BlogQuery {
 	allMarkdownRemark: {
 		edges: {
 			node: {
-				fields: {
-					slug: string;
-				};
 				frontmatter: {
 					abstract: string;
 					date: string;
+					slug: string;
 					title: string;
+					topics?: string[];
 					banner: {
 						childImageSharp: {
 							fluid: {
@@ -43,6 +42,7 @@ const BlogPage: FunctionComponent = () => {
 							date
 							slug
 							title
+							topics
 							banner {
 								childImageSharp {
 									fluid {

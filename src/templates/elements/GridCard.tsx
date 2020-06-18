@@ -7,6 +7,7 @@ interface GridCardProps {
 		abstract: string;
 		slug: string;
 		title: string;
+		topic?: string[];
 		banner: {
 			childImageSharp: {
 				fluid: {
@@ -21,8 +22,17 @@ interface GridCardProps {
 }
 
 const GridCard: FunctionComponent<GridCardProps> = ({ data }) => {
-	const { abstract, banner, slug, title } = data;
+	const { abstract, banner, slug, title, topics } = data;
 	const { fluid } = banner.childImageSharp;
+
+	const renderTopics = (): FunctionComponent =>
+		topics.map((topic: string, index: number) => {
+			return (
+				<li className="topic" key={index}>
+					{topic}
+				</li>
+			);
+		});
 
 	return (
 		<Link className="grid-card" to={slug} title={title}>
@@ -30,7 +40,7 @@ const GridCard: FunctionComponent<GridCardProps> = ({ data }) => {
 				<Img fluid={fluid} alt={title} />
 				<h4 className="heading-4">{title}</h4>
 				<p className="body-copy">{abstract}</p>
-				<span className="tag">Test</span>
+				<ul className="topics">{renderTopics()}</ul>
 			</article>
 		</Link>
 	);

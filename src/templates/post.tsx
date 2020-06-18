@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 import { Link, useStaticQuery, graphql } from 'gatsby';
@@ -7,8 +7,21 @@ import Img from 'gatsby-image';
 const Post = ({ data, pageContext }): ReactElement => {
 	const { markdownRemark } = data;
 	const { frontmatter, html } = markdownRemark;
-	const { abstract, banner, date, slug, title } = frontmatter;
+	const { abstract, banner, date, slug, title, topics } = frontmatter;
 	const { fluid } = banner.childImageSharp;
+
+	const renderTopics = (): FunctionComponent =>
+		topics.map((topic: string, index: number) => {
+			topic = topic.replace(/ /g, `-`);
+
+			return (
+				<li className="post-tag" key={index}>
+					<Link className="link" to={`/topic/${topic.toLowerCase()}`} title={`Link to ${topic}`}>
+						{topic}
+					</Link>
+				</li>
+			);
+		});
 
 	return (
 		<Layout>
@@ -29,13 +42,7 @@ const Post = ({ data, pageContext }): ReactElement => {
 							<Img fluid={fluid} alt={title} />
 							<p className="post-date">{date}</p>
 							<div dangerouslySetInnerHTML={{ __html: html }}></div>
-							<ul className="post-tags">
-								<li className="post-tag">
-									<Link className="post-tag-link" to="/">
-										Tag
-									</Link>
-								</li>
-							</ul>
+							<ul className="post-tags">{renderTopics()}</ul>
 						</div>
 					</div>
 				</div>
@@ -55,6 +62,7 @@ export const pageQuery = graphql`
 				date
 				slug
 				title
+				topics
 				banner {
 					childImageSharp {
 						fluid {
