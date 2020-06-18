@@ -5,12 +5,29 @@ import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 
 interface PostProps {
-	pageContext: object;
-	location: object;
+	data: {
+		markdownRemark: {
+			frontmatter: {
+				author: string;
+				abstract: string;
+				banner: {
+					childImageSharp: {
+						fluid: {
+							src: string;
+						};
+					};
+				};
+				date: string;
+				path: string;
+				title: string;
+				topics: {}[];
+			};
+			html: string;
+		};
+	};
 }
 
-const Post: FunctionComponent<PostProps> = ({ data, pageContext, location }) => {
-	console.log(location);
+const Post: FunctionComponent<PostProps> = ({ data }) => {
 	const { markdownRemark } = data;
 	const { frontmatter, html } = markdownRemark;
 	const { author, abstract, banner, date, path, title, topics } = frontmatter;
@@ -18,7 +35,6 @@ const Post: FunctionComponent<PostProps> = ({ data, pageContext, location }) => 
 
 	const renderTopics = (): FunctionComponent =>
 		topics.map((topic: string, index: number) => {
-			console.log(topic);
 			topic = topic.replace(/ /g, `-`);
 
 			return (
