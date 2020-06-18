@@ -49,11 +49,10 @@ collections:
     name: authors
     folder: content/authors/
     create: true
-    identifier_field: name
     editor:
       preview: false
     fields:
-      - { label: Name, name: name, widget: string }
+      - { label: Title, name: title, widget: string }
       - { label: Email, name: email, widget: string, required: false }
       - { label: Twitter Handle, name: twitter, widget: string, required: false }
       - { label: Website, name: website, widget: string, required: false }
@@ -61,11 +60,10 @@ collections:
     name: services
     folder: content/services/
     create: true
-    identifier_field: name
     editor:
       preview: true
     fields:
-      - { label: Service Name, name: name, widget: string }
+      - { label: Title, name: title, widget: string }
       - {
           label: Related Topics,
           name: topics,

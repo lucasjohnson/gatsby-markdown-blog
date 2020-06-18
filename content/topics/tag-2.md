@@ -1,3 +1,3 @@
 ---
-name: Tag 2
+title: Tag 2
 ---

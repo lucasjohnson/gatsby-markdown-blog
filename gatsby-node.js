@@ -7,9 +7,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "content/blog/" } }) {
 				edges {
 					node {
-						fields {
-							slug
-						}
 						frontmatter {
 							title
 							path
@@ -30,7 +27,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 							slug
 						}
 						frontmatter {
-							name
+							title
 						}
 					}
 				}
@@ -72,14 +69,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	topics.forEach(({ node }) => {
 		const { slug } = node.fields;
-		const { name: topic } = node.frontmatter;
+		const { title: topic } = node.frontmatter;
 
 		actions.createPage({
 			path: slug,
 			component: require.resolve(`./src/templates/topic.tsx`),
 			context: {
-				posts,
-				topic
+				posts: posts,
+				topic: topic
 			}
 		});
 	});
@@ -89,7 +86,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 		actions.createPage({
 			path: slug,
-			component: require.resolve(`./src/templates/service.tsx`)
+			component: require.resolve(`./src/templates/service.tsx`),
+			context: {
+				posts: posts
+			}
 		});
 	});
 
