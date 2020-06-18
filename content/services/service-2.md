@@ -1,3 +1,3 @@
 ---
-name: Service 2
+title: Service 2
 ---

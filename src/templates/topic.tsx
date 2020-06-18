@@ -3,16 +3,16 @@ import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 
 const Topic = ({ pageContext }): ReactElement => {
-	const { topic } = pageContext;
+	const { title } = pageContext;
 
 	return (
 		<Layout>
-			<SEO title={topic} />
+			<SEO title={title} />
 			<section className="Topic">
 				<div className="block">
 					<div className="grid-flex">
 						<div className="column-12">
-							<h1 className="heading-1">{topic}</h1>
+							<h1 className="heading-1">{title}</h1>
 						</div>
 					</div>
 				</div>

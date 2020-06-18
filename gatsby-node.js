@@ -43,6 +43,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 						fields {
 							slug
 						}
+						frontmatter {
+							title
+						}
 					}
 				}
 			}
@@ -69,15 +72,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	topics.forEach(({ node }) => {
 		let { slug } = node.fields;
-		const { title: topic } = node.frontmatter;
 		slug = slug.slice(0, -1);
+		const { title } = node.frontmatter;
 
 		actions.createPage({
 			path: slug,
 			component: require.resolve(`./src/templates/topic.tsx`),
 			text: {
-				posts: posts,
-				topic: topic
+				title,
+				posts
 			}
 		});
 	});
@@ -85,12 +88,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	services.forEach(({ node }) => {
 		let { slug } = node.fields;
 		slug = slug.slice(0, -1);
+		const { title } = node.frontmatter;
 
 		actions.createPage({
 			path: slug,
 			component: require.resolve(`./src/templates/service.tsx`),
 			context: {
-				posts: posts
+				title,
+				posts
 			}
 		});
 	});
