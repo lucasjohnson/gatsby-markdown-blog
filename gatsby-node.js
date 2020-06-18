@@ -33,7 +33,7 @@ const createTopicPages = (createPage, posts) => {
 };
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
-	const { data } = await graphql(`
+	const { data: postsData } = await graphql(`
 		query {
 			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "content/blog/" } }) {
 				edges {
@@ -52,7 +52,23 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		}
 	`);
 
-	const posts = data.allMarkdownRemark.edges;
+	const { data: servicesData } = await graphql(`
+		query {
+			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "content/services/" } }) {
+				edges {
+					node {
+						fields {
+							slug
+						}
+					}
+				}
+			}
+		}
+	`);
+
+	const posts = postsData.allMarkdownRemark.edges;
+	const services = servicesData.allMarkdownRemark.edges;
+
 	createTopicPages(actions.createPage, posts);
 
 	posts.forEach(({ node }, index) => {
@@ -69,7 +85,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 	});
 
-	if (data.errors) {
+	services.forEach(({ node }) => {
+		const { slug } = node.fields;
+
+		actions.createPage({
+			path: slug,
+			component: require.resolve(`./src/templates/service.tsx`),
+			context: {
+				pathSlug: slug
+			}
+		});
+	});
+
+	if (postsData.errors || servicesData.errors) {
 		reporter.panicOnBuild(`Error while running GraphQL query.`);
 		return;
 	}
