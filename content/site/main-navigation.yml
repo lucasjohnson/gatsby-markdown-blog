@@ -1,4 +1,4 @@
-mainNavigation:
+mainMenu:
   - page: Blog
   - page: Services
     dropdown:

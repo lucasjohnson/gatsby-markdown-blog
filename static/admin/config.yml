@@ -124,6 +124,38 @@ collections:
     editor:
       preview: false
     files:
+      - file: content/site/main-navigation.yml
+        label: Main Navigation
+        name: mainNavigation
+        fields:
+          - label: Main Menu
+            name: mainMenu
+            collapsed: false
+            minimize_collapsed: false
+            widget: list
+            fields:
+              - {
+                  label: Page,
+                  name: page,
+                  widget: relation,
+                  collection: pages,
+                  searchFields: [title],
+                  valueField: title,
+                }
+              - label: Dropdown
+                name: dropdown
+                collapsed: false
+                minimize_collapsed: false
+                widget: list
+                fields:
+                  - {
+                      label: Page,
+                      name: page,
+                      widget: relation,
+                      collection: services,
+                      searchFields: [title],
+                      valueField: title,
+                    }
       - file: content/site/data.yml
         label: Site Data
         name: siteData
