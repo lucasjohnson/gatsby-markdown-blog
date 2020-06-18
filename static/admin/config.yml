@@ -11,7 +11,7 @@ slug:
   sanitize_replacement: '-'
 collections:
   - name: posts
-    label: Post
+    label: Posts
     folder: content/blog/
     create: true
     editor:
@@ -43,21 +43,31 @@ collections:
           name: body,
           label: Body,
           widget: markdown,
-          buttons: [bold, italic, link, heading-one, heading-two, heading-three, quote, bulleted-list, numbered-list],
+          buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list],
         }
-  - label: Authors
-    name: authors
-    folder: content/authors/
+  - name: pages
+    label: Pages
+    folder: content/pages/
     create: true
     editor:
-      preview: false
+      preview: true
     fields:
       - { label: Title, name: title, widget: string }
-      - { label: Email, name: email, widget: string, required: false }
-      - { label: Twitter Handle, name: twitter, widget: string, required: false }
-      - { label: Website, name: website, widget: string, required: false }
-  - label: Services
-    name: services
+      - {
+          name: abstract,
+          label: Abstract,
+          widget: text,
+          hint: Short description that will display under post title on Blog page,
+          as well as being placed in the post meta data for SEO,
+        }
+      - {
+          name: body,
+          label: Body,
+          widget: markdown,
+          buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list],
+        }
+  - name: services
+    label: Services
     folder: content/services/
     create: true
     editor:
@@ -87,10 +97,21 @@ collections:
           label: Body,
           widget: markdown,
           required: false,
-          buttons: [bold, italic, link, heading-one, heading-two, heading-three, quote, bulleted-list, numbered-list],
+          buttons: [bold, italic, link, heading-two, heading-three, quote, bulleted-list, numbered-list],
         }
-  - label: Topics
-    name: topics
+  - name: authors
+    label: Authors
+    folder: content/authors/
+    create: true
+    editor:
+      preview: false
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Email, name: email, widget: string, required: false }
+      - { label: Twitter Handle, name: twitter, widget: string, required: false }
+      - { label: Website, name: website, widget: string, required: false }
+  - name: topics
+    label: Topics
     folder: content/topics/
     create: true
     editor:
