@@ -63,9 +63,34 @@ collections:
     create: true
     identifier_field: name
     editor:
-      preview: false
+      preview: true
     fields:
       - { label: Service Name, name: name, widget: string }
+      - {
+          label: Related Topics,
+          name: topics,
+          widget: relation,
+          collection: topics,
+          searchFields: [name],
+          valueField: name,
+          multiple: true,
+          required: false,
+        }
+      - {
+          name: abstract,
+          label: Abstract,
+          widget: text,
+          hint: Short description that will display under post title on Blog page,
+          as well as being placed in the post meta data for SEO,
+          required: false,
+        }
+      - {
+          name: body,
+          label: Body,
+          widget: markdown,
+          required: false,
+          buttons: [bold, italic, link, heading-one, heading-two, heading-three, quote, bulleted-list, numbered-list],
+        }
   - label: Topics
     name: topics
     folder: content/topics/
