@@ -6,7 +6,7 @@ import Facebook from './Facebook';
 import siteData from '../../../content/site/data.yml';
 import companyData from '../../../content/site/company.yml';
 
-interface PropsTypes {
+interface SeoProps {
 	banner?: string;
 	bannerAlt?: string;
 	contentType?: 'NewsArticle';
@@ -25,7 +25,7 @@ interface SiteQuery {
 	};
 }
 
-const SEO: Function = ({ banner, bannerAlt, contentType, date, description, pathname, title }: PropsTypes) => {
+const SEO: React.FC<SeoProps> = ({ banner, bannerAlt, contentType, date, description, pathname, title }) => {
 	const { site } = useStaticQuery<SiteQuery>(graphql`
 		query {
 			site {
