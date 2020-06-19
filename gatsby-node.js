@@ -83,7 +83,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 		actions.createPage({
 			path: slug,
-			component: require.resolve(`./src/templates/topic.tsx`),
+			component: require.resolve(`./src/pages/topics.tsx`),
 			context: {
 				title,
 				posts
@@ -98,7 +98,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 		actions.createPage({
 			path: slug,
-			component: require.resolve(`./src/templates/service.tsx`),
+			component: require.resolve(`./src/pages/services.tsx`),
 			context: {
 				title,
 				posts
