@@ -7,4 +7,5 @@ footerMenuColumns:
   - title: Company
     menuColumnItems:
       - page: Home
+      - page: About Us
       - page: Blog
