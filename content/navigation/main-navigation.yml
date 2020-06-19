@@ -2,6 +2,6 @@ mainMenuItems:
   - page: Blog
   - page: Services
     dropdownItems:
+      - page: Service 3
       - page: Service 2
       - page: Service 1
-      - page: Service 3
