@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 import legalData from '../../../content/navigation/legal-navigation.yml';
 import socialData from '../../../content/site/social.yml';
 import sanitizeSlug from '../../helpers/utils';
+
+FaFacebookF;
 
 const LegalNavigation: React.FC = () => {
 	const { legalCopy, legalMenuItems } = legalData;
@@ -27,9 +30,15 @@ const LegalNavigation: React.FC = () => {
 
 			return (
 				<li className="social-item" key={index}>
-					<Link className="social-link" to={url} title={`Link to ${title} account opens in new tab`}>
-						{title}
-					</Link>
+					<a
+						className="social-link"
+						href={url}
+						title={`Link to ${title} account opens in new tab`}
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						{title === `Facebook` ? <FaFacebookF className="icon" /> : <FaTwitter className="icon" />}
+					</a>
 				</li>
 			);
 		});
