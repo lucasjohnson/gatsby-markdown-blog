@@ -4,7 +4,7 @@ import Breadcrumbs from './Breadcrumbs';
 
 const Footer: FunctionComponent = () => {
 	return (
-		<footer>
+		<footer className="Footer">
 			<div className="block">
 				<div className="grid-flex">
 					<div className="column-12">

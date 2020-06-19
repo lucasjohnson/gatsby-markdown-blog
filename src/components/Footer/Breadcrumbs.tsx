@@ -9,15 +9,21 @@ const Breadcrumbs: FunctionComponent = () => {
 
 	const renderBreadcrumbs: Function = () =>
 		pathCrumbs.map((crumb: string, index: number) => {
+			const crumbInner = crumb.length === 0 ? `Home` : crumb;
+
 			return (
 				<li className="breadcrumb-item" key={index}>
-					<Link
-						className="breadcrumb-link"
-						to={`/${crumb && crumb}`}
-						title={`Link to ${crumb.length === 0 ? `Home` : crumb} page`}
-					>
-						{crumb.length === 0 ? `Home` : crumb}
-					</Link>
+					{index !== pathCrumbs.length - 1 ? (
+						<Link
+							className="breadcrumb-link"
+							to={`/${crumb && crumb}`}
+							title={`Link to ${crumb.length === 0 ? `Home` : crumb} page`}
+						>
+							{crumbInner}
+						</Link>
+					) : (
+						crumbInner
+					)}
 				</li>
 			);
 		});
