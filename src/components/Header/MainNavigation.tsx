@@ -5,8 +5,8 @@ import sanitizeSlug from '../../helpers/utils';
 
 const MainNavigation: React.FC = () => {
 	const renderDropdownItems: Function = (dropdownItems: [], dropdownTitle: string) =>
-		dropdownItems.map((item: { page: string }, index: number) => {
-			const { page: title } = item;
+		dropdownItems.map((item: { item: string }, index: number) => {
+			const { item: title } = item;
 
 			return (
 				<li className="dropdown-item" key={index}>
@@ -24,8 +24,8 @@ const MainNavigation: React.FC = () => {
 	const { mainMenuItems } = mainMenuData;
 
 	const renderMainMenuItems: Function = () =>
-		mainMenuItems.map((item: { page: string; dropdownItems: {}[] }, index: number) => {
-			const { page: title } = item;
+		mainMenuItems.map((item: { item: string; dropdownItems: {}[] }, index: number) => {
+			const { item: title } = item;
 
 			return (
 				<li className="navigation-item" key={index}>

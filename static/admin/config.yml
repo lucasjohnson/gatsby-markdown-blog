@@ -136,7 +136,7 @@ collections:
             fields:
               - {
                   label: Page,
-                  name: page,
+                  name: item,
                   widget: relation,
                   collection: pages,
                   searchFields: [title],
@@ -150,7 +150,7 @@ collections:
                 fields:
                   - {
                       label: Page,
-                      name: page,
+                      name: item,
                       widget: relation,
                       collection: services,
                       searchFields: [title],
@@ -175,7 +175,7 @@ collections:
                 fields:
                   - {
                       label: Page,
-                      name: page,
+                      name: item,
                       widget: relation,
                       collection: pages,
                       searchFields: [title],
@@ -184,7 +184,7 @@ collections:
                     }
                   - {
                       label: Service,
-                      name: service,
+                      name: item,
                       widget: relation,
                       collection: services,
                       searchFields: [title],
@@ -204,7 +204,7 @@ collections:
             fields:
               - {
                   label: Page,
-                  name: page,
+                  name: item,
                   widget: relation,
                   collection: pages,
                   searchFields: [title],

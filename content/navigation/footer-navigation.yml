@@ -1,11 +1,11 @@
 footerMenuColumns:
   - title: Services
     menuColumnItems:
-      - service: Service 1
-      - service: Service 3
-      - service: Service 2
+      - item: Service 1
+      - item: Service 3
+      - item: Service 2
   - title: Company
     menuColumnItems:
-      - page: Home
-      - page: About Us
-      - page: Blog
+      - item: Home
+      - item: About Us
+      - item: Blog
