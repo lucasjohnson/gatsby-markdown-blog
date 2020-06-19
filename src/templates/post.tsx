@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactElement } from 'react';
+import React, { FunctionComponent } from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 import { Link, useStaticQuery, graphql } from 'gatsby';

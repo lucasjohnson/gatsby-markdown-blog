@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { Link } from 'gatsby';
 import Breadcrumbs from './Breadcrumbs';
 
-const Footer: React.FC = () => {
+const Footer: FunctionComponent = () => {
 	return (
 		<footer>
 			<div className="block">

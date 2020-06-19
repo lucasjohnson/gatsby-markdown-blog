@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 
-const IndexPage: Function = () => (
+const IndexPage: FunctionComponent = () => (
 	<Layout>
 		<SEO title="Homepage" />
 		<section className="block">
