@@ -1,8 +1,9 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import sanitizeSlug from '../helpers/utils';
 
 interface PostProps {
 	data: {
@@ -20,26 +21,24 @@ interface PostProps {
 				date: string;
 				path: string;
 				title: string;
-				topics: {}[];
+				topics: [];
 			};
 			html: string;
 		};
 	};
 }
 
-const Post: FunctionComponent<PostProps> = ({ data }) => {
+const Post: React.FC<PostProps> = ({ data }) => {
 	const { markdownRemark } = data;
 	const { frontmatter, html } = markdownRemark;
 	const { author, abstract, banner, date, path, title, topics } = frontmatter;
 	const { fluid } = banner.childImageSharp;
 
-	const renderTopics = (): FunctionComponent =>
+	const renderTopics: Function = () =>
 		topics.map((topic: string, index: number) => {
-			topic = topic.replace(/ /g, `-`);
-
 			return (
 				<li className="post-tag" key={index}>
-					<Link className="link" to={`/topics/${topic.toLowerCase()}`} title={`Link to ${topic}`}>
+					<Link className="link" to={`/topics/${sanitizeSlug(topic)}`} title={`Link to ${topic}`}>
 						{topic}
 					</Link>
 				</li>
