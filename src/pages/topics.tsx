@@ -1,14 +1,20 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 
-const Topic = ({ pageContext }): ReactElement => {
+interface TopicsProps {
+	pageContext: {
+		title: string;
+	};
+}
+
+const Topics: React.FC<TopicsProps> = ({ pageContext }) => {
 	const { title } = pageContext;
 
 	return (
 		<Layout>
 			<SEO title={title} />
-			<section className="Topic">
+			<section className="Topics">
 				<div className="block">
 					<div className="grid-flex">
 						<div className="column-12">
@@ -21,4 +27,4 @@ const Topic = ({ pageContext }): ReactElement => {
 	);
 };
 
-export default Topic;
+export default Topics;
