@@ -1,0 +1,10 @@
+footerMenuColumns:
+  - title: Services
+    menuColumnItems:
+      - service: Service 1
+      - service: Service 3
+      - service: Service 2
+  - title: Company
+    menuColumnItems:
+      - page: Home
+      - page: Blog
