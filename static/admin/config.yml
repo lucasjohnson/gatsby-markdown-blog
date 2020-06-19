@@ -156,6 +156,32 @@ collections:
                       searchFields: [title],
                       valueField: title,
                     }
+      - file: content/navigation/footer-navigation.yml
+        label: Footer Navigation
+        name: footerNavigation
+        fields:
+          - label: Footer Menu Column
+            name: footerMenuColumns
+            collapsed: false
+            minimize_collapsed: false
+            widget: list
+            fields:
+              - { label: Column Title, name: title, widget: string }
+              - label: Dropdown
+                name: dropdownItems
+                collapsed: false
+                minimize_collapsed: false
+                widget: list
+                fields:
+                  - {
+                      label: Page,
+                      name: page,
+                      widget: relation,
+                      collection: services,
+                      searchFields: [title],
+                      valueField: title,
+                    }
+
       - file: content/navigation/legal-navigation.yml
         label: Legal Navigation
         name: legalNavigation
@@ -216,6 +242,7 @@ collections:
       - file: content/site/social.yml
         label: Social Media Account
         name: socialMediaAccounts
+        identifier_field: socialMediaAccounts
         fields:
           - { label: Business Twitter Handle, name: twitterHandle, widget: string, required: false }
           - label: Social Media Account
