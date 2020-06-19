@@ -6,22 +6,24 @@ import SEO from '../components/Head/SEO';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface BlogQuery {
-	allMarkdownRemark: {
+	allFile: {
 		edges: {
 			node: {
-				frontmatter: {
-					abstract: string;
-					date: string;
-					path: string;
-					title: string;
-					topics?: string[];
-					banner: {
-						childImageSharp: {
-							fluid: {
-								aspectRatio: number;
-								base64: string;
-								sizes: string;
-								srcSet: string;
+				childMarkdownRemark: {
+					frontmatter: {
+						abstract: string;
+						date: string;
+						path: string;
+						title: string;
+						topics?: string[];
+						banner: {
+							childImageSharp: {
+								fluid: {
+									aspectRatio: number;
+									base64: string;
+									sizes: string;
+									srcSet: string;
+								};
 							};
 						};
 					};
@@ -32,21 +34,23 @@ interface BlogQuery {
 }
 
 const BlogPage: FunctionComponent = () => {
-	const { allMarkdownRemark } = useStaticQuery<BlogQuery>(graphql`
+	const { allFile } = useStaticQuery<BlogQuery>(graphql`
 		query {
-			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "content/blog/" } }) {
+			allFile(filter: { relativeDirectory: { regex: "/(blog)/" } }) {
 				edges {
 					node {
-						frontmatter {
-							abstract
-							date
-							path
-							title
-							topics
-							banner {
-								childImageSharp {
-									fluid {
-										...GatsbyImageSharpFluid
+						childMarkdownRemark {
+							frontmatter {
+								abstract
+								date
+								path
+								title
+								topics
+								banner {
+									childImageSharp {
+										fluid {
+											...GatsbyImageSharpFluid
+										}
 									}
 								}
 							}
@@ -57,12 +61,13 @@ const BlogPage: FunctionComponent = () => {
 		}
 	`);
 
-	const { edges } = allMarkdownRemark;
+	const { edges } = allFile;
 
 	const renderCard = (): FunctionComponent =>
 		edges.map((edge: object, index: number) => {
 			const { node } = edge;
-			const { frontmatter } = node;
+			const { childMarkdownRemark } = node;
+			const { frontmatter } = childMarkdownRemark;
 
 			return <GridCard data={frontmatter} key={index} />;
 		});

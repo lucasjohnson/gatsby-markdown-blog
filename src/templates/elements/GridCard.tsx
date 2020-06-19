@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React, { FunctionComponent, ReactElement } from 'react';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
@@ -7,7 +7,7 @@ interface GridCardProps {
 		abstract: string;
 		path: string;
 		title: string;
-		topic?: string[];
+		topics: string[];
 		banner: {
 			childImageSharp: {
 				fluid: {
