@@ -1,7 +1,7 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import { Link } from 'gatsby';
 
-const Breadcrumbs: FunctionComponent = () => {
+const Breadcrumbs: React.FC = () => {
 	const pathname: string = typeof window !== `undefined` ? window.location.pathname : ``;
 	const pathCrumbs: string[] = pathname.split(`/`);
 
@@ -9,20 +9,16 @@ const Breadcrumbs: FunctionComponent = () => {
 
 	const renderBreadcrumbs: Function = () =>
 		pathCrumbs.map((crumb: string, index: number) => {
-			const crumbInner = crumb.length === 0 ? `Home` : crumb;
+			const crumbTitle: string = crumb.length === 0 ? `Home` : crumb;
 
 			return (
 				<li className="breadcrumb-item" key={index}>
 					{index !== pathCrumbs.length - 1 ? (
-						<Link
-							className="breadcrumb-link"
-							to={`/${crumb && crumb}`}
-							title={`Link to ${crumb.length === 0 ? `Home` : crumb} page`}
-						>
-							{crumbInner}
+						<Link className="breadcrumb-link" to={`/${crumb && crumb}`} title={`Link to ${crumbTitle} page`}>
+							{crumbTitle}
 						</Link>
 					) : (
-						crumbInner
+						crumbTitle
 					)}
 				</li>
 			);
