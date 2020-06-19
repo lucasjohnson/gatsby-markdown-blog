@@ -22,14 +22,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	const { data: topicsData } = await graphql(`
 		query {
-			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "content/topics/" } }) {
+			allFile(filter: { relativeDirectory: { regex: "/(topics)/" } }) {
 				edges {
 					node {
-						fields {
-							slug
-						}
-						frontmatter {
-							title
+						childMarkdownRemark {
+							frontmatter {
+								title
+							}
+							fields {
+								slug
+							}
 						}
 					}
 				}
@@ -39,14 +41,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	const { data: servicesData } = await graphql(`
 		query {
-			allMarkdownRemark(filter: { fileAbsolutePath: { regex: "content/services/" } }) {
+			allFile(filter: { relativeDirectory: { regex: "/(services)/" } }) {
 				edges {
 					node {
-						fields {
-							slug
-						}
-						frontmatter {
-							title
+						childMarkdownRemark {
+							frontmatter {
+								title
+							}
+							fields {
+								slug
+							}
 						}
 					}
 				}
@@ -55,8 +59,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	`);
 
 	const posts = postsData.allFile.edges;
-	const topics = topicsData.allMarkdownRemark.edges;
-	const services = servicesData.allMarkdownRemark.edges;
+	const topics = topicsData.allFile.edges;
+	const services = servicesData.allFile.edges;
 
 	posts.forEach(({ node }, index) => {
 		const { path } = node.childMarkdownRemark.frontmatter;
@@ -73,9 +77,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	});
 
 	topics.forEach(({ node }) => {
-		let { slug } = node.fields;
+		let { slug } = node.childMarkdownRemark.fields;
 		slug = slug.slice(0, -1);
-		const { title } = node.frontmatter;
+		const { title } = node.childMarkdownRemark.frontmatter;
 
 		actions.createPage({
 			path: slug,
@@ -88,9 +92,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	});
 
 	services.forEach(({ node }) => {
-		let { slug } = node.fields;
+		let { slug } = node.childMarkdownRemark.fields;
 		slug = slug.slice(0, -1);
-		const { title } = node.frontmatter;
+		const { title } = node.childMarkdownRemark.frontmatter;
 
 		actions.createPage({
 			path: slug,
