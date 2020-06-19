@@ -25,7 +25,7 @@ interface SiteQuery {
 	};
 }
 
-const SEO = ({ banner, bannerAlt, contentType, date, description, pathname, title }: PropsTypes) => {
+const SEO: Function = ({ banner, bannerAlt, contentType, date, description, pathname, title }: PropsTypes) => {
 	const { site } = useStaticQuery<SiteQuery>(graphql`
 		query {
 			site {
