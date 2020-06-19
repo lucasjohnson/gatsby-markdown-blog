@@ -129,7 +129,7 @@ collections:
         name: mainNavigation
         fields:
           - label: Main Menu
-            name: mainMenu
+            name: mainMenuItems
             collapsed: false
             minimize_collapsed: false
             widget: list
@@ -143,7 +143,7 @@ collections:
                   valueField: title,
                 }
               - label: Dropdown
-                name: dropdown
+                name: dropdownItems
                 collapsed: false
                 minimize_collapsed: false
                 widget: list
