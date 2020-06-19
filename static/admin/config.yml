@@ -167,8 +167,8 @@ collections:
             widget: list
             fields:
               - { label: Column Title, name: title, widget: string }
-              - label: Dropdown
-                name: dropdownItems
+              - label: Menu Items
+                name: menuColumnItems
                 collapsed: false
                 minimize_collapsed: false
                 widget: list
@@ -177,11 +177,18 @@ collections:
                       label: Page,
                       name: page,
                       widget: relation,
+                      collection: pages,
+                      searchFields: [title],
+                      valueField: title,
+                    }
+                  - {
+                      label: Service,
+                      name: service,
+                      widget: relation,
                       collection: services,
                       searchFields: [title],
                       valueField: title,
                     }
-
       - file: content/navigation/legal-navigation.yml
         label: Legal Navigation
         name: legalNavigation
