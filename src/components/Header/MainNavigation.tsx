@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import mainMenuData from '../../../content/site/main-navigation.yml';
+import mainMenuData from '../../../content/navigation/main-navigation.yml';
 import sanitizeSlug from '../../helpers/utils';
 
 const MainNavigation: React.FC = () => {

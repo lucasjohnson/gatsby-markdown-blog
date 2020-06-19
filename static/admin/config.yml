@@ -118,17 +118,17 @@ collections:
       preview: false
     fields:
       - { label: Title, name: title, widget: string }
-  - name: site-data
-    label: Site Data
+  - name: navigation
+    label: Navigation
     delete: false
     editor:
       preview: false
     files:
-      - file: content/site/main-navigation.yml
+      - file: content/navigation/main-navigation.yml
         label: Main Navigation
         name: mainNavigation
         fields:
-          - label: Main Menu
+          - label: Main Menu Item
             name: mainMenuItems
             collapsed: false
             minimize_collapsed: false
@@ -156,6 +156,31 @@ collections:
                       searchFields: [title],
                       valueField: title,
                     }
+      - file: content/navigation/legal-navigation.yml
+        label: Legal Navigation
+        name: legalNavigation
+        fields:
+          - { label: Legal Copy, name: legalCopy, widget: string }
+          - label: Legal Menu Item
+            name: legalMenuItems
+            collapsed: false
+            minimize_collapsed: false
+            widget: list
+            fields:
+              - {
+                  label: Page,
+                  name: page,
+                  widget: relation,
+                  collection: pages,
+                  searchFields: [title],
+                  valueField: title,
+                }
+  - name: site-data
+    label: Site Data
+    delete: false
+    editor:
+      preview: false
+    files:
       - file: content/site/data.yml
         label: Site Data
         name: siteData
