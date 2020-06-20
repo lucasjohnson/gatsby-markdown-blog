@@ -3,9 +3,7 @@ import { Link } from 'gatsby';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 import legalData from '../../../content/navigation/legal-navigation.yml';
 import socialData from '../../../content/site/social.yml';
-import sanitizeSlug from '../../helpers/utils';
-
-FaFacebookF;
+import slugify from '../../helpers/utils';
 
 const LegalNavigation: React.FC = () => {
 	const { legalCopy, legalMenuItems } = legalData;
@@ -17,7 +15,7 @@ const LegalNavigation: React.FC = () => {
 
 			return (
 				<li className="legal-item" key={index}>
-					<Link className="legal-link" to={`/${sanitizeSlug(title)}`} title={`Link to page`}>
+					<Link className="legal-link" to={`/${slugify(title)}`} title={`Link to page`}>
 						{title}
 					</Link>
 				</li>

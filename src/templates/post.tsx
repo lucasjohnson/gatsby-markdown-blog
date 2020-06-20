@@ -3,7 +3,9 @@ import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import sanitizeSlug from '../helpers/utils';
+import slugify from '../helpers/utils';
+
+import Anchor from './elements/Anchor';
 
 interface PostProps {
 	data: {
@@ -38,7 +40,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
 		topics.map((topic: string, index: number) => {
 			return (
 				<li className="post-tag" key={index}>
-					<Link className="link" to={`/topics/${sanitizeSlug(topic)}`} title={`Link to ${topic}`}>
+					<Link className="link" to={`/topics/${slugify(topic)}`} title={`Link to ${topic}`}>
 						{topic}
 					</Link>
 				</li>
