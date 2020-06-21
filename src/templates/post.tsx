@@ -5,8 +5,6 @@ import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import slugify from '../helpers/utils';
 
-import Anchor from './elements/Anchor';
-
 interface PostProps {
 	data: {
 		markdownRemark: {

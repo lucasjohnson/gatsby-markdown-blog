@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
-import GridBox from '../templates/elements/GridBox';
-import GridCard from '../templates/elements/GridCard';
+import GridBox from '../components/GridBox';
+import GridCard from '../components/GridCard';
 import SEO from '../components/Head/SEO';
 import { useStaticQuery, graphql } from 'gatsby';
 
@@ -63,7 +63,7 @@ const BlogPage: React.FC = () => {
 
 	const { edges } = allFile;
 
-	const renderCard = (): FunctionComponent =>
+	const renderCard = (): React.FC =>
 		edges.map((edge: object, index: number) => {
 			const { node } = edge;
 			const { childMarkdownRemark } = node;
