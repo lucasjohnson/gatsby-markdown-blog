@@ -161,14 +161,14 @@ collections:
         name: footerNavigation
         fields:
           - label: Footer Menu Column
-            name: footerMenuColumns
+            name: menuColumns
             collapsed: false
             minimize_collapsed: false
             widget: list
             fields:
               - { label: Column Title, name: title, widget: string }
               - label: Menu Items
-                name: menuColumnItems
+                name: menuItems
                 collapsed: false
                 minimize_collapsed: false
                 widget: list
