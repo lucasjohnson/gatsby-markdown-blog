@@ -1,6 +1,6 @@
 import React, { ReactElement } from 'react';
 import { Link } from 'gatsby';
-import MainNavigation from './MainNavigation';
+import MainNavigation from '../Navigation/MainNavigation';
 import Button from '../../components//Button';
 import siteData from '../../../content/site/data.yml';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import GridBox from '../GridBox';
-import Navigation from '../Navigation';
+import Navigation from './Navigation';
 import data from '../../../content/navigation/footer-navigation.yml';
 
 const FooterNavigation: React.FC = () => {

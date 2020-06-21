@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import slugify from '../helpers/utils';
+import slugify from '../../helpers/utils';
 
 interface NavigationProps {
 	data: {}[];
@@ -24,6 +24,8 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 				</React.Fragment>
 			);
 		});
+
+	console.log(data);
 
 	return (
 		<nav className={`navigation ${variant} ${title}`}>
