@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import Layout from '../components/Layout';
 import GridBox from '../templates/elements/GridBox';
 import GridCard from '../templates/elements/GridCard';
@@ -33,7 +33,7 @@ interface BlogQuery {
 	};
 }
 
-const BlogPage: FunctionComponent = () => {
+const BlogPage: React.FC = () => {
 	const { allFile } = useStaticQuery<BlogQuery>(graphql`
 		query {
 			allFile(filter: { relativeDirectory: { regex: "/(blog)/" } }) {
