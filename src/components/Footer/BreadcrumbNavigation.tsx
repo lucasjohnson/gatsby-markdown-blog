@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
 
-const Breadcrumbs: React.FC = () => {
+const BreadcrumbNavigation: React.FC = () => {
 	const pathname: string = typeof window !== `undefined` ? window.location.pathname : ``;
 	const pathCrumbs: string[] = pathname.split(`/`);
 
@@ -31,4 +31,4 @@ const Breadcrumbs: React.FC = () => {
 	);
 };
 
-export default Breadcrumbs;
+export default BreadcrumbNavigation;
