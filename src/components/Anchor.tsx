@@ -23,7 +23,7 @@ const Anchor: React.FC<AnchorProps> = ({ className, title, url, variant, childre
 		case `button primary`:
 		case `button secondary`:
 			anchor = (
-				<Link className={`${variant} ${className}`} to={url} title={title}>
+				<Link className={`${variant}${className && ` ${className}`}`} to={url} title={title}>
 					{children}
 				</Link>
 			);
@@ -33,7 +33,7 @@ const Anchor: React.FC<AnchorProps> = ({ className, title, url, variant, childre
 		case `button external secondary`:
 			anchor = (
 				<a
-					className={`${variant} ${className}`}
+					className={`${variant}${className && ` ${className}`}`}
 					href={url}
 					title={`${title} opens in new tab`}
 					target="_blank"
