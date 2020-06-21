@@ -1,7 +1,7 @@
-mainMenuItems:
+menuItems:
   - item: Blog
   - item: Services
-    dropdownItems:
+    subItems:
       - item: Service 3
       - item: Service 2
       - item: Service 1
