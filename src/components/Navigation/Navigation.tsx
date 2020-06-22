@@ -10,6 +10,9 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
+	const renderSubItems: Function = (menuItems: {}[]) => {
+		return <ul className="sub-items">{renderItems(menuItems)}</ul>;
+	};
 	const renderItems: Function = (menuItems: { item: string; index: number }[]) =>
 		menuItems.map((item: { item: string; url?: string; subItems?: { item: string } }, index: number) => {
 			const { item: title, url } = item;
@@ -26,15 +29,15 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 								{title}
 							</Anchor>
 						)}
+						{item.subItems !== undefined && renderSubItems(item.subItems)}
 					</li>
-					{item.subItems !== undefined && renderItems(item.subItems)}
 				</React.Fragment>
 			);
 		});
 
 	return (
 		<nav className={`navigation ${variant} ${title}`}>
-			<ul className="navigation-items">{renderItems(data)}</ul>
+			<ul className="items">{renderItems(data)}</ul>
 		</nav>
 	);
 };
