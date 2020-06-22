@@ -40,7 +40,7 @@ const Anchor: React.FC<AnchorProps> = ({ className, title, url, variant, childre
 					rel="noopener noreferrer"
 				>
 					{children}
-					<GoLinkExternal className="icon" />
+					{variant !== `link external` && <GoLinkExternal className="icon" />}
 				</a>
 			);
 			break;
