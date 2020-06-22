@@ -197,7 +197,7 @@ collections:
         fields:
           - { label: Legal Copy, name: legalCopy, widget: string }
           - label: Legal Menu Item
-            name: legalMenuItems
+            name: menuItems
             collapsed: false
             minimize_collapsed: false
             widget: list
@@ -255,11 +255,11 @@ collections:
         fields:
           - { label: Business Twitter Handle, name: twitterHandle, widget: string, required: false }
           - label: Social Media Account
-            name: socialMediaAccounts
+            name: menuitems
             collapsed: false
             minimize_collapsed: false
             widget: list
             summary: '{{fields.type}}s'
             fields:
-              - { label: Type, name: type, widget: string }
+              - { label: Type, name: item, widget: string }
               - { label: URL, name: url, widget: string }

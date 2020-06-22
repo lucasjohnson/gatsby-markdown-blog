@@ -1,6 +1,6 @@
-twitterHandle: "@business-account"
-socialMediaAccounts:
-  - type: Twitter
+twitterHandle: '@business-account'
+menuItems:
+  - item: Twitter
     url: https://twitter.com/business-account
-  - type: Facebook
+  - item: Facebook
     url: https://facebook.com/business-account
