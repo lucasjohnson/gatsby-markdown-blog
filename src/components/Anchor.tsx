@@ -1,6 +1,6 @@
 import React from 'react';
+import Icon from './Icon';
 import { Link } from 'gatsby';
-import { GoLinkExternal } from 'react-icons/go';
 
 type AnchorProps = {
 	className?: string;
@@ -40,7 +40,7 @@ const Anchor: React.FC<AnchorProps> = ({ className, title, url, variant, childre
 					rel="noopener noreferrer"
 				>
 					{children}
-					{variant !== `link external` && <GoLinkExternal className="icon" />}
+					{variant !== `link external` && <Icon type="external" />}
 				</a>
 			);
 			break;
