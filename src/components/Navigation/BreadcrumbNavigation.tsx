@@ -30,7 +30,7 @@ const BreadcrumbNavigation: React.FC = () => {
 
 	return (
 		<nav className="navigation inline">
-			<ul className="navigation-items">{renderBreadcrumbs()}</ul>
+			<ul className="items">{renderBreadcrumbs()}</ul>
 		</nav>
 	);
 };

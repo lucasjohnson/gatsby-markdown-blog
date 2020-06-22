@@ -7,9 +7,13 @@ const Footer: React.FC = () => {
 	return (
 		<footer className="Footer">
 			<div className="block">
-				<BreadcrumbNavigation />
-				<FooterNavigation />
-				<LegalNavigation />
+				<div className="grid-flex">
+					<div className="column-12">
+						<BreadcrumbNavigation />
+						<FooterNavigation />
+						<LegalNavigation />
+					</div>
+				</div>
 			</div>
 		</footer>
 	);
