@@ -6,7 +6,7 @@ import slugify from '../../helpers/utils';
 interface NavigationProps {
 	data: {}[];
 	title: string;
-	variant: 'block' | 'breadcrumbs' | 'icon' | 'inline';
+	variant: 'block' | 'icon' | 'inline';
 }
 
 const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {

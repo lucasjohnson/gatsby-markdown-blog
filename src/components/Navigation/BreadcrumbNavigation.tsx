@@ -1,22 +1,26 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import Anchor from '../Anchor';
 
 const BreadcrumbNavigation: React.FC = () => {
 	const pathname: string = typeof window !== `undefined` ? window.location.pathname : ``;
-	const pathCrumbs: string[] = pathname.split(`/`);
+	let pathCrumbs: string[] = pathname.split(`/`);
 
-	pathname.length === 1 && pathCrumbs.pop();
+	pathCrumbs = pathCrumbs.filter(function (string) {
+		return string != ``;
+	});
+
+	pathCrumbs.unshift(``);
 
 	const renderBreadcrumbs: Function = () =>
 		pathCrumbs.map((crumb: string, index: number) => {
 			const crumbTitle: string = crumb.length === 0 ? `Home` : crumb;
 
 			return (
-				<li className="breadcrumb-item" key={index}>
+				<li className="item" key={index}>
 					{index !== pathCrumbs.length - 1 ? (
-						<Link className="breadcrumb-link" to={`/${crumb && crumb}`} title={`Link to ${crumbTitle} page`}>
+						<Anchor title={crumbTitle} url={`/${crumb && crumb}`} variant="link">
 							{crumbTitle}
-						</Link>
+						</Anchor>
 					) : (
 						crumbTitle
 					)}
@@ -25,8 +29,8 @@ const BreadcrumbNavigation: React.FC = () => {
 		});
 
 	return (
-		<nav className="breadcrumb-navigation">
-			<ul className="breadcrumb-items">{renderBreadcrumbs()}</ul>
+		<nav className="navigation inline">
+			<ul className="navigation-items">{renderBreadcrumbs()}</ul>
 		</nav>
 	);
 };
