@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'gatsby';
+import Anchor from '../Anchor';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 import slugify from '../../helpers/utils';
 
@@ -35,19 +35,13 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 				<React.Fragment>
 					<li className="item" key={index}>
 						{variant === `icon` ? (
-							<a
-								className="social-link"
-								href={url}
-								title={`Link to ${title} account opens in new tab`}
-								target="_blank"
-								rel="noopener noreferrer"
-							>
+							<Anchor title={title} url={url} variant="link external">
 								{renderIcon(title)}
-							</a>
+							</Anchor>
 						) : (
-							<Link className="link" to={`/${slugify(title)}`} title={title}>
+							<Anchor title={title} url={`/${slugify(title)}`} variant="link">
 								{title}
-							</Link>
+							</Anchor>
 						)}
 					</li>
 					{item.subItems !== undefined && renderItems(item.subItems)}
