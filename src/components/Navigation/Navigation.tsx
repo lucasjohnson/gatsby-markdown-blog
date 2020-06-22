@@ -1,6 +1,6 @@
 import React from 'react';
 import Anchor from '../Anchor';
-import { FaFacebookF, FaTwitter } from 'react-icons/fa';
+import Icon from '../Icon';
 import slugify from '../../helpers/utils';
 
 interface NavigationProps {
@@ -10,23 +10,6 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
-	const renderIcon: Function = (type: string) => {
-		let icon;
-
-		switch (type) {
-			case `Facebook`:
-				icon = <FaFacebookF className="icon" />;
-				break;
-			case `Twitter`:
-				icon = <FaTwitter className="icon" />;
-				break;
-			default:
-				return null;
-		}
-
-		return icon;
-	};
-
 	const renderItems: Function = (menuItems: { item: string; index: number }[]) =>
 		menuItems.map((item: { item: string; url?: string; subItems?: { item: string } }, index: number) => {
 			const { item: title, url } = item;
@@ -36,7 +19,7 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 					<li className="item" key={index}>
 						{variant === `icon` ? (
 							<Anchor title={title} url={url} variant="link external">
-								{renderIcon(title)}
+								<Icon type={title} />
 							</Anchor>
 						) : (
 							<Anchor title={title} url={`/${slugify(title)}`} variant="link">
