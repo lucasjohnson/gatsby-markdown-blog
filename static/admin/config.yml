@@ -242,12 +242,14 @@ collections:
         label: Company Details
         name: companyDetails
         fields:
-          - { label: Street Address, name: companyStreetAddress, widget: string, required: false }
-          - { label: City, name: companyCity, widget: string, required: false }
-          - { label: Province, name: companyProvince, widget: string, required: false }
-          - { label: Postal Code, name: companyPostalCode, widget: string, required: false }
-          - { label: Country, name: companyCountry, widget: string, required: false }
-          - { label: Telephone Number, name: companyTelephone, widget: string, required: false }
+          - { label: Name, name: title, widget: string, required: false }
+          - { label: Street Address, name: address, widget: string, required: false }
+          - { label: City, name: city, widget: string, required: false }
+          - { label: Province, name: province, widget: string, required: false }
+          - { label: Postal Code, name: postalCode, widget: string, required: false }
+          - { label: Country, name: country, widget: string, required: false }
+          - { label: Telephone Number, name: telephone, widget: string, required: false }
+          - { label: Email, name: email, widget: string, required: false }
       - file: content/site/social.yml
         label: Social Media Account
         name: socialMediaAccounts

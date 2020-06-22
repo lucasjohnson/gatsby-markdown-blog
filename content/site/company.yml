@@ -1,6 +1,8 @@
-companyStreetAddress: 568 Bloor Street West
-companyCity: Toronto
-companyProvince: Ontario
-companyPostalCode: N7U 7J9
-companyCountry: Canada
-companyTelephone: (647) 832-6915
+title: Company Name
+address: 568 Bloor Street West
+city: Toronto
+province: Ontario
+postalCode: N7U 7J9
+country: Canada
+telephone: (647) 832-6915
+email: info@company.com
