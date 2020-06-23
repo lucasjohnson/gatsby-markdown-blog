@@ -1,0 +1,26 @@
+.Header {
+	margin-bottom: $spacing-large;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+
+	> .site-heading {
+		flex: 1;
+
+		> .link {
+			font-size: 2rem;
+			font-weight: $font-weight-bold;
+		}
+	}
+
+	.navigation.main {
+		@include respond-to(LARGE) {
+			margin-right: $spacing-large;
+		}
+	}
+
+	> .button {
+		margin: 0 0 0 auto;
+	}
+}

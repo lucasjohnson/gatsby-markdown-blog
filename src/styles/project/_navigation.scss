@@ -1,0 +1,54 @@
+.navigation {
+	&.block,
+	&.inline {
+		.items > .item {
+			display: inline-block;
+			position: relative;
+
+			> .link {
+				width: 100%;
+				padding: $spacing-small $spacing-large;
+				display: block;
+			}
+
+			> .icon {
+				font-size: 2rem;
+				position: absolute;
+				top: 2rem;
+				right: 0.5rem;
+				transition: $animation-base;
+				transform: rotate(0deg);
+			}
+
+			> .sub-items {
+				@include background($white);
+
+				width: 15rem;
+				position: absolute;
+				z-index: zindex($zLayout, default);
+				transition: $animation-base;
+				transform: translateY(-$spacing-large);
+				visibility: hidden;
+				opacity: 0;
+
+				> .item > .link {
+					padding: $spacing-small $spacing-large;
+					display: block;
+				}
+			}
+
+			&:hover,
+			&:focus-within {
+				.icon {
+					transform: rotate(180deg);
+				}
+
+				.sub-items {
+					transform: translateY(0.5rem);
+					visibility: visible;
+					opacity: 1;
+				}
+			}
+		}
+	}
+}
