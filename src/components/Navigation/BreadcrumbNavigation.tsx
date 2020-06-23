@@ -1,5 +1,6 @@
 import React from 'react';
 import Anchor from '../Anchor';
+import Icon from '../Icon';
 
 const BreadcrumbNavigation: React.FC = () => {
 	const pathname: string = typeof window !== `undefined` ? window.location.pathname : ``;
@@ -18,18 +19,21 @@ const BreadcrumbNavigation: React.FC = () => {
 			return (
 				<li className="item" key={index}>
 					{index !== pathCrumbs.length - 1 ? (
-						<Anchor title={crumbTitle} url={`/${crumb && crumb}`} variant="link">
-							{crumbTitle}
-						</Anchor>
+						<React.Fragment>
+							<Anchor title={crumbTitle} url={`/${crumb && crumb}`} variant="link">
+								{crumbTitle}
+							</Anchor>
+							<Icon type="ChevronRight" />
+						</React.Fragment>
 					) : (
-						crumbTitle
+						<span className="current-page">{crumbTitle}</span>
 					)}
 				</li>
 			);
 		});
 
 	return (
-		<nav className="navigation inline">
+		<nav className="navigation inline breadcrumb">
 			<ul className="items">{renderBreadcrumbs()}</ul>
 		</nav>
 	);
