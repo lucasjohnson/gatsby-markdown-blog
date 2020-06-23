@@ -1,0 +1,19 @@
+.link {
+	font-size: $font-size-base;
+	color: $black;
+	text-decoration: none;
+	line-height: $line-height-body;
+	padding: $spacing-small 0;
+	transition: $animation-base;
+
+	&:hover,
+	&:visited {
+		color: $black;
+		text-decoration: none;
+	}
+
+	&:hover {
+		color: $lime;
+		text-decoration: underline;
+	}
+}
