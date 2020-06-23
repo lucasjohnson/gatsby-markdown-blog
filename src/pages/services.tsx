@@ -15,14 +15,8 @@ const Services: React.FC<ServicesProps> = ({ pageContext }) => {
 	return (
 		<Layout>
 			<SEO title={pageTitle} />
-			<section className="Services">
-				<div className="block">
-					<div className="grid-flex">
-						<div className="column-12">
-							<h1 className="heading-1">{pageTitle}</h1>
-						</div>
-					</div>
-				</div>
+			<section className="Services block">
+				<h1 className="heading-1">{pageTitle}</h1>
 			</section>
 		</Layout>
 	);

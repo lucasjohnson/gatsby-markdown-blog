@@ -5,12 +5,8 @@ import SEO from '../components/Head/SEO';
 const IndexPage: React.FC = () => (
 	<Layout>
 		<SEO title="Homepage" />
-		<section className="block">
-			<div className="grid-flex">
-				<div className="column-12">
-					<h1 className="heading-1">Homepage</h1>
-				</div>
-			</div>
+		<section className="Homepage block">
+			<h1 className="heading-1">Homepage</h1>
 		</section>
 	</Layout>
 );
