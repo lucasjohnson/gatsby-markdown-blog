@@ -1,5 +1,4 @@
 .navigation {
-	&.block,
 	&.inline {
 		.items > .item {
 			display: inline-block;
@@ -10,44 +9,64 @@
 				padding: $spacing-small $spacing-large;
 				display: block;
 			}
+		}
 
-			> .icon {
-				font-size: 2rem;
-				position: absolute;
-				top: 2rem;
-				right: 0.5rem;
-				transition: $animation-base;
-				transform: rotate(0deg);
-			}
+		&.main {
+			.items > .item {
+				> .icon {
+					font-size: 2rem;
+					position: absolute;
+					top: 2rem;
+					right: 0.5rem;
+					transition: $animation-base;
+					transform: rotate(0deg);
+				}
 
-			> .sub-items {
-				@include background($white);
+				> .sub-items {
+					@include background($white);
 
-				width: 15rem;
-				position: absolute;
-				z-index: zindex($zLayout, default);
-				transition: $animation-base;
-				transform: translateY(-$spacing-large);
-				visibility: hidden;
-				opacity: 0;
+					width: 15rem;
+					position: absolute;
+					z-index: zindex($zLayout, default);
+					transition: $animation-base;
+					transform: translateY(-$spacing-large);
+					visibility: hidden;
+					opacity: 0;
 
-				> .item > .link {
-					padding: $spacing-small $spacing-large;
-					display: block;
+					> .item > .link {
+						padding: $spacing-small $spacing-large;
+						display: block;
+					}
+				}
+
+				&:hover,
+				&:focus-within {
+					.icon {
+						transform: rotate(180deg);
+					}
+
+					.sub-items {
+						transform: translateY(0.5rem);
+						visibility: visible;
+						opacity: 1;
+					}
 				}
 			}
+		}
+	}
 
-			&:hover,
-			&:focus-within {
-				.icon {
-					transform: rotate(180deg);
-				}
+	&.block {
+		padding: 0;
+		margin: 0;
 
-				.sub-items {
-					transform: translateY(0.5rem);
-					visibility: visible;
-					opacity: 1;
-				}
+		> .items > .item {
+			display: block;
+
+			> .link {
+				font-size: $font-size-small;
+				width: 100%;
+				padding: $spacing-small / 2 0;
+				display: block;
 			}
 		}
 	}

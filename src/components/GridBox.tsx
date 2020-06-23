@@ -24,12 +24,12 @@ const GridBox: FunctionComponent<GridBoxProps> = ({
 		<div
 			className={`
         ${variant}
-        ${column && `column-${column}`}
-        ${columnSm && `column-sm-${columnSm}`}
-        ${columnMd && `column-md-${columnMd}`}
-        ${columnLg && `column-lg-${columnLg}`}
-        ${columnXl && `column-xl-${columnXl}`}
-        ${columnXx && `column-xx-${columnXx}`}
+        ${column ? `column-${column}` : ``}
+        ${columnSm ? `column-sm-${columnSm}` : ``}
+        ${columnMd ? `column-md-${columnMd}` : ``}
+        ${columnLg ? `column-lg-${columnLg}` : ``}
+        ${columnXl ? `column-xl-${columnXl}` : ``}
+        ${columnXx ? `column-xx-${columnXx}` : ``}
       `}
 		>
 			{children}

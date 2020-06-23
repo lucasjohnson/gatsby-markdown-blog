@@ -3,6 +3,16 @@
 
 	> .block {
 		margin: 0 auto;
+
+		> .grid-box > .footer-column {
+			> .title {
+				font-size: $font-size-base;
+				font-weight: $font-weight-bold;
+				color: $white;
+				display: block;
+				margin-bottom: $spacing-small;
+			}
+		}
 	}
 
 	.link {

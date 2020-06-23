@@ -13,14 +13,14 @@ const FooterNavigation: React.FC = () => {
 			const { title, menuItems } = item;
 			return (
 				<div className="footer-column" key={index}>
-					<h3 className="heading-4">{title}</h3>
+					<span className="title">{title}</span>
 					<Navigation data={menuItems} title="footer" variant="block" />
 				</div>
 			);
 		});
 
 	return (
-		<GridBox variant="grid-box" column={1} columnMd={2} columnLg={3}>
+		<GridBox variant="grid-box" column={1} columnMd={3}>
 			{renderMenuColumns()}
 			<div className="footer-column">
 				<address>
