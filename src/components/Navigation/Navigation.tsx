@@ -11,7 +11,11 @@ interface NavigationProps {
 
 const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 	const renderSubItems: Function = (menuItems: {}[]) => {
-		return <ul className="sub-items">{renderItems(menuItems)}</ul>;
+		return (
+			<React.Fragment>
+				<Icon type={`ChevronDown`} /> <ul className="sub-items">{renderItems(menuItems)}</ul>
+			</React.Fragment>
+		);
 	};
 	const renderItems: Function = (menuItems: { item: string; index: number }[]) =>
 		menuItems.map((item: { item: string; url?: string; subItems?: { item: string } }, index: number) => {

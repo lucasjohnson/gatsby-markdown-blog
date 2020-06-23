@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
-import { GoLinkExternal } from 'react-icons/go';
+import { GoChevronDown, GoLinkExternal } from 'react-icons/go';
 
 interface IconProps {
 	type: string;
@@ -19,7 +19,9 @@ const Icon: React.FC<IconProps> = ({ type }) => {
 		case `external`:
 			icon = <GoLinkExternal className="icon" />;
 			break;
-
+		case `ChevronDown`:
+			icon = <GoChevronDown className="icon" />;
+			break;
 		default:
 			return null;
 	}
