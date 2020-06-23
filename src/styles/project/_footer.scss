@@ -1,0 +1,16 @@
+.Footer {
+	@include background($black);
+
+	> .block {
+		margin: 0 auto;
+	}
+
+	.link {
+		color: $white;
+
+		&:hover,
+		&:visited {
+			color: $white;
+		}
+	}
+}

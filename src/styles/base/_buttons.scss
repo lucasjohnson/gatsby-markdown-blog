@@ -16,7 +16,7 @@
 	-webkit-font-smoothing: antialiased;
 	font-weight: 600;
 	line-height: 1;
-	padding: $spacing-small $spacing-large;
+	padding: $spacing-small / 2 $spacing-large / 2;
 	margin-bottom: $spacing-small;
 	text-align: center;
 	text-decoration: none;
@@ -24,9 +24,15 @@
 	user-select: none;
 	vertical-align: middle;
 	white-space: nowrap;
+	transition: $animation-base;
+	opacity: 1;
+
+	@include respond-to(LARGE) {
+		padding: $spacing-small / 2 $spacing-small;
+	}
 
 	&:hover {
-		background-color: $action-color-hover;
+		opacity: 0.8;
 	}
 
 	&:focus {
@@ -42,7 +48,6 @@
 	&.primary,
 	&.secondary {
 		line-height: $line-height-body;
-		padding: 0.8rem 5rem;
 	}
 
 	&.secondary {

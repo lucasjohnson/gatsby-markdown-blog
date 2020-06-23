@@ -2,17 +2,16 @@
 $zLayout: default, overlay;
 
 // Colors
-$black: #111;
-$blue: #1565c0;
-$blue-light: #3b83d5;
-$gray: rgba(#000, 0.6);
+$black: #222831;
+$gray: #393e46;
 $white: #fff;
+$lime: #32e0c4;
 
 // Font Colors
 $font-color-base: $black;
 $font-color-header: $black;
-$action-color: $blue;
-$action-color-hover: $blue-light;
+$action-color: $lime;
+$action-color-hover: $lime;
 $action-color-contrast: $white;
 
 // Background Colors
@@ -81,3 +80,5 @@ $block-margin-desktop: $spacing-large;
 
 // Layout
 $block-max-width: $breakpoint-large;
+
+$zLayout: default;

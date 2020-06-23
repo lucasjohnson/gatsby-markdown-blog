@@ -1,6 +1,7 @@
 .block {
 	position: relative;
 	width: 100%;
+	padding: 0 $spacing-small;
 	margin: $block-margin-mobile auto;
 
 	@include respond-to(LARGE) {

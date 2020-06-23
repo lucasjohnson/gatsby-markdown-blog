@@ -74,6 +74,10 @@ $heading-scale: 1.1;
 
 @for $i from 1 through 6 {
 	.heading-#{$i} {
-		font-size: 0.1rem + $heading-scale * (6 - $i);
+		font-size: 0.1rem + ($heading-scale - 0.5) * (6 - $i);
+
+		@include respond-to(MEDIUM) {
+			font-size: 0.1rem + $heading-scale * (6 - $i);
+		}
 	}
 }
