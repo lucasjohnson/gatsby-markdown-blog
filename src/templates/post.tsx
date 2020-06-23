@@ -56,19 +56,13 @@ const Post: React.FC<PostProps> = ({ data }) => {
 				pathname={path}
 				title={title}
 			/>
-			<article className="Post">
-				<div className="block">
-					<div className="grid-flex">
-						<div className="column-12">
-							<h1 className="heading-1">{title}</h1>
-							<Img fluid={fluid} alt={title} />
-							<div className="post-author">{author}</div>
-							<p className="post-date">{date}</p>
-							<div dangerouslySetInnerHTML={{ __html: html }}></div>
-							<ul className="post-tags">{renderTopics()}</ul>
-						</div>
-					</div>
-				</div>
+			<article className="Post block">
+				<h1 className="heading-1">{title}</h1>
+				<Img fluid={fluid} alt={title} />
+				<div className="post-author">{author}</div>
+				<p className="post-date">{date}</p>
+				<div dangerouslySetInnerHTML={{ __html: html }}></div>
+				<ul className="post-tags">{renderTopics()}</ul>
 			</article>
 		</Layout>
 	);
