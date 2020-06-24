@@ -1,26 +1,52 @@
 .Footer {
 	@include background($black);
 
+	.link {
+		color: $white;
+
+		&:hover {
+			color: $lime;
+		}
+	}
+
 	> .block {
 		margin: 0 auto;
 
-		> .grid-box > .footer-column {
-			> .title {
-				font-size: $font-size-base;
-				font-weight: $font-weight-bold;
-				color: $white;
-				display: block;
-				margin-bottom: $spacing-small;
+		> .grid-box {
+			> .footer-column {
+				> .title {
+					font-size: $font-size-base;
+					font-weight: $font-weight-bold;
+					color: $white;
+					display: block;
+					margin-bottom: $spacing-small;
+				}
+
+				> address > .items {
+					font-size: $font-size-base;
+					color: $white;
+
+					> .item {
+						margin: 0;
+
+						> .link {
+							color: $lime;
+							text-decoration: none;
+
+							&:hover {
+								text-decoration: underline;
+							}
+						}
+					}
+				}
 			}
 		}
 	}
 
-	.link {
-		color: $white;
-
-		&:hover,
-		&:visited {
-			color: $white;
-		}
+	.legal-navigation {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		align-items: center;
 	}
 }

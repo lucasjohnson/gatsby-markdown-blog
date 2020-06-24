@@ -15,7 +15,7 @@
 	}
 
 	.navigation.main {
-		@include respond-to(LARGE) {
+		@include respond-to(MEDIUM) {
 			margin-right: $spacing-large;
 		}
 	}

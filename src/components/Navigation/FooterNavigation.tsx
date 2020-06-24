@@ -1,6 +1,7 @@
 import React from 'react';
 import GridBox from '../GridBox';
 import Navigation from './Navigation';
+import Anchor from '../Anchor';
 import menuData from '../../../content/navigation/footer-navigation.yml';
 import companyData from '../../../content/site/company.yml';
 
@@ -24,16 +25,20 @@ const FooterNavigation: React.FC = () => {
 			{renderMenuColumns()}
 			<div className="footer-column">
 				<address>
-					<ul className="address-items">
-						<li className="li address-item">{title}</li>
-						<li className="li address-item">{`${address}, ${city}`}</li>
-						<li className="li address-item">{`${province}, ${postalCode}`}</li>
-						<li className="li address-item">{country}</li>
-						<li className="li address-item">
-							<a href={`mailto:${email}`}>{email}</a>
+					<ul className="items">
+						<li className="item body-copy">{title}</li>
+						<li className="item body-copy">{`${address}, ${city}`}</li>
+						<li className="item body-copy">{`${province}, ${postalCode}`}</li>
+						<li className="item body-copy">{country}</li>
+						<li className="item body-copy">
+							<Anchor url={`mailto:${email}`} title={email} variant="link">
+								{email}
+							</Anchor>
 						</li>
-						<li className="li address-item">
-							<a href={`tel:${telephone}`}>{telephone}</a>
+						<li className="item body-copy">
+							<Anchor url={`tel:${telephone}`} title={telephone} variant="link">
+								{telephone}
+							</Anchor>
 						</li>
 					</ul>
 				</address>
