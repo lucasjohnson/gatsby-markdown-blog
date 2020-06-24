@@ -10,10 +10,16 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
-	const renderSubItems: Function = (menuItems: {}[], parentSlug: {}) => {
+	const renderSubItems: Function = (menuItems: {}[], parentSlug: { item: string }) => {
+		const { item: title } = parentSlug;
+
 		return (
 			<React.Fragment>
-				<Icon type={`ChevronDown`} /> <ul className="sub-items">{renderItems(menuItems, parentSlug)}</ul>
+				<span className="link" tabindex="0">
+					{title}
+				</span>
+				<Icon type={`ChevronDown`} />
+				<ul className="sub-items">{renderItems(menuItems, parentSlug)}</ul>
 			</React.Fragment>
 		);
 	};
@@ -29,6 +35,8 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 							<Anchor title={title} url={url} variant="link external">
 								<Icon type={title} />
 							</Anchor>
+						) : item.subItems !== undefined ? (
+							renderSubItems(item.subItems, item)
 						) : (
 							<Anchor
 								title={title}
@@ -38,7 +46,6 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 								{title}
 							</Anchor>
 						)}
-						{item.subItems !== undefined && renderSubItems(item.subItems, item)}
 					</li>
 				</React.Fragment>
 			);
