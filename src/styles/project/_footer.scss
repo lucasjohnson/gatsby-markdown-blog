@@ -11,54 +11,35 @@
 
 	> .block {
 		margin: 0 auto;
+	}
 
-		.legal-navigation {
-			display: flex;
-			flex-wrap: wrap;
-			align-items: center;
-			padding-bottom: $spacing-large;
-
-			> .items > .item > .link {
-				font-size: $font-size-small;
-			}
-
-			> .body-copy {
-				font-size: $font-size-small;
-				color: $white;
-				margin: 0;
-			}
-
-			> .navigation.social {
-				margin-left: auto;
-			}
+	.footer-column {
+		> .title {
+			font-size: $font-size-base;
+			font-weight: $font-weight-bold;
+			color: $white;
+			display: block;
+			margin-bottom: $spacing-small;
 		}
 
-		> .grid-box {
-			> .footer-column {
-				> .title {
-					font-size: $font-size-base;
-					font-weight: $font-weight-bold;
-					color: $white;
-					display: block;
-					margin-bottom: $spacing-small;
+		> address > .items {
+			font-size: $font-size-base;
+			color: $white;
+
+			> .item {
+				margin: 0;
+
+				> .link {
+					color: $lime;
+					text-decoration: none;
+
+					&:hover {
+						text-decoration: underline;
+					}
 				}
 
-				> address > .items {
-					font-size: $font-size-base;
-					color: $white;
-
-					> .item {
-						margin: 0;
-
-						> .link {
-							color: $lime;
-							text-decoration: none;
-
-							&:hover {
-								text-decoration: underline;
-							}
-						}
-					}
+				&:nth-last-child(2) {
+					margin-top: $spacing-large;
 				}
 			}
 		}

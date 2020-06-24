@@ -4,9 +4,11 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
+	position: static;
 
 	> .site-heading {
 		flex: 1;
+		z-index: 2;
 
 		> .link {
 			font-size: 2rem;
@@ -14,13 +16,8 @@
 		}
 	}
 
-	.navigation.main {
-		@include respond-to(MEDIUM) {
-			margin-right: $spacing-large;
-		}
-	}
-
 	> .button {
 		margin: 0 0 0 auto;
+		z-index: 2;
 	}
 }
