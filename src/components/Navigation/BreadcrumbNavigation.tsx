@@ -14,7 +14,7 @@ const BreadcrumbNavigation: React.FC = () => {
 
 	const renderBreadcrumbs: Function = () =>
 		pathCrumbs.map((crumb: string, index: number) => {
-			const crumbTitle: string = crumb.length === 0 ? `Home` : crumb;
+			const crumbTitle: string = crumb.length === 0 ? `Homepage` : crumb;
 
 			return (
 				<li className="item" key={index}>

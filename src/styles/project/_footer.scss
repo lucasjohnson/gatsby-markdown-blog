@@ -12,6 +12,27 @@
 	> .block {
 		margin: 0 auto;
 
+		.legal-navigation {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			padding-bottom: $spacing-large;
+
+			> .items > .item > .link {
+				font-size: $font-size-small;
+			}
+
+			> .body-copy {
+				font-size: $font-size-small;
+				color: $white;
+				margin: 0;
+			}
+
+			> .navigation.social {
+				margin-left: auto;
+			}
+		}
+
 		> .grid-box {
 			> .footer-column {
 				> .title {
@@ -41,12 +62,5 @@
 				}
 			}
 		}
-	}
-
-	.legal-navigation {
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: center;
 	}
 }

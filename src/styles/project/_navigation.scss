@@ -1,5 +1,6 @@
 .navigation {
-	&.inline {
+	&.inline,
+	&.social {
 		.items > .item {
 			display: inline-block;
 			position: relative;

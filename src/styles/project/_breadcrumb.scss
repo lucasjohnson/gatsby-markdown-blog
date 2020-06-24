@@ -9,7 +9,8 @@
 		}
 
 		&:first-of-type {
-			> .link {
+			> .link,
+			> .current-page {
 				padding-left: 0;
 			}
 		}
@@ -28,6 +29,7 @@
 			font-style: italic;
 			color: $white;
 			padding: $spacing-small $spacing-large;
+			display: block;
 		}
 	}
 }
