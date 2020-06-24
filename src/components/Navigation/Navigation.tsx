@@ -10,14 +10,15 @@ interface NavigationProps {
 }
 
 const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
-	const renderSubItems: Function = (menuItems: {}[]) => {
+	const renderSubItems: Function = (menuItems: {}[], parentSlug: {}) => {
 		return (
 			<React.Fragment>
-				<Icon type={`ChevronDown`} /> <ul className="sub-items">{renderItems(menuItems)}</ul>
+				<Icon type={`ChevronDown`} /> <ul className="sub-items">{renderItems(menuItems, parentSlug)}</ul>
 			</React.Fragment>
 		);
 	};
-	const renderItems: Function = (menuItems: { item: string; index: number }[]) =>
+
+	const renderItems: Function = (menuItems: { item: string; index: number }[], parentSlug: { item: string }) =>
 		menuItems.map((item: { item: string; url?: string; subItems?: { item: string } }, index: number) => {
 			const { item: title, url } = item;
 
@@ -29,11 +30,15 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 								<Icon type={title} />
 							</Anchor>
 						) : (
-							<Anchor title={title} url={`/${slugify(title)}`} variant="link">
+							<Anchor
+								title={title}
+								url={`${parentSlug ? `/${slugify(parentSlug.item)}` : ``}/${slugify(title)}`}
+								variant="link"
+							>
 								{title}
 							</Anchor>
 						)}
-						{item.subItems !== undefined && renderSubItems(item.subItems)}
+						{item.subItems !== undefined && renderSubItems(item.subItems, item)}
 					</li>
 				</React.Fragment>
 			);
