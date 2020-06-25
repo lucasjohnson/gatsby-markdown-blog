@@ -20,7 +20,7 @@
 			> .link {
 				font-size: $font-size-small;
 				position: relative;
-				padding: $spacing-small $spacing-large;
+				padding: 0 $spacing-large;
 
 				&::after {
 					@include pseudo(null, absolute, '|');
@@ -48,6 +48,13 @@
 
 		> .navigation.legal {
 			padding: 0;
+
+			> .items > .item:first-of-type {
+					> .link {
+						padding-left: $spacing-large;
+					}
+				}
+			}
 		}
 	}
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import GridBox from '../GridBox';
 import Navigation from './Navigation';
+import Anchor from '../Anchor';
 import menuData from '../../../content/navigation/footer-navigation.yml';
 import companyData from '../../../content/site/company.yml';
 
@@ -30,14 +31,14 @@ const FooterNavigation: React.FC = () => {
 						<li className="item body-copy">{`${province}, ${postalCode}`}</li>
 						<li className="item body-copy">{country}</li>
 						<li className="item body-copy">
-							<a className="link" href={`mailto:${email}`} title={email}>
+							<Anchor url={`mailto:${email}`} title={email} variant="link external">
 								{email}
-							</a>
+							</Anchor>
 						</li>
 						<li className="item body-copy">
-							<a className="link" href={`tel:${telephone}`} title={telephone}>
+							<Anchor url={`tel:${telephone}`} title={telephone} variant="link external">
 								{telephone}
-							</a>
+							</Anchor>
 						</li>
 					</ul>
 				</address>
