@@ -61,10 +61,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 					node {
 						childMarkdownRemark {
 							frontmatter {
+								author
+								date(formatString: "MMMM DD, YYYY")
 								path
 								title
 								topics
-								author
 							}
 						}
 					}
@@ -80,15 +81,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 					node {
 						childMarkdownRemark {
 							frontmatter {
-								email
 								title
 								twitter
-								website
 								image {
 									childImageSharp {
 										fluid {
 											base64
 											aspectRatio
+											sizes
 											src
 											srcSet
 										}
@@ -163,7 +163,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	createTopicPages(createPage, posts);
 
 	posts.forEach(({ node }, index) => {
-		const { author, path } = node.childMarkdownRemark.frontmatter;
+		const { author, date, path } = node.childMarkdownRemark.frontmatter;
 
 		let postAuthor;
 
@@ -181,9 +181,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			component: require.resolve(`./src/templates/post.tsx`),
 			context: {
 				pathSlug: `${path}`,
+				postAuthor,
+				postDate: date,
 				prev: index === 0 ? null : posts[index - 1].node,
-				next: index === posts.length - 1 ? null : posts[index + 1].node,
-				postAuthor
+				next: index === posts.length - 1 ? null : posts[index + 1].node
 			}
 		});
 	});
