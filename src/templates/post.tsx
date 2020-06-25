@@ -3,8 +3,7 @@ import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import Anchor from '../components/Anchor';
-import Icon from '../components/Icon';
+import AuthorDetails from '../components/AuthorDetails';
 import TopicList from '../components/TopicList';
 
 interface PostProps {
@@ -46,38 +45,12 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 	const { markdownRemark } = data;
 	const { frontmatter, html } = markdownRemark;
 	const { abstract, banner, bannerAlt, date, path, title: postTitle, topics } = frontmatter;
-	const { fluid: bannerFluid } = banner.childImageSharp;
-	const { title: author, twitter, image } = pageContext.postAuthor;
-	const { fluid: profileFluid } = image.childImageSharp;
-	const { postDate } = pageContext;
-
-	const renderProfile: Function = () => {
-		return (
-			<div className="author-profile">
-				{image && <Img className="author-image" fluid={profileFluid} alt={postTitle} />}
-				<div className="author-details">
-					<span className="author-name">{author}</span>
-					{twitter && (
-						<Anchor
-							className="author-twitter"
-							url={`https://twitter.com/${twitter}`}
-							title={`${author} Twitter account`}
-							variant="link external"
-						>
-							<Icon type="Twitter" />
-							{twitter}
-						</Anchor>
-					)}
-					<span className="post-date">{postDate}</span>
-				</div>
-			</div>
-		);
-	};
+	const { fluid } = banner.childImageSharp;
 
 	return (
 		<Layout>
 			<SEO
-				banner={bannerFluid.src}
+				banner={fluid.src}
 				bannerAlt={bannerAlt}
 				contentType={`NewsArticle`}
 				date={date}
@@ -91,10 +64,10 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 						<h1 className="heading-1">{postTitle}</h1>
 					</div>
 				</div>
-				<Img className="post-banner" fluid={bannerFluid} alt={bannerAlt} />
+				<Img className="post-banner" fluid={fluid} alt={bannerAlt} />
 				<div className="block">
 					<div className="block-inner">
-						{renderProfile()}
+						<AuthorDetails data={pageContext} postTitle={postTitle} variant="brief" />
 						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
 						<TopicList topics={topics} variant="link" />
 					</div>
