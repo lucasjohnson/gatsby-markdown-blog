@@ -5,7 +5,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Anchor from '../components/Anchor';
 import Icon from '../components/Icon';
-import slugify from '../helpers/slugify';
+import TopicList from '../components/TopicList';
 
 interface PostProps {
 	data: {
@@ -50,17 +50,6 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 	const { title: author, twitter, image } = pageContext.postAuthor;
 	const { fluid: profileFluid } = image.childImageSharp;
 	const { postDate } = pageContext;
-
-	const renderTopics: Function = () =>
-		topics.map((topic: string, index: number) => {
-			return (
-				<li className="post-topic" key={index}>
-					<Anchor url={`/blog#${slugify(topic)}`} title={topic} variant="link">
-						{topic}
-					</Anchor>
-				</li>
-			);
-		});
 
 	const renderProfile: Function = () => {
 		return (
@@ -107,7 +96,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 					<div className="block-inner">
 						{renderProfile()}
 						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
-						<ul className="post-topics">{renderTopics()}</ul>
+						<TopicList topics={topics} variant="link" />
 					</div>
 				</div>
 			</article>
