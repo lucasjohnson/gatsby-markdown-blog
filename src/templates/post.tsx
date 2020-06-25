@@ -3,13 +3,13 @@ import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
+import Anchor from '../components/Anchor';
 import slugify from '../helpers/slugify';
 
 interface PostProps {
 	data: {
 		markdownRemark: {
 			frontmatter: {
-				author: string;
 				abstract: string;
 				banner: {
 					childImageSharp: {
@@ -18,6 +18,7 @@ interface PostProps {
 						};
 					};
 				};
+				bannerAlt: string;
 				date: string;
 				path: string;
 				title: string;
@@ -26,13 +27,28 @@ interface PostProps {
 			html: string;
 		};
 	};
+	pageContext: {
+		postAuthor: {
+			title: string;
+			twitter: string;
+			image: {
+				childImageSharp: {
+					fluid: {};
+				};
+			};
+		};
+		postDate: string;
+	};
 }
 
-const Post: React.FC<PostProps> = ({ data }) => {
+const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 	const { markdownRemark } = data;
 	const { frontmatter, html } = markdownRemark;
-	const { author, abstract, banner, date, path, title, topics } = frontmatter;
-	const { fluid } = banner.childImageSharp;
+	const { abstract, banner, bannerAlt, date, path, title: postTitle, topics } = frontmatter;
+	const { fluid: bannerFluid } = banner.childImageSharp;
+	const { title: author, twitter, image } = pageContext.postAuthor;
+	const { fluid: profileFluid } = image.childImageSharp;
+	const { postDate } = pageContext;
 
 	const renderTopics: Function = () =>
 		topics.map((topic: string, index: number) => {
@@ -45,24 +61,51 @@ const Post: React.FC<PostProps> = ({ data }) => {
 			);
 		});
 
+	const renderProfile: Function = () => {
+		return (
+			<div className="author-profile">
+				{image && <Img className="author-image" fluid={profileFluid} alt={postTitle} />}
+				<span className="author-name">{author}</span>
+				{twitter && (
+					<Anchor
+						className="author-twitter"
+						url={`https://twitter.com/${twitter}`}
+						title={`${author} Twitter account`}
+						variant="link external"
+					>
+						{twitter}
+					</Anchor>
+				)}
+				<span className="post-date">{postDate}</span>
+			</div>
+		);
+	};
+
 	return (
 		<Layout>
 			<SEO
-				banner={fluid.src}
-				bannerAlt={title}
+				banner={bannerFluid.src}
+				bannerAlt={bannerAlt}
 				contentType={`NewsArticle`}
 				date={date}
 				description={abstract}
 				pathname={path}
-				title={title}
+				title={postTitle}
 			/>
-			<article className="Post block">
-				<h1 className="heading-1">{title}</h1>
-				<Img fluid={fluid} alt={title} />
-				<div className="post-author">{author}</div>
-				<p className="post-date">{date}</p>
-				<div className="body-copy" dangerouslySetInnerHTML={{ __html: html }}></div>
-				<ul className="post-tags">{renderTopics()}</ul>
+			<article className="Post">
+				<div className="block">
+					<div className="block-inner">
+						<h1 className="heading-1">{postTitle}</h1>
+					</div>
+				</div>
+				<Img className="post-banner" fluid={bannerFluid} alt={postTitle} />
+				<div className="block">
+					<div className="block-inner">
+						{renderProfile()}
+						<div className="body-copy" dangerouslySetInnerHTML={{ __html: html }}></div>
+						<ul className="post-tags">{renderTopics()}</ul>
+					</div>
+				</div>
 			</article>
 		</Layout>
 	);
@@ -75,7 +118,6 @@ export const pageQuery = graphql`
 		markdownRemark(frontmatter: { path: { eq: $pathSlug } }) {
 			html
 			frontmatter {
-				author
 				abstract
 				date
 				path
