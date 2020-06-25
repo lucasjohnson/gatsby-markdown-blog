@@ -8,7 +8,7 @@ interface ServicesProps {
 	};
 }
 
-const Services: React.FC<ServicesProps> = ({ pageContext }) => {
+const Service: React.FC<ServicesProps> = ({ pageContext }) => {
 	const { title } = pageContext;
 	const pageTitle: string = title ? title : `Services`;
 
@@ -22,4 +22,4 @@ const Services: React.FC<ServicesProps> = ({ pageContext }) => {
 	);
 };
 
-export default Services;
+export default Service;
