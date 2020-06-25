@@ -1,9 +1,8 @@
 menuColumns:
-  - title: Services
+  - title: Colors
     menuItems:
-      - item: Service 1
-      - item: Service 3
-      - item: Service 2
+      - item: Primary
+      - item: Secondary
   - title: Company
     menuItems:
       - item: About Us

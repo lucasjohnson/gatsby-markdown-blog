@@ -2,10 +2,10 @@ siteTitle: Gatsby Netlify
 siteUrl: https://gatsby-and.netlify.app/
 siteDescription: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
   eiusmod tempor incididunt ut labore et dolore magna aliqua.
-siteAuthor: Lucas Johnson
+siteAuthor: Staff Writer
 siteBanner:
-  image: /assets/kate-trysh-dnkr_lmdki8-unsplash.jpg
-  imageAlt: Image of billboard
+  image: /assets/red.png
+  imageAlt: The colour red
 siteLogo:
   image: /assets/logo.png
   imageAlt: Website logo

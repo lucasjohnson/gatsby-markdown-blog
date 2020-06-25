@@ -1,7 +1,6 @@
 menuItems:
   - item: Blog
-  - item: Services
+  - item: Colors
     subItems:
-      - item: Service 3
-      - item: Service 2
-      - item: Service 1
+      - item: Primary
+      - item: Secondary
