@@ -4,6 +4,7 @@ import SEO from '../components/Head/SEO';
 import { Link, useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Anchor from '../components/Anchor';
+import Icon from '../components/Icon';
 import slugify from '../helpers/slugify';
 
 interface PostProps {
@@ -65,18 +66,21 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 		return (
 			<div className="author-profile">
 				{image && <Img className="author-image" fluid={profileFluid} alt={postTitle} />}
-				<span className="author-name">{author}</span>
-				{twitter && (
-					<Anchor
-						className="author-twitter"
-						url={`https://twitter.com/${twitter}`}
-						title={`${author} Twitter account`}
-						variant="link external"
-					>
-						{twitter}
-					</Anchor>
-				)}
-				<span className="post-date">{postDate}</span>
+				<div className="author-details">
+					<span className="author-name">{author}</span>
+					{twitter && (
+						<Anchor
+							className="author-twitter"
+							url={`https://twitter.com/${twitter}`}
+							title={`${author} Twitter account`}
+							variant="link external"
+						>
+							<Icon type="Twitter" />
+							{twitter}
+						</Anchor>
+					)}
+					<span className="post-date">{postDate}</span>
+				</div>
 			</div>
 		);
 	};
@@ -98,7 +102,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 						<h1 className="heading-1">{postTitle}</h1>
 					</div>
 				</div>
-				<Img className="post-banner" fluid={bannerFluid} alt={postTitle} />
+				<Img className="post-banner" fluid={bannerFluid} alt={bannerAlt} />
 				<div className="block">
 					<div className="block-inner">
 						{renderProfile()}
