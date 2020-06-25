@@ -64,7 +64,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 						childMarkdownRemark {
 							frontmatter {
 								title
+								abstract
 							}
+							html
 						}
 					}
 				}
@@ -122,14 +124,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	});
 
 	services.forEach(({ node }) => {
-		const { title } = node.childMarkdownRemark.frontmatter;
+		const { title, abstract } = node.childMarkdownRemark.frontmatter;
+		const { html } = node.childMarkdownRemark;
 		const slug = `/${title.replace(/ /g, `-`).toLowerCase()}`;
 
 		actions.createPage({
 			path: slug,
 			component: require.resolve(`./src/templates/service.tsx`),
 			context: {
-				title
+				title,
+				html,
+				abstract
 			}
 		});
 	});

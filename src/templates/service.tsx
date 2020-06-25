@@ -4,19 +4,21 @@ import SEO from '../components/Head/SEO';
 
 interface ServicesProps {
 	pageContext: {
+		abstract?: string;
+		html?: string;
 		title: string;
 	};
 }
 
 const Service: React.FC<ServicesProps> = ({ pageContext }) => {
-	const { title } = pageContext;
-	const pageTitle: string = title ? title : `Services`;
+	const { abstract, html, title } = pageContext;
 
 	return (
 		<Layout>
-			<SEO title={pageTitle} />
+			<SEO title={title} description={abstract} />
 			<section className="Services block">
-				<h1 className="heading-1">{pageTitle}</h1>
+				<h1 className="heading-1">{title}</h1>
+				<div className="body-copy" dangerouslySetInnerHTML={{ __html: html }}></div>
 			</section>
 		</Layout>
 	);
