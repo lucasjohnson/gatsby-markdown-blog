@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
-import { Link, useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import Anchor from '../components/Anchor';
 import Icon from '../components/Icon';
@@ -54,10 +54,10 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 	const renderTopics: Function = () =>
 		topics.map((topic: string, index: number) => {
 			return (
-				<li className="post-tag" key={index}>
-					<Link className="link" to={`/topics/${slugify(topic)}`} title={`Link to ${topic}`}>
+				<li className="post-topic" key={index}>
+					<Anchor url={`/blog#${slugify(topic)}`} title={topic} variant="link">
 						{topic}
-					</Link>
+					</Anchor>
 				</li>
 			);
 		});
@@ -107,7 +107,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 					<div className="block-inner">
 						{renderProfile()}
 						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
-						<ul className="post-tags">{renderTopics()}</ul>
+						<ul className="post-topics">{renderTopics()}</ul>
 					</div>
 				</div>
 			</article>
