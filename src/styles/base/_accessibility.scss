@@ -23,3 +23,14 @@
 	top: $spacing-small;
 	opacity: 1;
 }
+
+a,
+span.link {
+	text-decoration-skip-ink: auto;
+	transition: color $animation-duration $animation-timing;
+
+	&:focus {
+		outline: $focus-outline;
+		outline-offset: $focus-outline-offset;
+	}
+}

@@ -50,16 +50,10 @@ p,
 
 a {
 	color: $action-color;
-	text-decoration-skip-ink: auto;
 	transition: color $animation-duration $animation-timing;
 
 	&:hover {
 		color: $action-color-hover;
-	}
-
-	&:focus {
-		outline: $focus-outline;
-		outline-offset: $focus-outline-offset;
 	}
 }
 
