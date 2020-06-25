@@ -79,16 +79,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	const topics = topicsData.allFile.edges;
 	const services = servicesData.allFile.edges;
 
-	const slugify = (slug) => {
-		slug = slug.replace(/ /g, `-`).toLowerCase();
-		slug = slug.replace(/[^\x00-\x7F]/g, ``);
-		return slug;
-	};
-
 	pages.forEach(({ node }) => {
 		const { title } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
-		const slug = `/${slugify(title)}}`;
+		const slug = `/${title.replace(/ /g, `-`).toLowerCase()}`;
 
 		actions.createPage({
 			path: slug,
@@ -132,7 +126,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	services.forEach(({ node }) => {
 		const { title, abstract } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
-		const slug = `/${slugify(title)}}`;
+		const slug = `/${title.replace(/ /g, `-`).toLowerCase()}`;
 
 		actions.createPage({
 			path: slug,
