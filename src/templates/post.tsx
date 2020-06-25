@@ -106,7 +106,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 				<div className="block">
 					<div className="block-inner">
 						{renderProfile()}
-						<div className="body-copy" dangerouslySetInnerHTML={{ __html: html }}></div>
+						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
 						<ul className="post-tags">{renderTopics()}</ul>
 					</div>
 				</div>

@@ -24,7 +24,7 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 		);
 	};
 
-	const renderItems: Function = (menuItems: { item: string; index: number }[], parentSlug: { item: string }) =>
+	const renderItems: Function = (menuItems: { item: string; index: number }[]) =>
 		menuItems.map((item: { item: string; url?: string; subItems?: { item: string } }, index: number) => {
 			const { item: title, url } = item;
 

@@ -16,9 +16,13 @@ const Service: React.FC<ServicesProps> = ({ pageContext }) => {
 	return (
 		<Layout>
 			<SEO title={title} description={abstract} />
-			<section className="Services block">
-				<h1 className="heading-1">{title}</h1>
-				<div className="body-copy" dangerouslySetInnerHTML={{ __html: html }}></div>
+			<section className="Services">
+				<div className="block">
+					<div className="block-inner">
+						<h1 className="heading-1">{title}</h1>
+						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
+					</div>
+				</div>
 			</section>
 		</Layout>
 	);
