@@ -9,14 +9,10 @@
 	@if $position == 'VERTICAL' {
 		top: 50%;
 		transform: translateY(-50%);
-	}
-
-	@else if $position == 'HORIZONTAL' {
+	} @else if $position == 'HORIZONTAL' {
 		left: 50%;
 		transform: translateX(-50%);
-	}
-
-	@else if $position == 'BOTH' {
+	} @else if $position == 'BOTH' {
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
@@ -45,33 +41,23 @@
 		@media screen and (min-width: $breakpoint-small) {
 			@content;
 		}
-	}
-
-	@else if $size == 'MEDIUM' {
+	} @else if $size == 'MEDIUM' {
 		@media screen and (min-width: $breakpoint-medium) {
 			@content;
 		}
-	}
-
-	@else if $size == 'LARGE' {
+	} @else if $size == 'LARGE' {
 		@media screen and (min-width: $breakpoint-large) {
 			@content;
 		}
-	}
-
-	@else if $size == 'XLARGE' {
+	} @else if $size == 'XLARGE' {
 		@media screen and (min-width: $breakpoint-xlarge) {
 			@content;
 		}
-	}
-
-	@else if $size == 'XXLARGE' {
+	} @else if $size == 'XXLARGE' {
 		@media screen and (min-width: $breakpoint-xxlarge) {
 			@content;
 		}
-	}
-
-	@else {
+	} @else {
 		@content;
 	}
 }
@@ -79,4 +65,10 @@
 @mixin size($width, $height) {
 	width: $width;
 	height: $height;
+}
+
+@mixin flex($position) {
+	display: flex;
+	justify-content: $position;
+	align-items: $position;
 }
