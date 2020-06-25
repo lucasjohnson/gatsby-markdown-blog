@@ -15,7 +15,7 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 
 		return (
 			<React.Fragment>
-				<span className="link" tabindex="0">
+				<span className="link" tabIndex="0">
 					{title}
 				</span>
 				<Icon type={`ChevronDown`} />

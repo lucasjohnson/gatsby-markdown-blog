@@ -2,6 +2,23 @@ const { fmImagesToRelative } = require(`gatsby-remark-relative-images`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
+	const { data: pagesData } = await graphql(`
+		query {
+			allFile(filter: { relativeDirectory: { regex: "/(pages)/" } }) {
+				edges {
+					node {
+						childMarkdownRemark {
+							frontmatter {
+								title
+							}
+							html
+						}
+					}
+				}
+			}
+		}
+	`);
+
 	const { data: postsData } = await graphql(`
 		query {
 			allFile(filter: { relativeDirectory: { regex: "/(blog)/" } }) {
@@ -58,9 +75,25 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		}
 	`);
 
+	const pages = pagesData.allFile.edges;
 	const posts = postsData.allFile.edges;
 	const topics = topicsData.allFile.edges;
 	const services = servicesData.allFile.edges;
+
+	pages.forEach(({ node }) => {
+		const { title } = node.childMarkdownRemark.frontmatter;
+		const { html } = node.childMarkdownRemark;
+		const slug = `/${title.replace(/ /g, `-`).toLowerCase()}`;
+
+		actions.createPage({
+			path: slug,
+			component: require.resolve(`./src/templates/page.tsx`),
+			context: {
+				title,
+				html
+			}
+		});
+	});
 
 	posts.forEach(({ node }, index) => {
 		const { path } = node.childMarkdownRemark.frontmatter;
@@ -83,7 +116,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 		actions.createPage({
 			path: slug,
-			component: require.resolve(`./src/pages/topics.tsx`),
+			component: require.resolve(`./src/templates/topics.tsx`),
 			context: {
 				title,
 				posts
@@ -98,7 +131,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 		actions.createPage({
 			path: slug,
-			component: require.resolve(`./src/pages/services.tsx`),
+			component: require.resolve(`./src/templates/services.tsx`),
 			context: {
 				title,
 				posts
@@ -106,7 +139,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 	});
 
-	if (postsData.errors || servicesData.errors || topicsData.errors) {
+	if (pagesData.errors || postsData.errors || servicesData.errors || topicsData.errors) {
 		reporter.panicOnBuild(`Error while running GraphQL query.`);
 		return;
 	}

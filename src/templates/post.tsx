@@ -61,7 +61,7 @@ const Post: React.FC<PostProps> = ({ data }) => {
 				<Img fluid={fluid} alt={title} />
 				<div className="post-author">{author}</div>
 				<p className="post-date">{date}</p>
-				<div dangerouslySetInnerHTML={{ __html: html }}></div>
+				<div className="body-copy" dangerouslySetInnerHTML={{ __html: html }}></div>
 				<ul className="post-tags">{renderTopics()}</ul>
 			</article>
 		</Layout>
