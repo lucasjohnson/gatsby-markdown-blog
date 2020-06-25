@@ -9,8 +9,8 @@ interface TopicsProps {
 	};
 }
 
-const Topics: React.FC<TopicsProps> = ({ pageContext }) => {
-	const { title, posts } = pageContext;
+const Topic: React.FC<TopicsProps> = ({ pageContext }) => {
+	const { title } = pageContext;
 
 	console.log(pageContext);
 
@@ -24,4 +24,4 @@ const Topics: React.FC<TopicsProps> = ({ pageContext }) => {
 	);
 };
 
-export default Topics;
+export default Topic;

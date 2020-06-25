@@ -1,5 +1,40 @@
-const { fmImagesToRelative } = require(`gatsby-remark-relative-images`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
+const createTopicPages = (createPage, posts) => {
+	const postsByTopic = {};
+	const baseUrl = `/blog/topics`;
+
+	posts.forEach(({ node }) => {
+		if (node.childMarkdownRemark.frontmatter.topics) {
+			node.childMarkdownRemark.frontmatter.topics.forEach((topic) => {
+				if (!postsByTopic[topic]) {
+					postsByTopic[topic] = [];
+				}
+
+				postsByTopic[topic].push(node);
+			});
+		}
+	});
+
+	const topics = Object.keys(postsByTopic);
+
+	createPage({
+		path: baseUrl,
+		component: require.resolve(`./src/templates/topics.tsx`),
+		context: {
+			topics: topics.sort()
+		}
+	});
+
+	topics.forEach((topic) => {
+		const posts = postsByTopic[topic];
+
+		createPage({
+			path: `${baseUrl}/${topic.replace(/ /g, `-`).toLowerCase()}`,
+			component: require.resolve(`./src/templates/topic.tsx`),
+			context: posts,
+			topic
+		});
+	});
+};
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
 	const { data: pagesData } = await graphql(`
@@ -76,15 +111,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	const pages = pagesData.allFile.edges;
 	const posts = postsData.allFile.edges;
-	const topics = topicsData.allFile.edges;
 	const services = servicesData.allFile.edges;
+	const { createPage } = actions;
 
 	pages.forEach(({ node }) => {
 		const { title } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
 		const slug = `/${title.replace(/ /g, `-`).toLowerCase()}`;
 
-		actions.createPage({
+		createPage({
 			path: slug,
 			component: require.resolve(`./src/templates/page.tsx`),
 			context: {
@@ -94,10 +129,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 	});
 
+	createTopicPages(createPage, posts);
+
 	posts.forEach(({ node }, index) => {
 		const { path } = node.childMarkdownRemark.frontmatter;
 
-		actions.createPage({
+		createPage({
 			path: `/blog/${path}`,
 			component: require.resolve(`./src/templates/post.tsx`),
 			context: {
@@ -108,27 +145,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 	});
 
-	topics.forEach(({ node }) => {
-		let { slug } = node.childMarkdownRemark.fields;
-		slug = slug.slice(0, -1);
-		const { title } = node.childMarkdownRemark.frontmatter;
-
-		actions.createPage({
-			path: slug,
-			component: require.resolve(`./src/templates/topics.tsx`),
-			context: {
-				title,
-				posts
-			}
-		});
-	});
-
 	services.forEach(({ node }) => {
 		const { title, abstract } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
 		const slug = `/${title.replace(/ /g, `-`).toLowerCase()}`;
 
-		actions.createPage({
+		createPage({
 			path: slug,
 			component: require.resolve(`./src/templates/service.tsx`),
 			context: {
@@ -144,6 +166,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		return;
 	}
 };
+
+const { fmImagesToRelative } = require(`gatsby-remark-relative-images`);
+const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
 	const { createNodeField } = actions;

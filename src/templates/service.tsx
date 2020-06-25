@@ -4,8 +4,8 @@ import SEO from '../components/Head/SEO';
 
 interface ServicesProps {
 	pageContext: {
-		abstract?: string;
-		html?: string;
+		abstract: string;
+		html: string;
 		title: string;
 	};
 }
