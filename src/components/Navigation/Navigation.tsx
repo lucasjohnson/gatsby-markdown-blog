@@ -1,7 +1,7 @@
 import React from 'react';
 import Anchor from '../Anchor';
 import Icon from '../Icon';
-import slugify from '../../helpers/utils';
+import slugify from '../../helpers/slugify';
 
 interface NavigationProps {
 	data: {}[];
