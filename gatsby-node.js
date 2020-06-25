@@ -64,6 +64,36 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 								path
 								title
 								topics
+								author
+							}
+						}
+					}
+				}
+			}
+		}
+	`);
+
+	const { data: authorsData } = await graphql(`
+		query {
+			allFile(filter: { relativeDirectory: { regex: "/(authors)/" } }) {
+				edges {
+					node {
+						childMarkdownRemark {
+							frontmatter {
+								email
+								title
+								twitter
+								website
+								image {
+									childImageSharp {
+										fluid {
+											base64
+											aspectRatio
+											src
+											srcSet
+										}
+									}
+								}
 							}
 						}
 					}
@@ -111,6 +141,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	const pages = pagesData.allFile.edges;
 	const posts = postsData.allFile.edges;
+	const authors = authorsData.allFile.edges;
 	const services = servicesData.allFile.edges;
 	const { createPage } = actions;
 
@@ -132,7 +163,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	createTopicPages(createPage, posts);
 
 	posts.forEach(({ node }, index) => {
-		const { path } = node.childMarkdownRemark.frontmatter;
+		const { author, path } = node.childMarkdownRemark.frontmatter;
+
+		let postAuthor;
+
+		authors.forEach(({ node }) => {
+			const { frontmatter } = node.childMarkdownRemark;
+			const { title } = frontmatter;
+
+			if (author === title) {
+				postAuthor = frontmatter;
+			}
+		});
 
 		createPage({
 			path: `/blog/${path}`,
@@ -140,7 +182,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			context: {
 				pathSlug: `${path}`,
 				prev: index === 0 ? null : posts[index - 1].node,
-				next: index === posts.length - 1 ? null : posts[index + 1].node
+				next: index === posts.length - 1 ? null : posts[index + 1].node,
+				postAuthor
 			}
 		});
 	});
