@@ -6,6 +6,5 @@ menuColumns:
       - item: Service 2
   - title: Company
     menuItems:
-      - item: Home
       - item: About Us
       - item: Blog
