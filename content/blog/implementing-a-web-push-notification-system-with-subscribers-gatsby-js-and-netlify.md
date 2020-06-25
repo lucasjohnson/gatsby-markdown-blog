@@ -3,7 +3,7 @@ title: Implementing a Web Push Notification System with Subscribers, Gatsby JS
   and Netlify
 path: gatsby
 date: 2020-06-10T19:39:13.612Z
-author: Lucas
+author: Lucas Johnson
 topics:
   - Tag 2
 banner: /assets/1_w0x47uzlj01lrut2qzd1zg.png

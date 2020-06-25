@@ -2,7 +2,7 @@
 title: Test Blog Post
 path: blog-post
 date: 2020-06-15T18:37:11.499Z
-author: Lucas
+author: Lucas Johnson
 topics:
   - Tag 2
 banner: /assets/kate-trysh-dnkr_lmdki8-unsplash.jpg
