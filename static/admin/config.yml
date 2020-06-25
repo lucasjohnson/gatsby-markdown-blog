@@ -106,10 +106,11 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: Title, name: title, widget: string }
+      - { label: Name, name: title, widget: string }
       - { label: Email, name: email, widget: string, required: false }
       - { label: Twitter Handle, name: twitter, widget: string, required: false }
       - { label: Website, name: website, widget: string, required: false }
+      - { label: Profile Image, name: image, widget: image, required: false }
   - name: topics
     label: Topics
     folder: content/topics/
