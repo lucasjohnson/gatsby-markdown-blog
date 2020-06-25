@@ -1,0 +1,34 @@
+.post-topics {
+	&.span {
+		padding: 0 $spacing-large $spacing-large;
+
+		> .post-topic {
+			> .link {
+				font-size: $font-size-small;
+
+				&:hover {
+					@include background($lime);
+
+					border-color: $lime;
+				}
+			}
+		}
+	}
+
+	> .post-topic {
+		> .link {
+			@include background($lime);
+
+			padding: 0.3rem 0.5rem;
+			transition: $animation-base;
+			border: 0.1rem solid $lime;
+
+			&:hover {
+				@include background($white);
+
+				color: $font-color-base;
+				border-color: $black;
+			}
+		}
+	}
+}

@@ -41,25 +41,6 @@
 		}
 	}
 
-	.post-topics {
-		> .post-topic {
-			> .link {
-				@include background($lime);
-
-				padding: 0.3rem 0.5rem;
-				transition: $animation-base;
-				border: 0.1rem solid $lime;
-
-				&:hover {
-					@include background($white);
-
-					color: $font-color-base;
-					border-color: $black;
-				}
-			}
-		}
-	}
-
 	@include respond-to(LARGE) {
 		.heading-1 {
 			text-align: center;
