@@ -88,7 +88,9 @@
 				padding: 0 $spacing-large;
 			}
 
-			> .topic {
+			> .topics > .topic {
+				font-size: $font-size-small;
+				font-weight: $font-weight-bold;
 				padding: 0 $spacing-large $spacing-large;
 			}
 		}

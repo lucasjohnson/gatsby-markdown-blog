@@ -38,7 +38,7 @@ const GridCard: FunctionComponent<GridCardProps> = ({ data }) => {
 		<Link className="grid-card" to={path} title={title}>
 			<article className="card-content">
 				<Img fluid={fluid} alt={title} />
-				<h4 className="heading-4">{title}</h4>
+				<h2 className="heading-4">{title}</h2>
 				<p className="body-copy">{abstract}</p>
 				<ul className="topics">{renderTopics()}</ul>
 			</article>
