@@ -28,6 +28,17 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 								path
 								title
 								topics
+								banner {
+									childImageSharp {
+										fluid {
+											base64
+											aspectRatio
+											sizes
+											src
+											srcSet
+										}
+									}
+								}
 							}
 						}
 					}
@@ -105,13 +116,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	const topics = topicsData.allFile.edges;
 	const { createPage } = actions;
 
-	const allTtopicsArray = [];
-
-	topics.forEach(({ node }) => {
-		const { title } = node.childMarkdownRemark.frontmatter;
-		allTtopicsArray.push(title);
-	});
-
 	pages.forEach(({ node }) => {
 		const { title } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
@@ -152,6 +156,22 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 				next: index === posts.length - 1 ? null : posts[index + 1].node
 			}
 		});
+	});
+
+	const allTtopicsArray = [];
+
+	topics.forEach(({ node }) => {
+		const { title } = node.childMarkdownRemark.frontmatter;
+		allTtopicsArray.push(title);
+	});
+
+	createPage({
+		path: `/blog`,
+		component: require.resolve(`./src/templates/blog.tsx`),
+		context: {
+			posts,
+			topics: allTtopicsArray
+		}
 	});
 
 	services.forEach(({ node }) => {
