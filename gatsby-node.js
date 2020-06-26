@@ -82,11 +82,35 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		}
 	`);
 
+	const { data: topicsData } = await graphql(`
+		query {
+			allFile(filter: { relativeDirectory: { regex: "/(topics)/" } }) {
+				edges {
+					node {
+						childMarkdownRemark {
+							frontmatter {
+								title
+							}
+						}
+					}
+				}
+			}
+		}
+	`);
+
 	const pages = pagesData.allFile.edges;
 	const posts = postsData.allFile.edges;
 	const authors = authorsData.allFile.edges;
 	const services = servicesData.allFile.edges;
+	const topics = topicsData.allFile.edges;
 	const { createPage } = actions;
+
+	const allTtopicsArray = [];
+
+	topics.forEach(({ node }) => {
+		const { title } = node.childMarkdownRemark.frontmatter;
+		allTtopicsArray.push(title);
+	});
 
 	pages.forEach(({ node }) => {
 		const { title } = node.childMarkdownRemark.frontmatter;
