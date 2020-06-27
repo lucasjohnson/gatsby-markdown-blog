@@ -11,6 +11,17 @@
 		margin: $spacing-small 0;
 	}
 
+	.navigation.social {
+		margin-left: auto;
+
+		> .items > .item > .link {
+			padding: $spacing-small;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+	}
+
 	> .navigation.legal {
 		display: flex;
 		flex-wrap: wrap;

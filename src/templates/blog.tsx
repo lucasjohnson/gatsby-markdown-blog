@@ -15,7 +15,6 @@ interface BlogProps {
 						date: string;
 						path: string;
 						title: string;
-						topics?: string[];
 						banner: {
 							childImageSharp: {
 								fluid: {
@@ -30,6 +29,7 @@ interface BlogProps {
 				};
 			};
 		};
+		topics: string[];
 	};
 }
 
@@ -37,7 +37,7 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 	const { posts, topics } = pageContext;
 
 	const renderCard: Function = () =>
-		posts.map((post, index) => {
+		posts.map((post: { node: { childMarkdownRemark: { frontmatter: {} } } }, index: number) => {
 			const { node } = post;
 			const { childMarkdownRemark } = node;
 			const { frontmatter } = childMarkdownRemark;

@@ -1,2 +1,10 @@
 @import 'base/base';
-@import 'project/project';
+@import '../components/Header/Header';
+@import '../components/Footer/Footer';
+@import '../components/Navigation/Navigation';
+@import '../components/Navigation/MainNavigation';
+@import '../components/Navigation/BreadcrumbNavigation';
+@import '../components/Navigation/FooterNavigation';
+@import '../components/Navigation/LegalNavigation';
+@import '../components/TopicList';
+@import '../templates/Post';
