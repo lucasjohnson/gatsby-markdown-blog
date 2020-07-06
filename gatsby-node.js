@@ -139,10 +139,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	});
 
 	posts.forEach(({ node }, index) => {
-		const { author, date, path, tags } = node.childMarkdownRemark.frontmatter;
+		const { author, date, path: postPath, tags } = node.childMarkdownRemark.frontmatter;
 		const postTemplate = `./src/templates/post.tsx`;
 
 		let postAuthor = ``;
+
+		const context = {
+			pathSlug: postPath,
+			postAuthor,
+			postDate: date,
+			prev: index === 0 ? null : posts[index - 1].node,
+			next: index === posts.length - 1 ? null : posts[index + 1].node
+		};
 
 		authors.forEach(({ node }) => {
 			const { frontmatter } = node.childMarkdownRemark;
@@ -151,20 +159,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			if (author === title) {
 				postAuthor = frontmatter;
 			}
+
+			createPageFunction(`/${slugify(title)}`, `./src/templates/author.tsx`, { frontmatter });
+			createPageFunction(`/${slugify(title)}/${postPath}`, postTemplate, context);
 		});
 
-		const context = {
-			pathSlug: path,
-			postAuthor,
-			postDate: date,
-			prev: index === 0 ? null : posts[index - 1].node,
-			next: index === posts.length - 1 ? null : posts[index + 1].node
-		};
-
-		createPageFunction(path, postTemplate, context);
+		createPageFunction(postPath, postTemplate, context);
 
 		tags.forEach((tag) => {
-			createPageFunction(`/${slugify(tag)}/${path}`, postTemplate, context);
+			createPageFunction(`/${slugify(tag)}/${postPath}`, postTemplate, context);
 		});
 	});
 
