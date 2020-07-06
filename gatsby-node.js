@@ -205,17 +205,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 const { fmImagesToRelative } = require(`gatsby-remark-relative-images`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
+exports.onCreateNode = ({ node, actions }) => {
 	const { createNodeField } = actions;
 	fmImagesToRelative(node);
 
 	if (node.internal.type === `MarkdownRemark`) {
-		const slug = createFilePath({ node, getNode });
-
 		createNodeField({
-			node,
-			name: `slug`,
-			value: slug
+			node
 		});
 	}
 };
