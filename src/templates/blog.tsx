@@ -35,7 +35,6 @@ interface BlogProps {
 
 const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 	const { posts, tags } = pageContext;
-	console.log(pageContext);
 
 	const renderCard: Function = () =>
 		posts.map((post: { node: { childMarkdownRemark: { frontmatter: {} } } }, index: number) => {

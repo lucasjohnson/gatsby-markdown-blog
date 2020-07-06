@@ -27,7 +27,7 @@ const GridCard: React.FC<GridCardProps> = ({ data }) => {
 	const { fluid } = banner.childImageSharp;
 
 	return (
-		<Anchor className="grid-card" url={path} title={title} variant="link">
+		<Anchor className="grid-card" url={`/${path}`} title={title} variant="link">
 			<article className="card-content">
 				<Img fluid={fluid} alt={title} />
 				<h2 className="heading-4">{title}</h2>
