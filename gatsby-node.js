@@ -100,8 +100,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 					node {
 						childMarkdownRemark {
 							frontmatter {
+								abstract
 								title
 							}
+							html
 						}
 					}
 				}
@@ -132,16 +134,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	pages.forEach(({ node }) => {
 		const { title } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
-		const context = { title, html };
 
-		createPageFunction(`/${slugify(title)}`, `./src/templates/page.tsx`, context);
+		createPageFunction(`/${slugify(title)}`, `./src/templates/page.tsx`, { title, html });
 	});
 
 	posts.forEach(({ node }, index) => {
 		const { author, date, path, tags } = node.childMarkdownRemark.frontmatter;
 		const postTemplate = `./src/templates/post.tsx`;
 
-		let postAuthor;
+		let postAuthor = ``;
 
 		authors.forEach(({ node }) => {
 			const { frontmatter } = node.childMarkdownRemark;
@@ -170,7 +171,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	const allTagsArray = [];
 
 	tags.forEach(({ node }) => {
-		const { title } = node.childMarkdownRemark.frontmatter;
+		const { title, abstract } = node.childMarkdownRemark.frontmatter;
+		const { html } = node.childMarkdownRemark;
+
+		createPageFunction(`/${slugify(title)}`, `./src/templates/tag.tsx`, { abstract, html, title });
+
 		allTagsArray.push(title);
 	});
 
