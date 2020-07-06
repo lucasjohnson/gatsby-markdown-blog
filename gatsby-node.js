@@ -109,34 +109,37 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		}
 	`);
 
+	const slugify = (string) => {
+		return string.replace(/ /g, `-`).toLowerCase();
+	};
+
+	const { createPage } = actions;
+
+	const createPageFunction = (path, component, context) => {
+		createPage({
+			path: path,
+			component: require.resolve(component),
+			context: context
+		});
+	};
+
 	const pages = pagesData.allFile.edges;
 	const posts = postsData.allFile.edges;
 	const authors = authorsData.allFile.edges;
 	const services = servicesData.allFile.edges;
 	const tags = tagsData.allFile.edges;
-	const { createPage } = actions;
-
-	const slugify = (string) => {
-		return string.replace(/ /g, `-`).toLowerCase();
-	};
 
 	pages.forEach(({ node }) => {
 		const { title } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
-		const slug = `/${slugify(title)}`;
+		const context = { title, html };
 
-		createPage({
-			path: slug,
-			component: require.resolve(`./src/templates/page.tsx`),
-			context: {
-				title,
-				html
-			}
-		});
+		createPageFunction(`/${slugify(title)}`, `./src/templates/page.tsx`, context);
 	});
 
 	posts.forEach(({ node }, index) => {
 		const { author, date, path, tags } = node.childMarkdownRemark.frontmatter;
+		const postTemplate = `./src/templates/post.tsx`;
 
 		let postAuthor;
 
@@ -149,26 +152,18 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			}
 		});
 
-		const postCreatePage = (topic) => {
-			const postPathname = topic ? `${topic && `/${slugify(topic)}`}/${path}` : `/${path}`;
-
-			createPage({
-				path: `${postPathname}`,
-				component: require.resolve(`./src/templates/post.tsx`),
-				context: {
-					pathSlug: `${path}`,
-					postAuthor,
-					postDate: date,
-					prev: index === 0 ? null : posts[index - 1].node,
-					next: index === posts.length - 1 ? null : posts[index + 1].node
-				}
-			});
+		const context = {
+			pathSlug: path,
+			postAuthor,
+			postDate: date,
+			prev: index === 0 ? null : posts[index - 1].node,
+			next: index === posts.length - 1 ? null : posts[index + 1].node
 		};
 
-		postCreatePage();
+		createPageFunction(path, postTemplate, context);
 
 		tags.forEach((tag) => {
-			postCreatePage(tag);
+			createPageFunction(`/${slugify(tag)}/${path}`, postTemplate, context);
 		});
 	});
 
@@ -179,29 +174,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		allTagsArray.push(title);
 	});
 
-	createPage({
-		path: `/blog`,
-		component: require.resolve(`./src/templates/blog.tsx`),
-		context: {
-			posts,
-			tags: allTagsArray
-		}
-	});
+	createPageFunction(`/blog`, `./src/templates/blog.tsx`, { posts, tags: allTagsArray });
 
 	services.forEach(({ node }) => {
 		const { title, abstract } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
-		const slug = `/${slugify(title)}`;
 
-		createPage({
-			path: slug,
-			component: require.resolve(`./src/templates/service.tsx`),
-			context: {
-				title,
-				html,
-				abstract
-			}
-		});
+		createPageFunction(`/${slugify(title)}`, `./src/templates/service.tsx`, { title, html, abstract });
 	});
 
 	if (authorsData.errors || pagesData.errors || postsData.errors || servicesData.errors || tagsData.errors) {
