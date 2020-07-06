@@ -116,10 +116,14 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	const topics = topicsData.allFile.edges;
 	const { createPage } = actions;
 
+	const slugify = (string) => {
+		return string.replace(/ /g, `-`).toLowerCase();
+	};
+
 	pages.forEach(({ node }) => {
 		const { title } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
-		const slug = `/${title.replace(/ /g, `-`).toLowerCase()}`;
+		const slug = `/${slugify(title)}`;
 
 		createPage({
 			path: slug,
@@ -177,7 +181,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	services.forEach(({ node }) => {
 		const { title, abstract } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
-		const slug = `/${title.replace(/ /g, `-`).toLowerCase()}`;
+		const slug = `/${slugify(title)}`;
 
 		createPage({
 			path: slug,
