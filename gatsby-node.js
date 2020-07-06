@@ -1,4 +1,32 @@
 exports.createPages = async ({ actions, graphql, reporter }) => {
+	const { data: authorsData } = await graphql(`
+		query {
+			allFile(filter: { relativeDirectory: { regex: "/(authors)/" } }) {
+				edges {
+					node {
+						childMarkdownRemark {
+							frontmatter {
+								title
+								twitter
+								image {
+									childImageSharp {
+										fluid {
+											base64
+											aspectRatio
+											sizes
+											src
+											srcSet
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	`);
+
 	const { data: pagesData } = await graphql(`
 		query {
 			allFile(filter: { relativeDirectory: { regex: "/(pages)/" } }) {
@@ -29,34 +57,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 								title
 								tags
 								banner {
-									childImageSharp {
-										fluid {
-											base64
-											aspectRatio
-											sizes
-											src
-											srcSet
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
-	`);
-
-	const { data: authorsData } = await graphql(`
-		query {
-			allFile(filter: { relativeDirectory: { regex: "/(authors)/" } }) {
-				edges {
-					node {
-						childMarkdownRemark {
-							frontmatter {
-								title
-								twitter
-								image {
 									childImageSharp {
 										fluid {
 											base64
@@ -125,11 +125,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 	};
 
+	const authors = authorsData.allFile.edges;
 	const pages = pagesData.allFile.edges;
 	const posts = postsData.allFile.edges;
-	const authors = authorsData.allFile.edges;
 	const services = servicesData.allFile.edges;
 	const tags = tagsData.allFile.edges;
+
+	createPageFunction(`/blog`, `./src/templates/blog.tsx`, { posts, tags: allTagsArray });
 
 	pages.forEach(({ node }) => {
 		const { title } = node.childMarkdownRemark.frontmatter;
@@ -173,6 +175,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	const allTagsArray = [];
 
+	services.forEach(({ node }) => {
+		const { title, abstract } = node.childMarkdownRemark.frontmatter;
+		const { html } = node.childMarkdownRemark;
+
+		createPageFunction(`/${slugify(title)}`, `./src/templates/service.tsx`, { title, html, abstract });
+	});
+
 	tags.forEach(({ node }) => {
 		const { title, abstract } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
@@ -180,15 +189,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		createPageFunction(`/${slugify(title)}`, `./src/templates/tag.tsx`, { abstract, html, title });
 
 		allTagsArray.push(title);
-	});
-
-	createPageFunction(`/blog`, `./src/templates/blog.tsx`, { posts, tags: allTagsArray });
-
-	services.forEach(({ node }) => {
-		const { title, abstract } = node.childMarkdownRemark.frontmatter;
-		const { html } = node.childMarkdownRemark;
-
-		createPageFunction(`/${slugify(title)}`, `./src/templates/service.tsx`, { title, html, abstract });
 	});
 
 	if (authorsData.errors || pagesData.errors || postsData.errors || servicesData.errors || tagsData.errors) {
