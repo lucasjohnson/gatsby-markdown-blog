@@ -145,14 +145,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 		let postAuthor = ``;
 
-		const context = {
-			pathSlug: postPath,
-			postAuthor,
-			postDate: date,
-			prev: index === 0 ? null : posts[index - 1].node,
-			next: index === posts.length - 1 ? null : posts[index + 1].node
-		};
-
 		authors.forEach(({ node }) => {
 			const { frontmatter } = node.childMarkdownRemark;
 			const { title } = frontmatter;
@@ -162,18 +154,26 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			}
 
 			createPageFunction(`/${slugify(title)}`, `./src/templates/author.tsx`, { frontmatter });
-			createPageFunction(`/${slugify(title)}/${postPath}`, postTemplate, context);
 		});
 
-		tags.forEach((tag) => {
-			createPageFunction(`/${slugify(tag)}/${postPath}`, postTemplate, context);
-		});
+		const context = {
+			pathSlug: postPath,
+			postAuthor,
+			postDate: date,
+			prev: index === 0 ? null : posts[index - 1].node,
+			next: index === posts.length - 1 ? null : posts[index + 1].node
+		};
+
+		createPageFunction(postPath, postTemplate, context);
+		createPageFunction(`/${slugify(author)}/${postPath}`, postTemplate, context);
 
 		services.forEach((service) => {
 			createPageFunction(`/${slugify(service)}/${postPath}`, postTemplate, context);
 		});
 
-		createPageFunction(postPath, postTemplate, context);
+		tags.forEach((tag) => {
+			createPageFunction(`/${slugify(tag)}/${postPath}`, postTemplate, context);
+		});
 	});
 
 	const allTagsArray = [];
