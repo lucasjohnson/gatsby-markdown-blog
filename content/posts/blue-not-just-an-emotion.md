@@ -3,6 +3,8 @@ title: Blue, not just an Emotion
 path: blue-emotion
 date: 2020-06-10T19:41:16.558Z
 author: Staff Writer
+services:
+  - Web Development
 tags:
   - JavaScript
 banner: /assets/blue.png

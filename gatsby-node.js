@@ -55,6 +55,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 								date(formatString: "MMMM DD, YYYY")
 								path
 								title
+								services
 								tags
 								banner {
 									childImageSharp {
@@ -131,8 +132,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	const services = servicesData.allFile.edges;
 	const tags = tagsData.allFile.edges;
 
-	createPageFunction(`/blog`, `./src/templates/blog.tsx`, { posts, tags: allTagsArray });
-
 	pages.forEach(({ node }) => {
 		const { title } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
@@ -141,7 +140,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	});
 
 	posts.forEach(({ node }, index) => {
-		const { author, date, path: postPath, tags } = node.childMarkdownRemark.frontmatter;
+		const { author, date, path: postPath, services, tags } = node.childMarkdownRemark.frontmatter;
 		const postTemplate = `./src/templates/post.tsx`;
 
 		let postAuthor = ``;
@@ -166,11 +165,15 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			createPageFunction(`/${slugify(title)}/${postPath}`, postTemplate, context);
 		});
 
-		createPageFunction(postPath, postTemplate, context);
-
 		tags.forEach((tag) => {
 			createPageFunction(`/${slugify(tag)}/${postPath}`, postTemplate, context);
 		});
+
+		services.forEach((service) => {
+			createPageFunction(`/${slugify(service)}/${postPath}`, postTemplate, context);
+		});
+
+		createPageFunction(postPath, postTemplate, context);
 	});
 
 	const allTagsArray = [];
@@ -190,6 +193,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 		allTagsArray.push(title);
 	});
+
+	createPageFunction(`/blog`, `./src/templates/blog.tsx`, { posts, tags: allTagsArray });
 
 	if (authorsData.errors || pagesData.errors || postsData.errors || servicesData.errors || tagsData.errors) {
 		reporter.panicOnBuild(`Error while running GraphQL query.`);

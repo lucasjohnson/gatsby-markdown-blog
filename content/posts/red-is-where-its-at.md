@@ -3,6 +3,8 @@ title: Red is where it's at
 path: where-red
 date: 2020-06-10T19:41:16.558Z
 author: Staff Writer
+services:
+  - Web Development
 tags:
   - React
 banner: /assets/red.png
