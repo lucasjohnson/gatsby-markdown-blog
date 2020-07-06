@@ -136,7 +136,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	});
 
 	posts.forEach(({ node }, index) => {
-		const { author, date, path } = node.childMarkdownRemark.frontmatter;
+		const { author, date, path, topics } = node.childMarkdownRemark.frontmatter;
 
 		let postAuthor;
 
@@ -149,16 +149,26 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			}
 		});
 
-		createPage({
-			path: `/blog/${path}`,
-			component: require.resolve(`./src/templates/post.tsx`),
-			context: {
-				pathSlug: `${path}`,
-				postAuthor,
-				postDate: date,
-				prev: index === 0 ? null : posts[index - 1].node,
-				next: index === posts.length - 1 ? null : posts[index + 1].node
-			}
+		const postCreatePage = (topic) => {
+			const postPathname = topic ? `${topic && `/${slugify(topic)}`}/${path}` : `/${path}`;
+
+			createPage({
+				path: `${postPathname}`,
+				component: require.resolve(`./src/templates/post.tsx`),
+				context: {
+					pathSlug: `${path}`,
+					postAuthor,
+					postDate: date,
+					prev: index === 0 ? null : posts[index - 1].node,
+					next: index === posts.length - 1 ? null : posts[index + 1].node
+				}
+			});
+		};
+
+		postCreatePage();
+
+		topics.forEach((topic) => {
+			postCreatePage(topic);
 		});
 	});
 
