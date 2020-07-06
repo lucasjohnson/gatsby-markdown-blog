@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../components/Layout';
 import GridBox from '../components/GridBox';
 import GridCard from '../components/GridCard';
-import TopicList from '../components/TopicList';
+import TagList from '../components/TagList';
 import SEO from '../components/Head/SEO';
 
 interface BlogProps {
@@ -29,12 +29,13 @@ interface BlogProps {
 				};
 			};
 		};
-		topics: string[];
+		tags: string[];
 	};
 }
 
 const Blog: React.FC<BlogProps> = ({ pageContext }) => {
-	const { posts, topics } = pageContext;
+	const { posts, tags } = pageContext;
+	console.log(pageContext);
 
 	const renderCard: Function = () =>
 		posts.map((post: { node: { childMarkdownRemark: { frontmatter: {} } } }, index: number) => {
@@ -49,7 +50,7 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 			<SEO title="Blog" />
 			<section className="Blog block">
 				<h1 className="heading-1">Blog</h1>
-				<TopicList topics={topics} variant="span" />
+				<TagList tags={tags} variant="span" />
 				<GridBox variant="grid-box" column={1} columnMd={2} columnLg={3}>
 					{renderCard()}
 				</GridBox>

@@ -3,8 +3,8 @@ title: Violet is the Best Colour
 path: violet-best-colour
 date: 2020-06-10T19:41:16.558Z
 author: Staff Writer
-topics:
-  - Not Primary
+tags:
+  - React
 banner: /assets/violet.png
 bannerAlt: A swap of the colour violet.
 abstract: 10 reasons why violet is the best colour.

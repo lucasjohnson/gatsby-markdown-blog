@@ -1,8 +1,8 @@
-.post-topics {
+.post-tags {
 	&.span {
 		padding: 0 $spacing-large $spacing-large;
 
-		> .post-topic {
+		> .post-tag {
 			> .link {
 				font-size: $font-size-small;
 
@@ -15,7 +15,7 @@
 		}
 	}
 
-	> .post-topic {
+	> .post-tag {
 		> .link {
 			@include background($lime);
 

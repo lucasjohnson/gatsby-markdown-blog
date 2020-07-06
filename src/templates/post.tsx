@@ -4,7 +4,7 @@ import SEO from '../components/Head/SEO';
 import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import AuthorDetails from '../components/AuthorDetails';
-import TopicList from '../components/TopicList';
+import TagList from '../components/TagList';
 
 interface PostProps {
 	data: {
@@ -22,7 +22,7 @@ interface PostProps {
 				date: string;
 				path: string;
 				title: string;
-				topics: [];
+				tags: [];
 			};
 			html: string;
 		};
@@ -44,7 +44,7 @@ interface PostProps {
 const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 	const { markdownRemark } = data;
 	const { frontmatter, html } = markdownRemark;
-	const { abstract, banner, bannerAlt, date, path, title: postTitle, topics } = frontmatter;
+	const { abstract, banner, bannerAlt, date, path, title: postTitle, tags } = frontmatter;
 	const { fluid } = banner.childImageSharp;
 
 	return (
@@ -69,7 +69,7 @@ const Post: React.FC<PostProps> = ({ data, pageContext }) => {
 					<div className="block-inner">
 						<AuthorDetails data={pageContext} postTitle={postTitle} variant="brief" />
 						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
-						<TopicList topics={topics} variant="link" />
+						<TagList tags={tags} variant="link" />
 					</div>
 				</div>
 			</article>
@@ -88,7 +88,7 @@ export const pageQuery = graphql`
 				date
 				path
 				title
-				topics
+				tags
 				banner {
 					childImageSharp {
 						fluid {

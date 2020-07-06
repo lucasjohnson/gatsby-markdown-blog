@@ -27,7 +27,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 								date(formatString: "MMMM DD, YYYY")
 								path
 								title
-								topics
+								tags
 								banner {
 									childImageSharp {
 										fluid {
@@ -93,9 +93,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		}
 	`);
 
-	const { data: topicsData } = await graphql(`
+	const { data: tagsData } = await graphql(`
 		query {
-			allFile(filter: { relativeDirectory: { regex: "/(topics)/" } }) {
+			allFile(filter: { relativeDirectory: { regex: "/(tags)/" } }) {
 				edges {
 					node {
 						childMarkdownRemark {
@@ -113,7 +113,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	const posts = postsData.allFile.edges;
 	const authors = authorsData.allFile.edges;
 	const services = servicesData.allFile.edges;
-	const topics = topicsData.allFile.edges;
+	const tags = tagsData.allFile.edges;
 	const { createPage } = actions;
 
 	const slugify = (string) => {
@@ -136,7 +136,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	});
 
 	posts.forEach(({ node }, index) => {
-		const { author, date, path, topics } = node.childMarkdownRemark.frontmatter;
+		const { author, date, path, tags } = node.childMarkdownRemark.frontmatter;
 
 		let postAuthor;
 
@@ -167,16 +167,16 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 		postCreatePage();
 
-		topics.forEach((topic) => {
-			postCreatePage(topic);
+		tags.forEach((tag) => {
+			postCreatePage(tag);
 		});
 	});
 
-	const allTtopicsArray = [];
+	const allTagsArray = [];
 
-	topics.forEach(({ node }) => {
+	tags.forEach(({ node }) => {
 		const { title } = node.childMarkdownRemark.frontmatter;
-		allTtopicsArray.push(title);
+		allTagsArray.push(title);
 	});
 
 	createPage({
@@ -184,7 +184,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		component: require.resolve(`./src/templates/blog.tsx`),
 		context: {
 			posts,
-			topics: allTtopicsArray
+			tags: allTagsArray
 		}
 	});
 

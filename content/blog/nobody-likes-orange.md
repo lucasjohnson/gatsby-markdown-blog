@@ -3,8 +3,8 @@ title: Nobody Likes Orange
 path: nobody-likes-orange
 date: 2020-06-10T19:41:16.558Z
 author: Staff Writer
-topics:
-  - Not Primary
+tags:
+  - JavaScript
 banner: /assets/orange.png
 bannerAlt: A swap of the colour orange.
 abstract: This title is click bait. Orange is awesome!.

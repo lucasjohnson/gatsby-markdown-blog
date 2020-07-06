@@ -1,14 +1,14 @@
 import React from 'react';
 import Img from 'gatsby-image';
 import Anchor from './Anchor';
-import TopicsList from './TopicList';
+import TagList from './TagList';
 
 interface GridCardProps {
 	data: {
 		abstract: string;
 		path: string;
 		title: string;
-		topics: string[];
+		tags: string[];
 		banner: {
 			childImageSharp: {
 				fluid: {
@@ -23,7 +23,7 @@ interface GridCardProps {
 }
 
 const GridCard: React.FC<GridCardProps> = ({ data }) => {
-	const { abstract, banner, path, title, topics } = data;
+	const { abstract, banner, path, title, tags } = data;
 	const { fluid } = banner.childImageSharp;
 
 	return (
@@ -32,7 +32,7 @@ const GridCard: React.FC<GridCardProps> = ({ data }) => {
 				<Img fluid={fluid} alt={title} />
 				<h2 className="heading-4">{title}</h2>
 				<p className="body-copy">{abstract}</p>
-				<TopicsList topics={topics} variant="span" />
+				<TagList tags={tags} variant="span" />
 			</article>
 		</Anchor>
 	);

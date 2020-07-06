@@ -3,21 +3,21 @@ import Anchor from './Anchor';
 import Button from './Button';
 import slugify from '../helpers/slugify';
 
-interface TopicProps {
-	topics: string[];
+interface TagProps {
+	tags: string[];
 	variant: 'button' | 'link' | 'span';
 }
 
-const TopicList: React.FC<TopicProps> = ({ topics, variant }) => {
-	const renderTopics: Function = () =>
-		topics.map((topic: string, index: number) => {
+const TagList: React.FC<TagProps> = ({ tags, variant }) => {
+	const renderTags: Function = () =>
+		tags.map((tag: string, index: number) => {
 			let tagElement;
 
 			switch (variant) {
 				case `link`:
 					tagElement = (
-						<Anchor url={`/blog#${slugify(topic)}`} title={topic} variant="link">
-							{topic}
+						<Anchor url={`/blog#${slugify(tag)}`} title={tag} variant="link">
+							{tag}
 						</Anchor>
 					);
 					break;
@@ -25,20 +25,20 @@ const TopicList: React.FC<TopicProps> = ({ topics, variant }) => {
 					tagElement = <Button variant="primary" />;
 					break;
 				case `span`:
-					tagElement = <span className="link">{topic}</span>;
+					tagElement = <span className="link">{tag}</span>;
 					break;
 				default:
 					return null;
 			}
 
 			return (
-				<li className="post-topic" key={index}>
+				<li className="post-tag" key={index}>
 					{tagElement}
 				</li>
 			);
 		});
 
-	return <ul className={`post-topics ${variant}`}>{renderTopics()}</ul>;
+	return <ul className={`post-tags ${variant}`}>{renderTags()}</ul>;
 };
 
-export default TopicList;
+export default TagList;

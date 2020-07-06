@@ -22,10 +22,10 @@ collections:
       - { label: Date, name: date, widget: date }
       - { label: Author, name: author, widget: relation, collection: authors, searchFields: [title], valueField: title }
       - {
-          label: Topics,
-          name: topics,
+          label: Tags,
+          name: tags,
           widget: relation,
-          collection: topics,
+          collection: tags,
           searchFields: [title],
           valueField: title,
           multiple: true,
@@ -75,10 +75,10 @@ collections:
     fields:
       - { label: Title, name: title, widget: string }
       - {
-          label: Related Topics,
-          name: topics,
+          label: Related Tags,
+          name: tags,
           widget: relation,
-          collection: topics,
+          collection: tags,
           searchFields: [title],
           valueField: title,
           multiple: true,
@@ -111,9 +111,9 @@ collections:
       - { label: Twitter Handle, name: twitter, widget: string, required: false }
       - { label: Website, name: website, widget: string, required: false }
       - { label: Profile Image, name: image, widget: image, required: false }
-  - name: topics
-    label: Topics
-    folder: content/topics/
+  - name: tags
+    label: Tags
+    folder: content/tags/
     create: true
     editor:
       preview: false

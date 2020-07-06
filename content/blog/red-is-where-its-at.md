@@ -3,8 +3,8 @@ title: Red is where it's at
 path: where-red
 date: 2020-06-10T19:41:16.558Z
 author: Staff Writer
-topics:
-  - Primary
+tags:
+  - React
 banner: /assets/red.png
 bannerAlt: A swap of the colour red.
 abstract: Red is where it's at. Heres's why.

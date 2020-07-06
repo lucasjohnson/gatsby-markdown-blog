@@ -3,8 +3,9 @@ title: Yellow is Undervalued
 path: yellow-undervalued
 date: 2020-06-10T19:41:16.558Z
 author: Staff Writer
-topics:
-  - Not Primary
+tags:
+  - JavaScript
+  - React
 banner: /assets/yellow.png
 bannerAlt: A swap of the colour yellow.
 abstract: Making yellow great again!

@@ -3,8 +3,8 @@ title: Blue, not just an Emotion
 path: blue-emotion
 date: 2020-06-10T19:41:16.558Z
 author: Staff Writer
-topics:
-  - Primary
+tags:
+  - JavaScript
 banner: /assets/blue.png
 bannerAlt: A swap of the colour blue.
 abstract: Feeling blue, but also confused? Here's why.
