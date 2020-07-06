@@ -16,7 +16,7 @@ const TagList: React.FC<TagProps> = ({ tags, variant }) => {
 			switch (variant) {
 				case `link`:
 					tagElement = (
-						<Anchor url={`/blog#${slugify(tag)}`} title={tag} variant="link">
+						<Anchor url={`/${slugify(tag)}`} title={tag} variant="link">
 							{tag}
 						</Anchor>
 					);

@@ -49,7 +49,7 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 			<SEO title="Blog" />
 			<section className="Blog block">
 				<h1 className="heading-1">Blog</h1>
-				<TagList tags={tags} variant="span" />
+				<TagList tags={tags} variant="button" />
 				<GridBox variant="grid-box" column={1} columnMd={2} columnLg={3}>
 					{renderCard()}
 				</GridBox>
