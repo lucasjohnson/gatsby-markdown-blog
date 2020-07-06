@@ -1,6 +1,6 @@
 menuItems:
   - item: Blog
-  - item: Colors
+  - item: Services
     subItems:
-      - item: Primary
-      - item: Secondary
+      - item: Web Development
+      - item: Web Design

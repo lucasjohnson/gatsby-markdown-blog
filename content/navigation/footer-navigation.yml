@@ -1,8 +1,8 @@
 menuColumns:
-  - title: Colors
+  - title: Services
     menuItems:
-      - item: Primary
-      - item: Secondary
+      - item: Web Development
+      - item: Web Design
   - title: Company
     menuItems:
       - item: About Us

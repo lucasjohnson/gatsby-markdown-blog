@@ -1,7 +1,5 @@
 ---
-title: Secondary
-topics:
-  - Not Primary
+title: Web Design
 abstract: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
   eiusmod tempor incididunt ut labore et dolore magna aliqua. Netus et malesuada
   fames ac turpis.
