@@ -1,7 +1,7 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import Img from 'gatsby-image';
 import AuthorDetails from '../components/AuthorDetails';
 import TopicList from '../components/TopicList';
