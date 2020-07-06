@@ -18,7 +18,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	const { data: postsData } = await graphql(`
 		query {
-			allFile(filter: { relativeDirectory: { regex: "/(blog)/" } }) {
+			allFile(filter: { relativeDirectory: { regex: "/(posts)/" } }) {
 				edges {
 					node {
 						childMarkdownRemark {
