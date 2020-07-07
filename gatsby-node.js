@@ -5,9 +5,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 				edges {
 					node {
 						childMarkdownRemark {
+							html
 							frontmatter {
 								title
 								twitter
+								abstract
 								image {
 									childImageSharp {
 										fluid {
@@ -153,7 +155,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		let postAuthor = ``;
 
 		authors.forEach(({ node }) => {
-			const { frontmatter } = node.childMarkdownRemark;
+			const { frontmatter, html } = node.childMarkdownRemark;
 			const { title } = frontmatter;
 
 			if (author === title) {
@@ -162,6 +164,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 			createPageFunction(`/${slugify(title)}`, `./src/templates/author.tsx`, {
 				frontmatter,
+				html,
 				posts: filteredPosts(posts, `author`, title)
 			});
 		});
