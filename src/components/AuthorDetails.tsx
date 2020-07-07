@@ -4,32 +4,29 @@ import Anchor from './Anchor';
 import Icon from './Icon';
 
 interface AuthorProps {
-	data: {
-		postAuthor: {
-			title: string;
-			twitter: string;
-			image: {
-				childImageSharp: {
-					fluid: {};
-				};
+	author: {
+		title: string;
+		twitter: string;
+		image: {
+			childImageSharp: {
+				fluid: {};
 			};
 		};
-		postDate: string;
 	};
-	postTitle: string;
+	date: string;
+	title: string;
 	variant: 'brief' | 'full';
 }
 
-const AuthorDetails: React.FC<AuthorProps> = ({ data, postTitle, variant }) => {
-	const { title: author, twitter, image } = data.postAuthor;
-	const { fluid: profileFluid } = image.childImageSharp;
-	const { postDate } = data;
+const AuthorDetails: React.FC<AuthorProps> = ({ author, date, title, variant }) => {
+	const { title: name, twitter, image } = author;
+	const { fluid } = image.childImageSharp;
 
 	return (
 		<div className={`author-profile ${variant}`}>
-			{image && <Img className="author-image" fluid={profileFluid} alt={postTitle} />}
+			{image && <Img className="author-image" fluid={fluid} alt={title} />}
 			<div className="author-details">
-				<span className="author-name">{author}</span>
+				<span className="author-name">{name}</span>
 				{twitter && (
 					<Anchor
 						className="author-twitter"
@@ -41,7 +38,7 @@ const AuthorDetails: React.FC<AuthorProps> = ({ data, postTitle, variant }) => {
 						{twitter}
 					</Anchor>
 				)}
-				<span className="post-date">{postDate}</span>
+				<span className="post-date">{date}</span>
 			</div>
 		</div>
 	);

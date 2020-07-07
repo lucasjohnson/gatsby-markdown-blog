@@ -50,6 +50,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 				edges {
 					node {
 						childMarkdownRemark {
+							html
 							frontmatter {
 								author
 								date(formatString: "MMMM DD, YYYY")
@@ -140,8 +141,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 	});
 
 	posts.forEach(({ node }, index) => {
-		const { author, date, path: postPath, services, tags } = node.childMarkdownRemark.frontmatter;
+		const { frontmatter, html } = node.childMarkdownRemark;
+		const { author, services, tags, title } = frontmatter;
 		const postTemplate = `./src/templates/post.tsx`;
+		const postPath = slugify(title);
 
 		let postAuthor = ``;
 
@@ -157,9 +160,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 
 		const context = {
-			pathSlug: postPath,
+			frontmatter,
+			html,
 			postAuthor,
-			postDate: date,
 			prev: index === 0 ? null : posts[index - 1].node,
 			next: index === posts.length - 1 ? null : posts[index + 1].node
 		};
@@ -203,7 +206,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 };
 
 const { fmImagesToRelative } = require(`gatsby-remark-relative-images`);
-const { createFilePath } = require(`gatsby-source-filesystem`);
 
 exports.onCreateNode = ({ node, actions }) => {
 	const { createNodeField } = actions;
