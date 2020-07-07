@@ -5,9 +5,8 @@ import Img from 'gatsby-image';
 import AuthorDetails from '../components/AuthorDetails';
 
 const Author: React.FC<AuthorProps> = ({ pageContext }) => {
-	const { frontmatter } = pageContext;
+	const { frontmatter, html } = pageContext;
 	const { title, abstract } = frontmatter;
-	console.log(frontmatter);
 
 	return (
 		<Layout>
@@ -15,7 +14,8 @@ const Author: React.FC<AuthorProps> = ({ pageContext }) => {
 			<section className="Author">
 				<div className="block">
 					<div className="block-inner">
-						<AuthorDetails author={frontmatter} variant="brief" />
+						<AuthorDetails author={frontmatter} variant="brief" />
+						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
 					</div>
 				</div>
 			</section>
@@ -27,6 +27,7 @@ export default Author;
 
 interface AuthorProps {
 	pageContext: {
+		html: string;
 		frontmatter: {
 			abstract: string;
 			title: string;
