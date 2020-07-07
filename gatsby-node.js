@@ -160,7 +160,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 				postAuthor = frontmatter;
 			}
 
-			createPageFunction(`/${slugify(title)}`, `./src/templates/author.tsx`, { frontmatter });
+			createPageFunction(`/${slugify(title)}`, `./src/templates/author.tsx`, {
+				frontmatter,
+				posts: filteredPosts(posts, `author`, title)
+			});
 		});
 
 		const context = {
