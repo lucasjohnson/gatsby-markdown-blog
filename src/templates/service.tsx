@@ -2,16 +2,8 @@ import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 
-interface ServicesProps {
-	pageContext: {
-		abstract: string;
-		html: string;
-		title: string;
-	};
-}
-
-const Service: React.FC<ServicesProps> = ({ pageContext }) => {
-	const { abstract, html, title } = pageContext;
+const Service: React.FC<ServiceProps> = ({ pageContext }) => {
+	const { abstract, html, title, posts } = pageContext;
 
 	return (
 		<Layout>
@@ -29,3 +21,12 @@ const Service: React.FC<ServicesProps> = ({ pageContext }) => {
 };
 
 export default Service;
+
+interface ServiceProps {
+	pageContext: {
+		abstract: string;
+		html: string;
+		title: string;
+		posts: [];
+	};
+}

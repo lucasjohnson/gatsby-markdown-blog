@@ -117,6 +117,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		return string.replace(/ /g, `-`).toLowerCase();
 	};
 
+	const filteredPosts = (posts, type, title) => {
+		return posts.filter((post) => post.node.childMarkdownRemark.frontmatter[type].includes(title));
+	};
+
 	const { createPage } = actions;
 
 	const createPageFunction = (path, component, context) => {
@@ -185,7 +189,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		const { title, abstract } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
 
-		createPageFunction(`/${slugify(title)}`, `./src/templates/service.tsx`, { title, html, abstract });
+		createPageFunction(`/${slugify(title)}`, `./src/templates/service.tsx`, {
+			title,
+			html,
+			abstract,
+			posts: filteredPosts(posts, `services`, title)
+		});
 	});
 
 	tags.forEach(({ node }) => {
