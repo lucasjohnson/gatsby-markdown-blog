@@ -146,9 +146,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	posts.forEach(({ node }, index) => {
 		const { frontmatter, html } = node.childMarkdownRemark;
-		const { author, services, tags, title } = frontmatter;
+		const { author, path, services, tags } = frontmatter;
 		const postTemplate = `./src/templates/post.tsx`;
-		const postPath = slugify(title);
+		const postPath = slugify(path);
 
 		let postAuthor = ``;
 
