@@ -2,16 +2,8 @@ import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 
-interface TagProps {
-	pageContext: {
-		abstract: string;
-		html: string;
-		title: string;
-	};
-}
-
 const Service: React.FC<TagProps> = ({ pageContext }) => {
-	const { abstract, html, title } = pageContext;
+	const { abstract, html, title, posts } = pageContext;
 
 	return (
 		<Layout>
@@ -29,3 +21,12 @@ const Service: React.FC<TagProps> = ({ pageContext }) => {
 };
 
 export default Service;
+
+interface TagProps {
+	pageContext: {
+		abstract: string;
+		html: string;
+		title: string;
+		posts: [];
+	};
+}

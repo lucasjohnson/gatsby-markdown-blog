@@ -190,9 +190,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		const { html } = node.childMarkdownRemark;
 
 		createPageFunction(`/${slugify(title)}`, `./src/templates/service.tsx`, {
-			title,
-			html,
 			abstract,
+			html,
+			title,
 			posts: filteredPosts(posts, `services`, title)
 		});
 	});
@@ -201,7 +201,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		const { title, abstract } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
 
-		createPageFunction(`/${slugify(title)}`, `./src/templates/tag.tsx`, { abstract, html, title });
+		createPageFunction(`/${slugify(title)}`, `./src/templates/tag.tsx`, {
+			abstract,
+			html,
+			title,
+			posts: filteredPosts(posts, `tags`, title)
+		});
 
 		allTagsArray.push(title);
 	});
