@@ -39,6 +39,7 @@ const Post: React.FC<PostProps> = ({ pageContext }) => {
 			</article>
 			<div className="block">
 				<div className="block-inner">
+					<h2 className="heading-2">Related Posts</h2>
 					<PostList posts={relatedPosts} />
 				</div>
 			</div>
@@ -76,6 +77,6 @@ interface PostProps {
 				};
 			};
 		};
-		relatedPosts: {}[];
+		relatedPosts: [];
 	};
 }
