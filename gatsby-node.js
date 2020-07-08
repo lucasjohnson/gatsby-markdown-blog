@@ -189,8 +189,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			frontmatter,
 			html,
 			postAuthor,
-			prev: index === 0 ? null : posts[index - 1].node,
-			next: index === posts.length - 1 ? null : posts[index + 1].node,
+			postNext: index === posts.length - 1 ? null : posts[index + 1].node,
+			postPrev: index === 0 ? null : posts[index - 1].node,
 			relatedPosts: removeParentPost(relatedPosts, parentPostTitle)
 		};
 
