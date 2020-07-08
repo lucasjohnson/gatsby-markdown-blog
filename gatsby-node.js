@@ -228,7 +228,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			abstract,
 			html,
 			title,
-			posts: filteredPosts(posts, `tags`, title)
+			relatedPosts: filteredPosts(posts, `tags`, title)
 		});
 
 		allTagsArray.push(title);

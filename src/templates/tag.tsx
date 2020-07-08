@@ -1,9 +1,10 @@
 import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
+import PostList from '../components/PostList';
 
 const Service: React.FC<TagProps> = ({ pageContext }) => {
-	const { abstract, html, title, posts } = pageContext;
+	const { abstract, html, title, relatedPosts } = pageContext;
 
 	return (
 		<Layout>
@@ -13,6 +14,8 @@ const Service: React.FC<TagProps> = ({ pageContext }) => {
 					<div className="block-inner">
 						<h1 className="heading-1">{title}</h1>
 						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
+						<h2 className="heading-2">{`Posts related to "${title}"`}</h2>
+						<PostList posts={relatedPosts} />
 					</div>
 				</div>
 			</section>
@@ -27,6 +30,6 @@ interface TagProps {
 		abstract: string;
 		html: string;
 		title: string;
-		posts: [];
+		relatedPosts: [];
 	};
 }
