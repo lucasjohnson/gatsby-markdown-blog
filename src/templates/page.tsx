@@ -2,13 +2,6 @@ import React from 'react';
 import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 
-interface PageProps {
-	pageContext: {
-		title: string;
-		html: string;
-	};
-}
-
 const Page: React.FC<PageProps> = ({ pageContext }) => {
 	const { title, html } = pageContext;
 
@@ -28,3 +21,10 @@ const Page: React.FC<PageProps> = ({ pageContext }) => {
 };
 
 export default Page;
+
+interface PageProps {
+	pageContext: {
+		title: string;
+		html: string;
+	};
+}
