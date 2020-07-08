@@ -8,8 +8,8 @@ import PostList from '../components/PostList';
 import PostNavigation from '../components/PostNavigation';
 
 const Post: React.FC<PostProps> = ({ pageContext }) => {
-	const { frontmatter, html, postNext, postPrev, postAuthor: author, relatedPosts } = pageContext;
-	const { abstract, banner, bannerAlt, date, path, title, tags } = frontmatter;
+	const { allTags, frontmatter, html, postNext, postPrev, postAuthor: author, relatedPosts } = pageContext;
+	const { abstract, banner, bannerAlt, date, path, services, tags, title } = frontmatter;
 	const { fluid } = banner.childImageSharp;
 
 	return (
@@ -34,17 +34,21 @@ const Post: React.FC<PostProps> = ({ pageContext }) => {
 					<div className="block-inner">
 						<AuthorDetails author={author} date={date} title={title} variant="brief" />
 						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
+						<p className="body-copy">Related serivces: </p>
+						<TagList tags={services} variant="link" />
+						<p className="body-copy">Tagged under: </p>
 						<TagList tags={tags} variant="link" />
+						<footer className="post-footer">
+							<PostNavigation postNext={postNext} postPrev={postPrev} />
+							<h2 className="heading-2">Related Posts</h2>
+							<PostList posts={relatedPosts} />
+							<p className="body-copy">All tags:</p>
+							<TagList tags={allTags} variant="link" />
+							<AuthorDetails author={author} date={date} title={title} variant="full" />
+						</footer>
 					</div>
 				</div>
 			</article>
-			<div className="block">
-				<div className="block-inner">
-					<PostNavigation postNext={postNext} postPrev={postPrev} />
-					<h2 className="heading-2">Related Posts</h2>
-					<PostList posts={relatedPosts} />
-				</div>
-			</div>
 		</Layout>
 	);
 };
@@ -53,6 +57,7 @@ export default Post;
 
 interface PostProps {
 	pageContext: {
+		allTags: [];
 		frontmatter: {
 			abstract: string;
 			banner: {
