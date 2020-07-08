@@ -169,12 +169,25 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			});
 		});
 
+		let relatedPosts = [];
+
+		tags.forEach((tag) => {
+			relatedPosts = filteredPosts(posts, `tags`, tag);
+			console.log(relatedPosts);
+		});
+
+		services.forEach((service) => {
+			relatedPosts = filteredPosts(posts, `services`, service);
+			console.log(relatedPosts);
+		});
+
 		const context = {
 			frontmatter,
 			html,
 			postAuthor,
 			prev: index === 0 ? null : posts[index - 1].node,
-			next: index === posts.length - 1 ? null : posts[index + 1].node
+			next: index === posts.length - 1 ? null : posts[index + 1].node,
+			relatedPosts
 		};
 
 		createPageFunction(postPath, postTemplate, context);
