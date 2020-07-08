@@ -152,6 +152,34 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		createPageFunction(`/${slugify(title)}`, `./src/templates/page.tsx`, { title, html });
 	});
 
+	services.forEach(({ node }) => {
+		const { title, abstract } = node.childMarkdownRemark.frontmatter;
+		const { html } = node.childMarkdownRemark;
+
+		createPageFunction(`/${slugify(title)}`, `./src/templates/service.tsx`, {
+			abstract,
+			html,
+			title,
+			relatedPosts: filteredPosts(posts, `services`, title)
+		});
+	});
+
+	const allTagsArray = [];
+
+	tags.forEach(({ node }) => {
+		const { title, abstract } = node.childMarkdownRemark.frontmatter;
+		const { html } = node.childMarkdownRemark;
+
+		createPageFunction(`/${slugify(title)}`, `./src/templates/tag.tsx`, {
+			abstract,
+			html,
+			title,
+			relatedPosts: filteredPosts(posts, `tags`, title)
+		});
+
+		allTagsArray.push(title);
+	});
+
 	posts.forEach(({ node }, index) => {
 		const { frontmatter, html } = node.childMarkdownRemark;
 		const { author, path, services, title: parentPostTitle, tags } = frontmatter;
@@ -176,9 +204,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 
 		let relatedPosts = [];
+		let allTags = [];
 
 		tags.forEach((tag) => {
 			relatedPosts = filteredPosts(posts, `tags`, tag);
+			allTags.push(tag);
 		});
 
 		services.forEach((service) => {
@@ -186,6 +216,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 
 		const context = {
+			allTags: allTagsArray,
 			frontmatter,
 			html,
 			postAuthor,
@@ -204,34 +235,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		tags.forEach((tag) => {
 			createPageFunction(`/${slugify(tag)}/${postPath}`, postTemplate, context);
 		});
-	});
-
-	const allTagsArray = [];
-
-	services.forEach(({ node }) => {
-		const { title, abstract } = node.childMarkdownRemark.frontmatter;
-		const { html } = node.childMarkdownRemark;
-
-		createPageFunction(`/${slugify(title)}`, `./src/templates/service.tsx`, {
-			abstract,
-			html,
-			title,
-			relatedPosts: filteredPosts(posts, `services`, title)
-		});
-	});
-
-	tags.forEach(({ node }) => {
-		const { title, abstract } = node.childMarkdownRemark.frontmatter;
-		const { html } = node.childMarkdownRemark;
-
-		createPageFunction(`/${slugify(title)}`, `./src/templates/tag.tsx`, {
-			abstract,
-			html,
-			title,
-			relatedPosts: filteredPosts(posts, `tags`, title)
-		});
-
-		allTagsArray.push(title);
 	});
 
 	createPageFunction(`/blog`, `./src/templates/blog.tsx`, { posts, tags: allTagsArray });
