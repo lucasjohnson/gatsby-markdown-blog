@@ -216,7 +216,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			abstract,
 			html,
 			title,
-			posts: filteredPosts(posts, `services`, title)
+			relatedPosts: filteredPosts(posts, `services`, title)
 		});
 	});
 
