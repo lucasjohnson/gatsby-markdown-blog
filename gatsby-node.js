@@ -123,6 +123,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		return posts.filter((post) => post.node.childMarkdownRemark.frontmatter[type].includes(title));
 	};
 
+	const removeParentPost = (relatedPosts, parentPostTitle) => {
+		return relatedPosts.filter(
+			(relatedPost) => relatedPost.node.childMarkdownRemark.frontmatter.title !== parentPostTitle
+		);
+	};
+
 	const { createPage } = actions;
 
 	const createPageFunction = (path, component, context) => {
@@ -148,7 +154,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 	posts.forEach(({ node }, index) => {
 		const { frontmatter, html } = node.childMarkdownRemark;
-		const { author, path, services, tags } = frontmatter;
+		const { author, path, services, title: parentPostTitle, tags } = frontmatter;
 		const postTemplate = `./src/templates/post.tsx`;
 		const postPath = slugify(path);
 
@@ -173,12 +179,10 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 		tags.forEach((tag) => {
 			relatedPosts = filteredPosts(posts, `tags`, tag);
-			console.log(relatedPosts);
 		});
 
 		services.forEach((service) => {
 			relatedPosts = filteredPosts(posts, `services`, service);
-			console.log(relatedPosts);
 		});
 
 		const context = {
@@ -187,7 +191,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			postAuthor,
 			prev: index === 0 ? null : posts[index - 1].node,
 			next: index === posts.length - 1 ? null : posts[index + 1].node,
-			relatedPosts
+			relatedPosts: removeParentPost(relatedPosts, parentPostTitle)
 		};
 
 		createPageFunction(postPath, postTemplate, context);

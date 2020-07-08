@@ -4,9 +4,10 @@ import SEO from '../components/Head/SEO';
 import Img from 'gatsby-image';
 import AuthorDetails from '../components/AuthorDetails';
 import TagList from '../components/TagList';
+import PostList from '../components/PostList';
 
 const Post: React.FC<PostProps> = ({ pageContext }) => {
-	const { frontmatter, html, postAuthor: author } = pageContext;
+	const { frontmatter, html, postAuthor: author, relatedPosts } = pageContext;
 	const { abstract, banner, bannerAlt, date, path, title, tags } = frontmatter;
 	const { fluid } = banner.childImageSharp;
 
@@ -36,6 +37,11 @@ const Post: React.FC<PostProps> = ({ pageContext }) => {
 					</div>
 				</div>
 			</article>
+			<div className="block">
+				<div className="block-inner">
+					<PostList posts={relatedPosts} />
+				</div>
+			</div>
 		</Layout>
 	);
 };
@@ -70,6 +76,6 @@ interface PostProps {
 				};
 			};
 		};
-		postDate: string;
+		relatedPosts: {}[];
 	};
 }
