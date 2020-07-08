@@ -18,7 +18,7 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 				<span className="link" tabIndex="0">
 					{title}
 				</span>
-				<Icon type={`ChevronDown`} />
+				<Icon type={`chevron-down`} />
 				<ul className="sub-items">{renderItems(menuItems, parent)}</ul>
 			</React.Fragment>
 		);
@@ -33,7 +33,7 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 					<li className="item" key={index}>
 						{variant === `icon` ? (
 							<Anchor title={title} url={url} variant="link external">
-								<Icon type={title} />
+								<Icon type={title.toLowerCase()} />
 							</Anchor>
 						) : item.subItems !== undefined ? (
 							renderSubItems(item.subItems, item)

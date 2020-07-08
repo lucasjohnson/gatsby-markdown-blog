@@ -22,7 +22,7 @@ const AuthorDetails: React.FC<AuthorProps> = ({ author, date, title, variant }) 
 						title={`${author} Twitter account`}
 						variant="link external"
 					>
-						<Icon type="Twitter" />
+						<Icon type="twitter" />
 						{twitter}
 					</Anchor>
 				)}
