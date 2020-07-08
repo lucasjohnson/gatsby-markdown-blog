@@ -171,7 +171,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			createPageFunction(`/${slugify(title)}`, `./src/templates/author.tsx`, {
 				frontmatter,
 				html,
-				posts: filteredPosts(posts, `author`, title)
+				relatedPosts: filteredPosts(posts, `author`, title)
 			});
 		});
 

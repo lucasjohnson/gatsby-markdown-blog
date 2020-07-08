@@ -3,9 +3,10 @@ import Layout from '../components/Layout';
 import SEO from '../components/Head/SEO';
 import Img from 'gatsby-image';
 import AuthorDetails from '../components/AuthorDetails';
+import PostList from '../components/PostList';
 
 const Author: React.FC<AuthorProps> = ({ pageContext }) => {
-	const { frontmatter, html } = pageContext;
+	const { frontmatter, html, relatedPosts } = pageContext;
 	const { title, abstract } = frontmatter;
 
 	return (
@@ -16,6 +17,8 @@ const Author: React.FC<AuthorProps> = ({ pageContext }) => {
 					<div className="block-inner">
 						<AuthorDetails author={frontmatter} variant="brief" />
 						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
+						<h2 className="heading-2">{`Posts written by ${title}`}</h2>
+						<PostList posts={relatedPosts} />
 					</div>
 				</div>
 			</section>
@@ -38,5 +41,6 @@ interface AuthorProps {
 				};
 			};
 		};
+		relatedPosts: [];
 	};
 }
