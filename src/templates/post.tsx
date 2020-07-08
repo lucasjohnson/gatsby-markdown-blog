@@ -5,36 +5,12 @@ import Img from 'gatsby-image';
 import AuthorDetails from '../components/AuthorDetails';
 import TagList from '../components/TagList';
 import PostList from '../components/PostList';
-import Anchor from '../components/Anchor';
-import Icon from '../components/Icon';
+import PostNavigation from '../components/PostNavigation';
 
 const Post: React.FC<PostProps> = ({ pageContext }) => {
 	const { frontmatter, html, postNext, postPrev, postAuthor: author, relatedPosts } = pageContext;
 	const { abstract, banner, bannerAlt, date, path, title, tags } = frontmatter;
 	const { fluid } = banner.childImageSharp;
-
-	const renderPostNavigation: Function = () => {
-		const { path: nextPath, title: nextTitle } = postNext.childMarkdownRemark.frontmatter;
-
-		const { path: prevPath, title: prevTitle } = postPrev.childMarkdownRemark.frontmatter;
-
-		return (
-			<nav className="post-navigation">
-				{postPrev && (
-					<Anchor title={prevTitle} url={`/${prevPath}`} variant="link">
-						<Icon type="chevron-left" />
-						{prevTitle}
-					</Anchor>
-				)}
-				{postNext && (
-					<Anchor title={nextTitle} url={`/${nextPath}`} variant="link">
-						{nextTitle}
-						<Icon type="chevron-right" />
-					</Anchor>
-				)}
-			</nav>
-		);
-	};
 
 	return (
 		<Layout>
@@ -64,7 +40,7 @@ const Post: React.FC<PostProps> = ({ pageContext }) => {
 			</article>
 			<div className="block">
 				<div className="block-inner">
-					{renderPostNavigation()}
+					<PostNavigation postNext={postNext} postPrev={postPrev} />
 					<h2 className="heading-2">Related Posts</h2>
 					<PostList posts={relatedPosts} />
 				</div>
