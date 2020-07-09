@@ -9,8 +9,6 @@ const PostList: React.FC<PostProps> = ({ posts }) => {
 			const { childMarkdownRemark } = node;
 			const { frontmatter } = childMarkdownRemark;
 
-      console.log("Post List", frontmatter);
-
 			return <GridCard data={frontmatter} key={index} />;
 		});
 
