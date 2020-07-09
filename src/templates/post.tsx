@@ -34,16 +34,13 @@ const Post: React.FC<PostProps> = ({ pageContext }) => {
 					<div className="block-inner">
 						<AuthorDetails author={author} date={date} title={title} variant="brief" />
 						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
-						<p className="body-copy">Related serivces: </p>
-						<TagList tags={services} variant="link" />
-						<p className="body-copy">Tagged under: </p>
-						<TagList tags={tags} variant="link" />
 						<footer className="post-footer">
 							<PostNavigation postNext={postNext} postPrev={postPrev} />
+              <TagList copy={'Related serivces:'} items={services} variant="link" />
+  						<TagList copy={'Tagged under:'} items={tags} variant="link" />
 							<h2 className="heading-2">Related Posts</h2>
 							<PostList posts={relatedPosts} />
-							<p className="body-copy">All tags:</p>
-							<TagList tags={allTags} variant="link" />
+							<TagList copy={'All tags:'} items={allTags} variant="link" />
 							<AuthorDetails author={author} date={date} title={title} variant="full" />
 						</footer>
 					</div>

@@ -3,20 +3,16 @@ import Anchor from './Anchor';
 import Button from './Button';
 import slugify from '../helpers/slugify';
 
-interface TagProps {
-	tags: string[];
-	variant: 'button' | 'link' | 'span';
-}
-
-const TagList: React.FC<TagProps> = ({ tags, variant }) => {
+const TagList: React.FC<TagProps> = ({ copy, items, variant }) => {
+  console.log(items);
 	const renderTags: Function = () =>
-		tags.map((tag: string, index: number) => {
+		items.map((tag: string, index: number) => {
 			let tagElement;
 
 			switch (variant) {
 				case `link`:
 					tagElement = (
-						<Anchor url={`/${slugify(tag)}`} title={tag} variant="link">
+						<Anchor className="tag-list-link" url={`/${slugify(tag)}`} title={tag} variant="link">
 							{tag}
 						</Anchor>
 					);
@@ -25,20 +21,26 @@ const TagList: React.FC<TagProps> = ({ tags, variant }) => {
 					tagElement = <Button variant="primary" />;
 					break;
 				case `span`:
-					tagElement = <span className="link">{tag}</span>;
+					tagElement = <span className="tag-list-link">{tag}</span>;
 					break;
 				default:
 					return null;
 			}
 
 			return (
-				<li className="post-tag" key={index}>
+				<li className="tag-list-item" key={index}>
 					{tagElement}
 				</li>
 			);
 		});
 
-	return <ul className={`post-tags ${variant}`}>{renderTags()}</ul>;
+	return (<div className="tag-list">{ copy && <span className="tag-list-copy body-copy">{copy}</span>}<ul className={`tag-list-items ${variant}`}>{renderTags()}</ul></div>);
 };
 
 export default TagList;
+
+interface TagProps {
+  copy?: string;
+	items: string[];
+	variant: 'button' | 'link' | 'span';
+}
