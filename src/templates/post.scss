@@ -41,6 +41,12 @@
 		}
 	}
 
+	.post-footer {
+		> .tag-list:nth-child(3) {
+			margin-bottom: $spacing-large;
+		}
+	}
+
 	@include respond-to(LARGE) {
 		.heading-1 {
 			text-align: center;
