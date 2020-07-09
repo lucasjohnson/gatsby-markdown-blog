@@ -9,6 +9,8 @@ const PostList: React.FC<PostProps> = ({ posts }) => {
 			const { childMarkdownRemark } = node;
 			const { frontmatter } = childMarkdownRemark;
 
+      console.log("Post List", frontmatter);
+
 			return <GridCard data={frontmatter} key={index} />;
 		});
 
@@ -27,10 +29,7 @@ interface PostProps {
 			childMarkdownRemark: {
 				frontmatter: {
 					abstract: string;
-					path: string;
-					tags: [];
-					title: string;
-					banner: {
+          banner: {
 						childImageSharp: {
 							fluid: {
 								aspectRatio: number;
@@ -40,6 +39,9 @@ interface PostProps {
 							};
 						};
 					};
+					path: string;
+					serivces: [];
+					title: string;
 				};
 			};
 		};
