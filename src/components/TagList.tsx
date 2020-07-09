@@ -4,8 +4,7 @@ import Button from './Button';
 import slugify from '../helpers/slugify';
 
 const TagList: React.FC<TagProps> = ({ copy, items, variant }) => {
-  console.log(items);
-	const renderTags: Function = () =>
+  const renderTags: Function = () =>
 		items.map((tag: string, index: number) => {
 			let tagElement;
 
@@ -18,7 +17,7 @@ const TagList: React.FC<TagProps> = ({ copy, items, variant }) => {
 					);
 					break;
 				case `button`:
-					tagElement = <Button variant="primary" />;
+					tagElement = <Button variant="primary">{tag}</Button>;
 					break;
 				case `span`:
 					tagElement = <span className="tag-list-link">{tag}</span>;

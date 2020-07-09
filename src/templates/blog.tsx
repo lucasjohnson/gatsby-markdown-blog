@@ -5,14 +5,14 @@ import PostList from '../components/PostList';
 import SEO from '../components/Head/SEO';
 
 const Blog: React.FC<BlogProps> = ({ pageContext }) => {
-	const { posts, tags } = pageContext;
+	const { allTags, posts } = pageContext;
 
 	return (
 		<Layout>
 			<SEO title="Blog" />
 			<section className="Blog block">
 				<h1 className="heading-1">Blog</h1>
-				<TagList tags={tags} variant="button" />
+				<TagList items={allTags} variant="button" />
 				<PostList posts={posts} />
 			</section>
 		</Layout>
@@ -23,15 +23,13 @@ export default Blog;
 
 interface BlogProps {
 	pageContext: {
+    allTags: string[];
 		posts: {
 			node: {
 				childMarkdownRemark: {
 					frontmatter: {
 						abstract: string;
-						path: string;
-						tags: [];
-						title: string;
-						banner: {
+            banner: {
 							childImageSharp: {
 								fluid: {
 									aspectRatio: number;
@@ -41,11 +39,12 @@ interface BlogProps {
 								};
 							};
 						};
+						path: string;
+						serivces: [];
+						title: string;
 					};
 				};
 			};
 		}[];
-		services: string[];
-		tags: string[];
 	};
 }

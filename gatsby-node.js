@@ -54,23 +54,25 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 						childMarkdownRemark {
 							html
 							frontmatter {
+								abstract
 								author
-								date(formatString: "MMMM DD, YYYY")
-								path
-								title
-								services
-								tags
 								banner {
 									childImageSharp {
 										fluid {
-											base64
 											aspectRatio
+											base64
+
 											sizes
 											src
 											srcSet
 										}
 									}
 								}
+								date(formatString: "MMMM DD, YYYY")
+								path
+								services
+								tags
+								title
 							}
 						}
 					}
@@ -152,6 +154,8 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		createPageFunction(`/${slugify(title)}`, `./src/templates/page.tsx`, { title, html });
 	});
 
+	const allServicesArray = [];
+
 	services.forEach(({ node }) => {
 		const { title, abstract } = node.childMarkdownRemark.frontmatter;
 		const { html } = node.childMarkdownRemark;
@@ -159,9 +163,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		createPageFunction(`/${slugify(title)}`, `./src/templates/service.tsx`, {
 			abstract,
 			html,
+			allServices: allServicesArray,
 			title,
 			relatedPosts: filteredPosts(posts, `services`, title)
 		});
+
+		allServicesArray.push(title);
 	});
 
 	const allTagsArray = [];
@@ -172,6 +179,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
 		createPageFunction(`/${slugify(title)}`, `./src/templates/tag.tsx`, {
 			abstract,
+			allTags: allTagsArray,
 			html,
 			title,
 			relatedPosts: filteredPosts(posts, `tags`, title)
@@ -237,7 +245,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 	});
 
-	createPageFunction(`/blog`, `./src/templates/blog.tsx`, { posts, tags: allTagsArray });
+	createPageFunction(`/blog`, `./src/templates/blog.tsx`, { posts, allTags: allTagsArray });
 
 	if (authorsData.errors || pagesData.errors || postsData.errors || servicesData.errors || tagsData.errors) {
 		reporter.panicOnBuild(`Error while running GraphQL query.`);
