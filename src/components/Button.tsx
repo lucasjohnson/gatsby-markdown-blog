@@ -1,16 +1,17 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 
-interface ButtonProps {
-	variant: 'primary' | 'secondary';
-	onClick?: () => void;
-}
-
-const Button: FunctionComponent<ButtonProps> = ({ variant, onClick, children }) => {
+const Button: React.FC<ButtonProps> = ({ children, className, onClick, variant }) => {
 	return (
-		<button className={`button ${variant}`} onClick={onClick}>
+		<button className={`${className ? `${className} ` : ``}button ${variant}`} onClick={onClick}>
 			{children}
 		</button>
 	);
 };
 
 export default Button;
+
+interface ButtonProps {
+  className?: string;
+  onClick?: () => void;
+	variant: 'primary' | 'secondary';
+}
