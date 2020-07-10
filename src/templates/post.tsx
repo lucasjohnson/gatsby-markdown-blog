@@ -41,7 +41,8 @@ const Post: React.FC<PostProps> = ({ pageContext }) => {
 							<h2 className="heading-2">Related Posts</h2>
 							<PostList posts={relatedPosts} />
 							<TagList copy={'All tags:'} items={allTags} variant="link" />
-							<AuthorDetails author={author} date={date} title={title} variant="full" />
+              <h2 className="heading-2">About the author</h2>
+              <AuthorDetails author={author} date={date} title={title} variant="full" />
 						</footer>
 					</div>
 				</div>
@@ -73,6 +74,7 @@ interface PostProps {
 		};
 		html: string;
 		postAuthor: {
+      html: string;
 			title: string;
 			twitter: string;
 			image: {

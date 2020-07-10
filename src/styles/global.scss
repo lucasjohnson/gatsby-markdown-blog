@@ -1,4 +1,6 @@
 @import 'base/base';
+@import '../templates/blog';
+@import '../templates/post';
 @import '../components/Header/Header';
 @import '../components/Footer/Footer';
 @import '../components/Navigation/Navigation';
@@ -8,5 +10,4 @@
 @import '../components/Navigation/LegalNavigation';
 @import '../components/TagList';
 @import '../components/PostNavigation';
-@import '../templates/post';
-@import '../templates/blog';
+@import '../components/AuthorDetails';

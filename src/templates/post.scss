@@ -3,44 +3,6 @@
 		margin: $spacing-large 0;
 	}
 
-	.author-profile {
-		display: flex;
-		justify-content: flex-start;
-		align-items: center;
-		margin-bottom: $spacing-large;
-
-		> .author-image {
-			@include size(6rem, 6rem);
-
-			margin-right: $spacing-small;
-			display: inline-block;
-			border-radius: 50%;
-		}
-
-		> .author-details {
-			> .author-name,
-			> .author-twitter,
-			> .post-date {
-				font-size: $font-size-small;
-				line-height: $line-height-body;
-				padding: 0;
-				display: block;
-			}
-
-			> .author-name {
-				font-weight: $font-weight-bold;
-			}
-
-			> .author-twitter {
-				@include flex(center);
-
-				> .icon {
-					margin-right: $spacing-small / 2;
-				}
-			}
-		}
-	}
-
 	.post-footer {
 		.tag-list:nth-child(2) {
 			margin: 0;
@@ -50,7 +12,7 @@
 	@include respond-to(LARGE) {
 		.heading-1 {
 			text-align: center;
-			margin: $spacing-large * 2 0;
+			margin: 0 0 $spacing-large * 2;
 		}
 
 		> .post-banner {
