@@ -1,8 +1,4 @@
 .Post {
-	.heading-1 {
-		margin: $spacing-large 0;
-	}
-
 	.post-footer {
 		.tag-list:nth-child(2) {
 			margin: 0;
@@ -10,10 +6,6 @@
 	}
 
 	@include respond-to(LARGE) {
-		.heading-1 {
-			margin: 0 0 $spacing-large * 2;
-		}
-
 		> .post-banner {
 			max-width: $block-max-width;
 			margin: $block-margin-desktop auto;

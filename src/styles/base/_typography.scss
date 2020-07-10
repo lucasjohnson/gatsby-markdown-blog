@@ -81,6 +81,14 @@ $heading-scale: 1.1;
 	}
 }
 
+.heading-1 {
+	margin: $spacing-large 0;
+
+	@include respond-to(LARGE) {
+		margin: 0 0 $spacing-large * 2;
+	}
+}
+
 .markdown {
 	p,
 	blockquote,
