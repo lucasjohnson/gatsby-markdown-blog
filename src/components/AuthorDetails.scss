@@ -1,0 +1,54 @@
+.author-details {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	margin-bottom: $spacing-large;
+
+	> .author-image {
+		@include size(6rem, 6rem);
+
+		margin-right: $spacing-small;
+		display: inline-block;
+		border-radius: 50%;
+	}
+
+	> .author-links {
+		> .author-name,
+		> .author-twitter,
+		> .post-date {
+			font-size: $font-size-small;
+			line-height: $line-height-body;
+			padding: 0;
+			display: block;
+		}
+
+		> .author-name {
+			font-weight: $font-weight-bold;
+		}
+
+		> .author-twitter {
+			@include flex(center);
+
+			> .icon {
+				margin-right: $spacing-small / 2;
+			}
+		}
+	}
+
+	&.full {
+		> .author-image {
+			@include size(8rem, 8rem);
+
+			margin-right: $spacing-large;
+		}
+
+		> .author-links {
+			> .author-name,
+			> .author-twitter,
+			> .post-date {
+				font-size: $font-size-base;
+				line-height: $line-height-body;
+			}
+		}
+	}
+}
