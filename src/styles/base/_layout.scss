@@ -11,3 +11,8 @@ html {
 *::after {
 	box-sizing: inherit;
 }
+
+.main-content {
+  overflow: hidden;
+  padding-bottom: $spacing-large * 2;
+}

@@ -8,7 +8,7 @@ const Layout: FunctionComponent = ({ children }) => (
 			Skip to main content
 		</a>
 		<Header />
-		<main id="mainContent">{children}</main>
+		<main className="main-content" id="mainContent">{children}</main>
 		<Footer />
 	</React.Fragment>
 );
