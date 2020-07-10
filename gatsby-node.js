@@ -245,7 +245,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 		});
 	});
 
-	createPageFunction(`/blog`, `./src/templates/blog.tsx`, { posts, allTags: allTagsArray });
+	createPageFunction(`/blog`, `./src/templates/blog.tsx`, {
+		allServices: allServicesArray,
+		allTags: allTagsArray,
+		posts
+	});
 
 	if (authorsData.errors || pagesData.errors || postsData.errors || servicesData.errors || tagsData.errors) {
 		reporter.panicOnBuild(`Error while running GraphQL query.`);

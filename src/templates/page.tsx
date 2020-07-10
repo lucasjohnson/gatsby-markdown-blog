@@ -8,7 +8,7 @@ const Page: React.FC<PageProps> = ({ pageContext }) => {
 	return (
 		<Layout>
 			<SEO title={title} />
-			<section className="Page block">
+			<section className="Page">
 				<div className="block">
 					<h1 className="heading-1">{title}</h1>
 					<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>

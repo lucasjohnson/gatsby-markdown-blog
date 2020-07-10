@@ -5,7 +5,7 @@ import PostList from '../components/PostList';
 import SEO from '../components/Head/SEO';
 
 const Blog: React.FC<BlogProps> = ({ pageContext }) => {
-	const { allTags, posts } = pageContext;
+	const { allServices, allTags, posts } = pageContext;
 
 	return (
 		<Layout>
@@ -13,7 +13,8 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 			<section className="Blog">
         <div className="block">
           <h1 className="heading-1">Blog</h1>
-          <TagList copy="Filter by post tag:" items={allTags} variant="button" />
+          <TagList copy="Filter posts by services:" items={allServices} variant="button" />
+          <TagList copy="Filter posts by tags:" items={allTags} variant="button" />
           <PostList posts={posts} />
         </div>
 			</section>
@@ -25,6 +26,7 @@ export default Blog;
 
 interface BlogProps {
 	pageContext: {
+    allServices: string[];
     allTags: string[];
 		posts: {
 			node: {

@@ -42,8 +42,8 @@
 	}
 
 	.post-footer {
-		> .tag-list:nth-child(3) {
-			margin-bottom: $spacing-large;
+		.tag-list:nth-child(2) {
+			margin: 0;
 		}
 	}
 

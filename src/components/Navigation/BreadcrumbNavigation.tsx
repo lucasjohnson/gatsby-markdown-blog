@@ -23,7 +23,7 @@ const BreadcrumbNavigation: React.FC = () => {
 							<Anchor title={crumbTitle} url={`/${crumb && crumb}`} variant="link">
 								{crumbTitle}
 							</Anchor>
-							<Icon type="ChevronRight" />
+							<Icon type="chevron-right" />
 						</React.Fragment>
 					) : (
 						<span className="current-page">{crumbTitle}</span>
