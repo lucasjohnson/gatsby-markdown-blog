@@ -201,6 +201,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 			const { title } = frontmatter;
 
 			if (author === title) {
+				frontmatter.html = html;
 				postAuthor = frontmatter;
 			}
 
