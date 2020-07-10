@@ -73,6 +73,10 @@ $heading-scale: 1.1;
 
 		@include respond-to(MEDIUM) {
 			font-size: 0.1rem + $heading-scale * (6 - $i);
+
+			&.center {
+				text-align: center;
+			}
 		}
 	}
 }

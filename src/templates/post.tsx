@@ -26,7 +26,7 @@ const Post: React.FC<PostProps> = ({ pageContext }) => {
 			<article className="Post">
 				<div className="block">
 					<div className="block-inner">
-						<h1 className="heading-1">{title}</h1>
+						<h1 className="heading-1 center">{title}</h1>
 					</div>
 				</div>
 				<Img className="post-banner" fluid={fluid} alt={bannerAlt} />
