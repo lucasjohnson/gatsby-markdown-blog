@@ -2,6 +2,7 @@
 	font-weight: $font-weight-bold;
 	display: flex;
 	justify-content: space-between;
+	margin-bottom: $spacing-large;
 
 	> .post-navigation-section {
 		padding: 0 0 0 $spacing-large;
@@ -9,7 +10,7 @@
 		> .link {
 			display: flex;
 			align-items: center;
-			padding-bottom: 0;
+			padding: 0;
 			position: relative;
 
 			&:hover {
@@ -32,6 +33,11 @@
 				left: initial;
 				right: -$spacing-large;
 			}
+		}
+
+		> .body-copy {
+			font-size: $font-size-small;
+			margin: 0;
 		}
 	}
 }

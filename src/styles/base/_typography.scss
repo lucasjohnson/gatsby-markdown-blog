@@ -113,7 +113,7 @@ $heading-scale: 1.1;
 				@include pseudo(inline-block, absolute, '“');
 
 				top: -$spacing-small;
-				left: -$spacing-small;
+				left: -$spacing-large;
 			}
 
 			&::after {
@@ -131,22 +131,13 @@ $heading-scale: 1.1;
 	}
 
 	a {
-		text-decoration: none;
+		text-decoration: underline;
 		color: $font-color-base;
 		display: inline-block;
 		position: relative;
 
-		&::after {
-			@include pseudo();
-			@include size(100%, 0.2rem);
-			@include background($lime);
-
-			bottom: 0.1rem;
-			transition: $animation-base;
-		}
-
-		&:hover::after {
-			@include background(transparent);
+		&:hover {
+			text-decoration: none;
 		}
 	}
 
