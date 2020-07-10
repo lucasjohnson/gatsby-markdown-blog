@@ -6,7 +6,7 @@ import AuthorDetails from '../components/AuthorDetails';
 import PostList from '../components/PostList';
 
 const Author: React.FC<AuthorProps> = ({ pageContext }) => {
-	const { frontmatter, html, relatedPosts } = pageContext;
+	const { frontmatter, relatedPosts } = pageContext;
 	const { title, abstract } = frontmatter;
 
 	return (
@@ -14,8 +14,8 @@ const Author: React.FC<AuthorProps> = ({ pageContext }) => {
 			<SEO title={title} description={abstract} />
 			<section className="Author">
 				<div className="block">
-					<AuthorDetails author={frontmatter} variant="brief" />
-					<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
+          <h1 className="heading-1">{frontmatter.title}</h1>
+					<AuthorDetails author={frontmatter} variant="page" />
 					<h2 className="heading-2">{`Posts written by ${title}`}</h2>
 					<PostList posts={relatedPosts} />
 				</div>
@@ -28,9 +28,9 @@ export default Author;
 
 interface AuthorProps {
 	pageContext: {
-		html: string;
 		frontmatter: {
 			abstract: string;
+      html: string;
 			title: string;
 			twitter: string;
 			image: {
