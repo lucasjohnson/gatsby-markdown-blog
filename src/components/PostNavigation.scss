@@ -1,0 +1,37 @@
+.post-navigation {
+	font-weight: $font-weight-bold;
+	display: flex;
+	justify-content: space-between;
+
+	> .post-navigation-section {
+		padding: 0 0 0 $spacing-large;
+
+		> .link {
+			display: flex;
+			align-items: center;
+			padding-bottom: 0;
+			position: relative;
+
+			&:hover {
+				color: $font-color-base;
+			}
+
+			> .icon {
+				font-size: 2rem;
+				position: absolute;
+				top: calc($spacing-small + 0.3rem);
+				left: -$spacing-large;
+			}
+		}
+
+		&:last-of-type {
+			text-align: right;
+			padding: 0 $spacing-large 0 0;
+
+			> .link > .icon {
+				left: initial;
+				right: -$spacing-large;
+			}
+		}
+	}
+}
