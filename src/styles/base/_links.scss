@@ -7,7 +7,6 @@
 	transition: $animation-base;
 
 	&:hover {
-		color: $lime;
-		text-decoration: none;
+		text-decoration: underline;
 	}
 }
