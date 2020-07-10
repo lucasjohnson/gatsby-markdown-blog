@@ -3,28 +3,29 @@ import Anchor from '../components/Anchor';
 import Icon from '../components/Icon';
 
 const PostNavigation: React.FC<PostNavigationProps> = ({ postNext, postPrev }) => {
+
+  const renderNavigationSection:Function = (post: {childMarkdownRemark: {frontmatter: { path: string; title: string; }; };}) => {
+    const {path , title} = post.childMarkdownRemark.frontmatter;
+
+    return (
+      <React.Fragment>
+        <Anchor title={title} url={`/${path}`} variant="link">
+          <Icon type="chevron-left" />
+          {title}
+        </Anchor>
+        <p className="body-copy">Previous post</p>
+      </React.Fragment>
+    )
+  };
+
 	return (
 		<nav className="post-navigation">
-			{postPrev && (
-				<Anchor
-					title={postPrev.childMarkdownRemark.frontmatter.title}
-					url={`/${postPrev.childMarkdownRemark.frontmatter.path}`}
-					variant="link"
-				>
-					<Icon type="chevron-left" />
-					{postPrev.childMarkdownRemark.frontmatter.title}
-				</Anchor>
-			)}
-			{postNext && (
-				<Anchor
-					title={postNext.childMarkdownRemark.frontmatter.title}
-					url={`/${postNext.childMarkdownRemark.frontmatter.path}`}
-					variant="link"
-				>
-					{postNext.childMarkdownRemark.frontmatter.title}
-					<Icon type="chevron-right" />
-				</Anchor>
-			)}
+      <div className="post-navigation-section">
+        {postPrev && renderNavigationSection(postPrev)}
+      </div>
+      <div className="post-navigation-section">
+        {postNext && renderNavigationSection(postNext)}
+      </div>
 		</nav>
 	);
 };
@@ -32,20 +33,6 @@ const PostNavigation: React.FC<PostNavigationProps> = ({ postNext, postPrev }) =
 export default PostNavigation;
 
 interface PostNavigationProps {
-	postNext?: {
-		childMarkdownRemark: {
-			frontmatter: {
-				path: string;
-				title: string;
-			};
-		};
-	};
-	postPrev?: {
-		childMarkdownRemark: {
-			frontmatter: {
-				path: string;
-				title: string;
-			};
-		};
-	};
+	postNext?: {};
+	postPrev?: {};
 }
