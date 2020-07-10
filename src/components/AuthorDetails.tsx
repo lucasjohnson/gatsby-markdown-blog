@@ -5,30 +5,39 @@ import Icon from './Icon';
 import slugify from '../helpers/slugify';
 
 const AuthorDetails: React.FC<AuthorProps> = ({ author, date, title, variant }) => {
-	const { title: name, twitter, image } = author;
+	const { html, title: name, twitter, image } = author;
 	const { fluid } = image.childImageSharp;
 
 	return (
-		<div className={`author-profile ${variant}`}>
-			{image && <Img className="author-image" fluid={fluid} alt={title} />}
-			<div className="author-details">
-				<Anchor className="author-name" url={`/${slugify(name)}`} title={name} variant="link">
-					{name}
-				</Anchor>
-				{twitter && (
-					<Anchor
-						className="author-twitter"
-						url={`https://twitter.com/${twitter}`}
-						title={`${author} Twitter account`}
-						variant="link external"
-					>
-						<Icon type="twitter" />
-						{twitter}
-					</Anchor>
-				)}
-				<span className="post-date">{date}</span>
-			</div>
-		</div>
+    <React.Fragment>
+      <div className={`author-details${variant ? ` ${variant}` : ``}`}>
+  			{image && <Img className="author-image" fluid={fluid} alt={title} />}
+  			<div className="author-links">
+  				{ variant !== 'page' &&
+            <Anchor className="author-name" url={`/${slugify(name)}`} title={name} variant="link">
+              {name}
+            </Anchor>
+          }
+  				{twitter && (
+  					<Anchor
+  						className="author-twitter"
+  						url={`https://twitter.com/${twitter}`}
+  						title={`${author} Twitter account`}
+  						variant="link external"
+  					>
+  						<Icon type="twitter" />
+  						{twitter}
+  					</Anchor>
+  				)}
+  				{ variant === 'brief'
+            && <span className="post-date">{date}</span>
+          }
+  			</div>
+  		</div>
+      { variant === 'full' || variant === 'page' &&
+        <div className="author-biography markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
+      }
+    </React.Fragment>
 	);
 };
 
@@ -36,6 +45,7 @@ export default AuthorDetails;
 
 interface AuthorProps {
 	author: {
+    html: string;
 		title: string;
 		twitter: string;
 		image: {
@@ -46,5 +56,5 @@ interface AuthorProps {
 	};
 	date?: string;
 	title?: string;
-	variant: 'brief' | 'full';
+	variant: 'brief' | 'full' | 'page';
 }
