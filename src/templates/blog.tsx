@@ -12,7 +12,7 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 			<SEO title="Blog" />
 			<section className="Blog block">
 				<h1 className="heading-1">Blog</h1>
-				<TagList items={allTags} variant="button" />
+				<TagList copy="Filter by post tag:" items={allTags} variant="button" />
 				<PostList posts={posts} />
 			</section>
 		</Layout>
