@@ -17,7 +17,7 @@ const TagList: React.FC<TagProps> = ({ copy, items, variant }) => {
 					);
 					break;
 				case `button`:
-					tagElement = <Button variant="primary">{tag}</Button>;
+					tagElement = <Button className="tag-list-button">{tag}</Button>;
 					break;
 				case `span`:
 					tagElement = <span className="tag-list-link">{tag}</span>;

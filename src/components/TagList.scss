@@ -1,4 +1,6 @@
 .tag-list {
+	margin-bottom: $spacing-large;
+
 	> .tag-list-copy {
 		padding-right: $spacing-small / 2;
 	}
@@ -18,6 +20,26 @@
 				&:hover {
 					color: $font-color-base;
 					text-decoration: underline;
+				}
+			}
+		}
+
+		&.button {
+			@include background(transparent);
+
+			margin: 0;
+
+			> .tag-list-item {
+				> .tag-list-button {
+					@include background(transparent);
+
+					font-weight: $font-weight-bold;
+					color: $font-color-base;
+					margin-right: $spacing-small;
+
+					&:hover {
+						text-decoration: underline;
+					}
 				}
 			}
 		}
