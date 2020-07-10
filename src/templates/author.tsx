@@ -14,12 +14,10 @@ const Author: React.FC<AuthorProps> = ({ pageContext }) => {
 			<SEO title={title} description={abstract} />
 			<section className="Author">
 				<div className="block">
-					<div className="block-inner">
-						<AuthorDetails author={frontmatter} variant="brief" />
-						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
-						<h2 className="heading-2">{`Posts written by ${title}`}</h2>
-						<PostList posts={relatedPosts} />
-					</div>
+					<AuthorDetails author={frontmatter} variant="brief" />
+					<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
+					<h2 className="heading-2">{`Posts written by ${title}`}</h2>
+					<PostList posts={relatedPosts} />
 				</div>
 			</section>
 		</Layout>

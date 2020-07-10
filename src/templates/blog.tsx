@@ -10,10 +10,12 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 	return (
 		<Layout>
 			<SEO title="Blog" />
-			<section className="Blog block">
-				<h1 className="heading-1">Blog</h1>
-				<TagList copy="Filter by post tag:" items={allTags} variant="button" />
-				<PostList posts={posts} />
+			<section className="Blog">
+        <div className="block">
+          <h1 className="heading-1">Blog</h1>
+          <TagList copy="Filter by post tag:" items={allTags} variant="button" />
+          <PostList posts={posts} />
+        </div>
 			</section>
 		</Layout>
 	);

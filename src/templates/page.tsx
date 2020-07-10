@@ -10,10 +10,8 @@ const Page: React.FC<PageProps> = ({ pageContext }) => {
 			<SEO title={title} />
 			<section className="Page block">
 				<div className="block">
-					<div className="block-inner">
-						<h1 className="heading-1">{title}</h1>
-						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
-					</div>
+					<h1 className="heading-1">{title}</h1>
+					<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
 				</div>
 			</section>
 		</Layout>

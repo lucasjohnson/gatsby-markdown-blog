@@ -11,12 +11,10 @@ const Service: React.FC<TagProps> = ({ pageContext }) => {
 			<SEO title={title} description={abstract} />
 			<section className="Services">
 				<div className="block">
-					<div className="block-inner">
-						<h1 className="heading-1">{title}</h1>
-						<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
-						<h2 className="heading-2">{`Posts related to "${title}"`}</h2>
-						<PostList posts={relatedPosts} />
-					</div>
+					<h1 className="heading-1">{title}</h1>
+					<div className="markdown" dangerouslySetInnerHTML={{ __html: html }}></div>
+					<h2 className="heading-2">{`Posts related to "${title}"`}</h2>
+					<PostList posts={relatedPosts} />
 				</div>
 			</section>
 		</Layout>
