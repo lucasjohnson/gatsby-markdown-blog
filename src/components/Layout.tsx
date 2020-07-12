@@ -1,8 +1,8 @@
-import React, { FunctionComponent } from 'react';
+import React from 'react';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 
-const Layout: FunctionComponent = ({ children }) => (
+const Layout: React.FC = ({ children }) => (
 	<React.Fragment>
 		<a className="skip-button" href="#mainContent">
 			Skip to main content

@@ -57,6 +57,13 @@ module.exports = {
 				cache_busting_mode: `none`
 			}
 		},
-		`gatsby-plugin-offline`
+		`gatsby-plugin-offline`,
+		{
+			resolve: `gatsby-plugin-portal`,
+			options: {
+				key: `portal`,
+				id: `Portal`
+			}
+		}
 	]
 };
