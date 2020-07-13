@@ -13,7 +13,6 @@ const Header: React.FC = () => {
 					{siteTitle}
 				</Anchor>
 			</span>
-
 			<MainNavigation />
 		</header>
 	);
