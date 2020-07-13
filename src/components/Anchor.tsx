@@ -2,19 +2,6 @@ import React from 'react';
 import Icon from './Icon';
 import { Link } from 'gatsby';
 
-type AnchorProps = {
-	className?: string;
-	title: string;
-	url: string;
-	variant:
-		| 'link'
-		| 'button primary'
-		| 'button secondary'
-		| 'link external'
-		| 'button external primary'
-		| 'button external secondary';
-};
-
 const Anchor: React.FC<AnchorProps> = ({ className, title, url, variant, children }) => {
 	let anchor;
 
@@ -52,3 +39,16 @@ const Anchor: React.FC<AnchorProps> = ({ className, title, url, variant, childre
 };
 
 export default Anchor;
+
+interface AnchorProps {
+	className?: string;
+	title: string;
+	url: string;
+	variant:
+		| 'link'
+		| 'button primary'
+		| 'button secondary'
+		| 'link external'
+		| 'button external primary'
+		| 'button external secondary';
+};
