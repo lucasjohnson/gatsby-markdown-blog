@@ -15,7 +15,7 @@
 		> .item {
 			display: block;
 
-			> .icon {
+			> .svg {
 				display: none;
 			}
 
@@ -55,7 +55,7 @@
 					padding: $spacing-small $spacing-large;
 				}
 
-				> .icon {
+				> .svg {
 					font-size: 2rem;
 					display: inline;
 					position: absolute;
@@ -82,7 +82,7 @@
 
 				&:hover,
 				&:focus-within {
-					.icon {
+					.svg {
 						transform: rotate(180deg);
 					}
 

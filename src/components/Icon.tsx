@@ -1,9 +1,17 @@
 import React from 'react';
+import { GoChevronDown, GoChevronLeft, GoChevronRight, GoChevronUp, GoLinkExternal, GoSearch } from 'react-icons/go';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
-import { GoChevronDown, GoChevronLeft, GoChevronRight, GoChevronUp, GoLinkExternal } from 'react-icons/go';
 
 interface IconProps {
-	type: string;
+	type:
+		| 'chevron-down'
+		| 'chevron-left'
+		| 'chevron-right'
+		| 'chevron-up'
+		| 'external'
+		| 'search'
+		| 'facebook'
+		| 'twitter';
 }
 
 const Icon: React.FC<IconProps> = ({ type }) => {
@@ -11,26 +19,28 @@ const Icon: React.FC<IconProps> = ({ type }) => {
 
 	switch (type) {
 		case `chevron-down`:
-			icon = <GoChevronDown className="icon" />;
+			icon = <GoChevronDown className="svg" />;
 			break;
 		case `chevron-left`:
-			icon = <GoChevronLeft className="icon" />;
+			icon = <GoChevronLeft className="svg" />;
 			break;
-
 		case `chevron-right`:
-			icon = <GoChevronRight className="icon" />;
+			icon = <GoChevronRight className="svg" />;
 			break;
 		case `chevron-up`:
-			icon = <GoChevronUp className="icon" />;
+			icon = <GoChevronUp className="svg" />;
 			break;
 		case `external`:
-			icon = <GoLinkExternal className="icon" />;
+			icon = <GoLinkExternal className="svg" />;
+			break;
+		case `search`:
+			icon = <GoSearch className="svg" />;
 			break;
 		case `facebook`:
-			icon = <FaFacebookF className="icon" />;
+			icon = <FaFacebookF className="svg" />;
 			break;
 		case `twitter`:
-			icon = <FaTwitter className="icon" />;
+			icon = <FaTwitter className="svg" />;
 			break;
 		default:
 			return null;

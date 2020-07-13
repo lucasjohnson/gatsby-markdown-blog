@@ -29,7 +29,7 @@
 		> .author-twitter {
 			@include flex(center);
 
-			> .icon {
+			> .svg {
 				margin-right: $spacing-small / 2;
 			}
 		}

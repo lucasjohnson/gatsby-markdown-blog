@@ -32,7 +32,8 @@
 	}
 
 	&.primary,
-	&.secondary {
+	&.secondary,
+	&.icon {
 		padding: $spacing-small / 2 $spacing-large / 2;
 		margin-bottom: $spacing-small;
 		vertical-align: middle;
@@ -50,11 +51,23 @@
 
 	&.secondary {
 		@include background($black);
+
+		color: #fff;
 	}
 
-	> .icon {
+	> .svg {
 		vertical-align: middle;
 		margin-left: $spacing-small;
+	}
+
+	&.icon {
+		@include background($black);
+
+		color: #fff;
+
+		> .svg {
+			margin: 0;
+		}
 	}
 }
 

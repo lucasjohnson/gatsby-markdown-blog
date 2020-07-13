@@ -1,6 +1,8 @@
 import React from 'react';
 import Button from '../Button';
+import Icon from '../Icon';
 import Navigation from './Navigation';
+import ThemeContext from '../../context/ThemeContext';
 import data from '../../../content/navigation/main-navigation.yml';
 
 const MainNavigation: React.FC = () => {
@@ -11,9 +13,18 @@ const MainNavigation: React.FC = () => {
 	return (
 		<React.Fragment>
 			<Navigation data={menuItems} title="main" variant="inline" />
-			<Button variant={`primary`} onClick={handleClick}>
-				Contact
-			</Button>
+			<div className="buttons">
+				<Button variant="primary" onClick={handleClick}>
+					Contact
+				</Button>
+				<ThemeContext.Consumer>
+					{({ toggleModal }) => (
+						<Button variant="icon" onClick={toggleModal}>
+							<Icon type="search" />
+						</Button>
+					)}
+				</ThemeContext.Consumer>
+			</div>
 		</React.Fragment>
 	);
 };

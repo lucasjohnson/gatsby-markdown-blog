@@ -11,7 +11,7 @@ const Button: React.FC<ButtonProps> = ({ children, className, onClick, variant }
 export default Button;
 
 interface ButtonProps {
-  className?: string;
-  onClick?: () => void;
-	variant?: 'primary' | 'secondary';
+	className?: string;
+	onClick?: () => void;
+	variant?: 'icon' | 'primary' | 'secondary';
 }
