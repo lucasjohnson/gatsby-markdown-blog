@@ -1,12 +1,25 @@
 import React from 'react';
 import ThemeContext from '../context/ThemeContext';
+import Button from './Button';
+import Icon from './Icon';
 
 const Modal: React.FC<ModalProps> = ({ modalOpen }) => {
 	return (
 		<ThemeContext.Consumer>
 			{({ modalOpen }) => (
 				<div className="Modal" data-open={modalOpen}>
-					<h2 className="heading-2">Modal Open</h2>
+					<div className="modal-box">
+						<div className="buttons">
+							<ThemeContext.Consumer>
+								{({ toggleModal }) => (
+									<Button variant="icon" onClick={toggleModal}>
+										<Icon type="search" />
+									</Button>
+								)}
+							</ThemeContext.Consumer>
+						</div>
+						<h2 className="heading-2">Modal Open</h2>
+					</div>
 				</div>
 			)}
 		</ThemeContext.Consumer>
