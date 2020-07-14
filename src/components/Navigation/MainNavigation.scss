@@ -7,6 +7,10 @@
 	right: 100vw;
 	z-index: 1;
 
+	&[data-open="true"] {
+		right: 0;
+	}
+
 	> .items {
 		width: 100%;
 		position: absolute;

@@ -1,6 +1,7 @@
 import React from 'react';
 import Anchor from '../Anchor';
 import Icon from '../Icon';
+import ThemeContext from '../../context/ThemeContext';
 import slugify from '../../helpers/slugify';
 
 interface NavigationProps {
@@ -48,9 +49,13 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 		});
 
 	return (
-		<nav className={`navigation ${variant} ${title}`}>
-			<ul className="items">{renderItems(data)}</ul>
-		</nav>
+		<ThemeContext.Consumer>
+			{({ hamburgerOpen }) => (
+				<nav className={`navigation ${variant} ${title}`} data-open={hamburgerOpen}>
+					<ul className="items">{renderItems(data)}</ul>
+				</nav>
+			)}
+		</ThemeContext.Consumer>
 	);
 };
 
