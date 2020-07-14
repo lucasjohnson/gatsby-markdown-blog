@@ -15,6 +15,18 @@ const ContactForm: React.FC = () => {
 							</Button>
 						</div>
 						<h2 className="heading-2">Contact Form</h2>
+						<form name="contact" method="POST" data-netlify="true">
+							<label>
+								Your Name: <input type="text" name="name" />
+							</label>
+							<label>
+								Your Email: <input type="email" name="email" />
+							</label>
+							<label>
+								Message: <textarea name="message"></textarea>
+							</label>
+							<button type="submit">Send</button>
+						</form>
 					</div>
 				</div>
 			)}
