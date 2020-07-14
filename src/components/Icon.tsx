@@ -13,6 +13,7 @@ import {
 
 interface IconProps {
 	type:
+		| string
 		| 'chevron-down'
 		| 'chevron-left'
 		| 'chevron-right'
