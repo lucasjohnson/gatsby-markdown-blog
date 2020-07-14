@@ -3,16 +3,16 @@ import ThemeContext from '../context/ThemeContext';
 import Button from './Button';
 import Icon from './Icon';
 
-const Modal: React.FC<ModalProps> = ({ modalOpen }) => {
+const SearchForm: React.FC<SearchFormProps> = ({ searchOpen }) => {
 	return (
 		<ThemeContext.Consumer>
-			{({ modalOpen }) => (
-				<div className="Modal" data-open={modalOpen}>
-					<div className="modal-box">
+			{({ searchOpen }) => (
+				<div className="SearchForm" data-open={searchOpen}>
+					<div className="search-box">
 						<div className="buttons">
 							<ThemeContext.Consumer>
-								{({ toggleModal }) => (
-									<Button variant="icon" onClick={toggleModal}>
+								{({ toggleSearch }) => (
+									<Button variant="icon" onClick={toggleSearch}>
 										<Icon type="cross" />
 									</Button>
 								)}
@@ -26,8 +26,8 @@ const Modal: React.FC<ModalProps> = ({ modalOpen }) => {
 	);
 };
 
-export default Modal;
+export default SearchForm;
 
-interface ModalProps {
-	modalOpen: boolean;
+interface SearchFormProps {
+	searchOpen: boolean;
 }

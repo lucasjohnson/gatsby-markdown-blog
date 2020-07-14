@@ -2,7 +2,7 @@ import React from 'react';
 import ThemeContext from '../context/ThemeContext';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
-import Modal from './Modal';
+import SearchForm from './SearchForm';
 
 const Layout: React.FC = ({ children }) => (
 	<React.Fragment>
@@ -14,7 +14,7 @@ const Layout: React.FC = ({ children }) => (
 			{children}
 		</main>
 		<Footer />
-		<ThemeContext.Consumer>{({ modalOpen }) => <Modal modalOpen={modalOpen} />}</ThemeContext.Consumer>
+		<ThemeContext.Consumer>{({ searchOpen }) => <SearchForm searchOpen={searchOpen} />}</ThemeContext.Consumer>
 	</React.Fragment>
 );
 

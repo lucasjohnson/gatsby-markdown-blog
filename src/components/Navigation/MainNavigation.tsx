@@ -15,8 +15,8 @@ const MainNavigation: React.FC = () => {
 			<Navigation data={menuItems} title="main" variant="inline" />
 			<div className="buttons">
 				<ThemeContext.Consumer>
-					{({ toggleModal }) => (
-						<Button variant="icon" onClick={toggleModal}>
+					{({ toggleSearch }) => (
+						<Button variant="icon" onClick={toggleSearch}>
 							<Icon type="search" />
 						</Button>
 					)}
