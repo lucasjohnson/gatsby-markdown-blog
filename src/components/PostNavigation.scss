@@ -20,7 +20,7 @@
 			> .svg {
 				font-size: 2rem;
 				position: absolute;
-				top: calc($spacing-small + 0.3rem);
+				top: $spacing-small + 0.3rem;
 				left: -$spacing-large;
 			}
 		}
