@@ -3,20 +3,16 @@ import ThemeContext from '../context/ThemeContext';
 import Button from './Button';
 import Icon from './Icon';
 
-const SearchForm: React.FC<SearchFormProps> = ({ searchOpen }) => {
+const SearchForm: React.FC = () => {
 	return (
 		<ThemeContext.Consumer>
-			{({ searchOpen }) => (
+			{({ searchOpen, toggleSearch }) => (
 				<div className="SearchForm" data-open={searchOpen}>
 					<div className="search-box">
 						<div className="buttons">
-							<ThemeContext.Consumer>
-								{({ toggleSearch }) => (
-									<Button variant="icon" onClick={toggleSearch}>
-										<Icon type="cross" />
-									</Button>
-								)}
-							</ThemeContext.Consumer>
+							<Button variant="icon" onClick={toggleSearch}>
+								<Icon type="cross" />
+							</Button>
 						</div>
 						<h2 className="heading-2">Modal Open</h2>
 					</div>
@@ -27,7 +23,3 @@ const SearchForm: React.FC<SearchFormProps> = ({ searchOpen }) => {
 };
 
 export default SearchForm;
-
-interface SearchFormProps {
-	searchOpen: boolean;
-}
