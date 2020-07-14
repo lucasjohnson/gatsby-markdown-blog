@@ -6,25 +6,23 @@ import ThemeContext from '../../context/ThemeContext';
 import data from '../../../content/navigation/main-navigation.yml';
 
 const MainNavigation: React.FC = () => {
-	const handleClick = (): void => {};
-
 	const { menuItems } = data;
 
 	return (
 		<React.Fragment>
 			<Navigation data={menuItems} title="main" variant="inline" />
-			<div className="buttons">
-				<ThemeContext.Consumer>
-					{({ toggleSearch }) => (
+			<ThemeContext.Consumer>
+				{({ toggleContact, toggleSearch }) => (
+					<div className="buttons">
 						<Button variant="icon" onClick={toggleSearch}>
 							<Icon type="search" />
 						</Button>
-					)}
-				</ThemeContext.Consumer>
-				<Button variant="primary" onClick={handleClick}>
-					Contact
-				</Button>
-			</div>
+						<Button variant="primary" onClick={toggleContact}>
+							Contact
+						</Button>
+					</div>
+				)}
+			</ThemeContext.Consumer>
 		</React.Fragment>
 	);
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
+import ContactForm from './ContactForm';
 import SearchForm from './SearchForm';
 
 const Layout: React.FC = ({ children }) => (
@@ -13,6 +14,7 @@ const Layout: React.FC = ({ children }) => (
 			{children}
 		</main>
 		<Footer />
+		<ContactForm />
 		<SearchForm />
 	</React.Fragment>
 );
