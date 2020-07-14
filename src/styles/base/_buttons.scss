@@ -61,9 +61,7 @@
 	}
 
 	&.icon {
-		@include background($black);
-
-		color: #fff;
+		@include background(transparent);
 
 		> .svg {
 			margin: 0;

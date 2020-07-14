@@ -14,9 +14,6 @@ const MainNavigation: React.FC = () => {
 		<React.Fragment>
 			<Navigation data={menuItems} title="main" variant="inline" />
 			<div className="buttons">
-				<Button variant="primary" onClick={handleClick}>
-					Contact
-				</Button>
 				<ThemeContext.Consumer>
 					{({ toggleModal }) => (
 						<Button variant="icon" onClick={toggleModal}>
@@ -24,6 +21,9 @@ const MainNavigation: React.FC = () => {
 						</Button>
 					)}
 				</ThemeContext.Consumer>
+				<Button variant="primary" onClick={handleClick}>
+					Contact
+				</Button>
 			</div>
 		</React.Fragment>
 	);

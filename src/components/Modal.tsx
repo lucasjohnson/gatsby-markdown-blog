@@ -13,7 +13,7 @@ const Modal: React.FC<ModalProps> = ({ modalOpen }) => {
 							<ThemeContext.Consumer>
 								{({ toggleModal }) => (
 									<Button variant="icon" onClick={toggleModal}>
-										<Icon type="search" />
+										<Icon type="cross" />
 									</Button>
 								)}
 							</ThemeContext.Consumer>

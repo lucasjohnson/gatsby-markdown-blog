@@ -1,5 +1,13 @@
 import React from 'react';
-import { GoChevronDown, GoChevronLeft, GoChevronRight, GoChevronUp, GoLinkExternal, GoSearch } from 'react-icons/go';
+import {
+	GoChevronDown,
+	GoChevronLeft,
+	GoChevronRight,
+	GoChevronUp,
+	GoX,
+	GoLinkExternal,
+	GoSearch
+} from 'react-icons/go';
 import { FaFacebookF, FaTwitter } from 'react-icons/fa';
 
 interface IconProps {
@@ -8,6 +16,7 @@ interface IconProps {
 		| 'chevron-left'
 		| 'chevron-right'
 		| 'chevron-up'
+		| 'cross'
 		| 'external'
 		| 'search'
 		| 'facebook'
@@ -29,6 +38,9 @@ const Icon: React.FC<IconProps> = ({ type }) => {
 			break;
 		case `chevron-up`:
 			icon = <GoChevronUp className="svg" />;
+			break;
+		case `cross`:
+			icon = <GoX className="svg" />;
 			break;
 		case `external`:
 			icon = <GoLinkExternal className="svg" />;
