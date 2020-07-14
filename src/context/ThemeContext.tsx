@@ -20,6 +20,9 @@ class ThemeProvider extends React.Component {
 		const { children } = this.props;
 		const { modalOpen } = this.state;
 
+		const bodyElement: HTMLCollectionOf<HTMLBodyElement> = document.getElementsByTagName(`body`);
+		modalOpen ? (bodyElement[0].style.position = `fixed`) : (bodyElement[0].style.position = `static`);
+
 		return (
 			<ThemeContext.Provider
 				value={{
