@@ -12,7 +12,7 @@ const MainNavigation: React.FC = () => {
 		<React.Fragment>
 			<Navigation data={menuItems} title="main" variant="inline" />
 			<ThemeContext.Consumer>
-				{({ toggleContact, toggleHamburger, toggleSearch }) => (
+				{({ hamburgerOpen, toggleContact, toggleHamburger, toggleSearch }) => (
 					<div className="buttons">
 						<Button variant="icon" onClick={toggleSearch}>
 							<Icon type="search" />
@@ -21,7 +21,7 @@ const MainNavigation: React.FC = () => {
 							Contact
 						</Button>
 						<Button variant="icon" onClick={toggleHamburger}>
-							<Icon type="hamburger" />
+							{hamburgerOpen ? <Icon type="cross" /> : <Icon type="hamburger" />}
 						</Button>
 					</div>
 				)}
