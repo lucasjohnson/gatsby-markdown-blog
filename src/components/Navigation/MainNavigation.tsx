@@ -3,16 +3,30 @@ import Button from '../Button';
 import Icon from '../Icon';
 import Navigation from './Navigation';
 import ThemeContext from '../../context/ThemeContext';
+import { motion } from 'framer-motion';
 import data from '../../../content/navigation/main-navigation.yml';
 
 const MainNavigation: React.FC = () => {
 	const { menuItems } = data;
 
+	const variants = {
+		open: { x: 0 },
+		closed: { x: `100vw` }
+	};
+
 	return (
-		<React.Fragment>
-			<Navigation data={menuItems} title="main" variant="inline" />
-			<ThemeContext.Consumer>
-				{({ hamburgerOpen, toggleContact, toggleHamburger, toggleSearch }) => (
+		<ThemeContext.Consumer>
+			{({ hamburgerOpen, toggleContact, toggleHamburger, toggleSearch }) => (
+				<React.Fragment>
+					<motion.div
+						initial="hidden"
+						animate={hamburgerOpen ? `open` : `closed`}
+						variants={variants}
+						transition={{ duration: 0.35 }}
+						className="hamburger-wrapper"
+					>
+						<Navigation data={menuItems} title="main" variant="inline" />
+					</motion.div>
 					<div className="buttons">
 						<Button variant="icon" onClick={toggleSearch}>
 							<Icon type="search" />
@@ -24,9 +38,9 @@ const MainNavigation: React.FC = () => {
 							{hamburgerOpen ? <Icon type="cross" /> : <Icon type="hamburger" />}
 						</Button>
 					</div>
-				)}
-			</ThemeContext.Consumer>
-		</React.Fragment>
+				</React.Fragment>
+			)}
+		</ThemeContext.Consumer>
 	);
 };
 
