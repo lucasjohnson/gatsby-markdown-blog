@@ -49,13 +49,9 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 		});
 
 	return (
-		<ThemeContext.Consumer>
-			{({ hamburgerOpen }) => (
-				<nav className={`navigation ${variant} ${title}`} data-open={hamburgerOpen}>
-					<ul className="items">{renderItems(data)}</ul>
-				</nav>
-			)}
-		</ThemeContext.Consumer>
+		<nav className={`navigation ${variant} ${title}`}>
+			<ul className="items">{renderItems(data)}</ul>
+		</nav>
 	);
 };
 
