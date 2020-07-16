@@ -20,7 +20,7 @@ const MainNavigation: React.FC = () => {
 				<React.Fragment>
 					<motion.div
             className="hamburger-wrapper"
-						initial="hidden"
+						initial="closed"
 						animate={hamburgerOpen ? `open` : `closed`}
 						variants={hamburgerVariants}
 						transition={{ duration: 0.35 }}

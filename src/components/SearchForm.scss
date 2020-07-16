@@ -3,7 +3,6 @@
 	top: 0;
 	left: 0;
 	z-index: 10;
-	visibility: hidden;
 
 	> .overlay {
 		@include size(100vw, 100vh);
@@ -48,10 +47,5 @@
 				}
 			}
 		}
-	}
-
-	&[data-open="true"] {
-		visibility: visible;
-		opacity: 1;
 	}
 }
