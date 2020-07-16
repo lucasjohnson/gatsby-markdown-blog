@@ -4,7 +4,8 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: center;
-	position: static;
+	position: relative;
+	overflow: hidden;
 
 	> .site-heading {
 		flex: 1;
@@ -28,8 +29,24 @@
 		@include size(100vw, 100vh);
 		@include background($white);
 
-		position: absolute;
+		position: fixed;
 		top: 0;
 		z-index: 1;
+	}
+
+	@include respond-to(MEDIUM) {
+		overflow: visible;
+
+		> .hamburger-wrapper {
+			@include size(auto, auto);
+
+			position: static;
+			// need to replace with js breakpoint
+			transform: translateX(0) !important;
+		}
+
+		> .buttons > .hamburger-button {
+			display: none;
+		}
 	}
 }

@@ -17,6 +17,12 @@
 				display: block;
 			}
 
+			> span.link {
+				&:hover {
+					text-decoration: none;
+				}
+			}
+
 			.sub-items {
 				@include background($white);
 

@@ -8,12 +8,12 @@ const Header: React.FC = () => {
 
 	return (
 		<header className="Header block">
-			<span className="site-heading">
-				<Anchor url="/" title="Hompage" variant="link">
-					{siteTitle}
-				</Anchor>
-			</span>
-			<MainNavigation />
+      <span className="site-heading">
+        <Anchor url="/" title="Hompage" variant="link">
+          {siteTitle}
+        </Anchor>
+      </span>
+      <MainNavigation />
 		</header>
 	);
 };

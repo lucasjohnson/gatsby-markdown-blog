@@ -34,7 +34,7 @@ const MainNavigation: React.FC = () => {
 						<Button variant="primary" onClick={toggleContact}>
 							Contact
 						</Button>
-						<Button variant="icon" onClick={toggleHamburger}>
+						<Button className="hamburger-button" variant="icon" onClick={toggleHamburger}>
 							{hamburgerOpen ? <Icon type="cross" /> : <Icon type="hamburger" />}
 						</Button>
 					</div>
