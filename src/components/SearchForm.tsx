@@ -1,10 +1,27 @@
 import React from 'react';
 import ThemeContext from '../context/ThemeContext';
+import { useStaticQuery, graphql } from 'gatsby';
 import { motion } from 'framer-motion';
 import Button from './Button';
 import Icon from './Icon';
 
 const SearchForm: React.FC = () => {
+
+  const Searchdata = useStaticQuery(graphql`
+    query {
+      allMarkdownRemark {
+        nodes {
+          frontmatter {
+            title
+            tags
+            services
+            path
+          }
+          html
+        }
+      }
+    }
+  `);
 
   const searchVariants = {
 		open: { visibility: `visible`, opacity: 1 },
