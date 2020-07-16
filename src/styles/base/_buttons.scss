@@ -71,10 +71,14 @@
 
 .buttons {
 	> * {
-		margin-right: $spacing-small;
+		margin-right: $spacing-small / 2;
 
 		&:last-of-type {
 			margin-right: 0;
+		}
+
+		@include respond-to(MEDIUM) {
+			margin-right: $spacing-small;
 		}
 	}
 }
