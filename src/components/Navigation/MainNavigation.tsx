@@ -9,7 +9,7 @@ import data from '../../../content/navigation/main-navigation.yml';
 const MainNavigation: React.FC = () => {
 	const { menuItems } = data;
 
-	const variants = {
+	const hamburgerVariants = {
 		open: { x: 0 },
 		closed: { x: `100vw` }
 	};
@@ -19,11 +19,11 @@ const MainNavigation: React.FC = () => {
 			{({ hamburgerOpen, toggleContact, toggleHamburger, toggleSearch }) => (
 				<React.Fragment>
 					<motion.div
+            className="hamburger-wrapper"
 						initial="hidden"
 						animate={hamburgerOpen ? `open` : `closed`}
-						variants={variants}
+						variants={hamburgerVariants}
 						transition={{ duration: 0.35 }}
-						className="hamburger-wrapper"
 					>
 						<Navigation data={menuItems} title="main" variant="inline" />
 					</motion.div>
