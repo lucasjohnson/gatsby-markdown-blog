@@ -2,7 +2,7 @@ import React from 'react';
 import Icon from './Icon';
 import { Link } from 'gatsby';
 
-const Anchor: React.FC<AnchorProps> = ({ className, title, url, variant, children }) => {
+const Anchor: React.FC<AnchorProps> = ({ className, onClick, title, url, variant, children }) => {
 	let anchor;
 
 	switch (variant) {
@@ -10,7 +10,7 @@ const Anchor: React.FC<AnchorProps> = ({ className, title, url, variant, childre
 		case `button primary`:
 		case `button secondary`:
 			anchor = (
-				<Link className={`${variant}${className ? ` ${className}` : ``}`} to={url} title={title}>
+				<Link className={`${variant}${className ? ` ${className}` : ``}`} to={url} title={title} onClick={onClick}>
 					{children}
 				</Link>
 			);
@@ -42,6 +42,7 @@ export default Anchor;
 
 interface AnchorProps {
 	className?: string;
+	onClick?: () => void;
 	title: string;
 	url: string;
 	variant:
@@ -51,4 +52,4 @@ interface AnchorProps {
 		| 'link external'
 		| 'button external primary'
 		| 'button external secondary';
-};
+}

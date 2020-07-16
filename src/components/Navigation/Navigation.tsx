@@ -30,21 +30,25 @@ const Navigation: React.FC<NavigationProps> = ({ data, title, variant }) => {
 			const { item: title, url } = item;
 
 			return (
-				<React.Fragment>
-					<li className="item" key={index}>
-						{variant === `icon` ? (
-							<Anchor title={title} url={url} variant="link external">
-								<Icon type={title.toLowerCase()} />
-							</Anchor>
-						) : item.subItems !== undefined ? (
-							renderSubItems(item.subItems, item)
-						) : (
-							<Anchor title={title} url={`/${slugify(title)}`} variant="link">
-								{title}
-							</Anchor>
-						)}
-					</li>
-				</React.Fragment>
+				<ThemeContext.Consumer>
+					{({ toggleHamburger }) => (
+						<React.Fragment>
+							<li className="item" key={index}>
+								{variant === `icon` ? (
+									<Anchor title={title} url={url} variant="link external">
+										<Icon type={title.toLowerCase()} />
+									</Anchor>
+								) : item.subItems !== undefined ? (
+									renderSubItems(item.subItems, item)
+								) : (
+									<Anchor title={title} url={`/${slugify(title)}`} variant="link" onClick={toggleHamburger}>
+										{title}
+									</Anchor>
+								)}
+							</li>
+						</React.Fragment>
+					)}
+				</ThemeContext.Consumer>
 			);
 		});
 
