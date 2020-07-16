@@ -1,19 +1,53 @@
 .SearchForm {
-	@include size(100vw, 100vh);
-	@include background(#000);
-
 	position: absolute;
 	top: 0;
 	left: 0;
 	z-index: 10;
 	visibility: hidden;
-	opacity: 0;
 
-	.search-box {
+	> .overlay {
+		@include size(100vw, 100vh);
 		@include background(#fff);
-		@include center(BOTH);
 
-		padding: $spacing-large;
+		opacity: 0.9;
+	}
+
+	> .search-wrapper {
+		@include background($white);
+
+		padding: $spacing-large $spacing-large $spacing-small;
+
+		> .block {
+			position: relative;
+
+			&::after {
+				@include pseudo();
+				@include size(100%, 0.1rem);
+				@include background($gray);
+
+				position: absolute;
+				bottom: -$spacing-small;
+				left: 0;
+			}
+
+			> .search-form {
+				> .search-field {
+					margin: 0;
+					border: none;
+					box-shadow: none;
+				}
+			}
+
+			> .buttons {
+				position: absolute;
+				top: 0;
+				right: $spacing-large /2;
+
+				> .button {
+					margin: 0;
+				}
+			}
+		}
 	}
 
 	&[data-open="true"] {

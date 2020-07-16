@@ -1,9 +1,14 @@
 html {
-	/* stylelint-disable */
+  @include background($viewport-background-color);
+
+  /* stylelint-disable */
 	font-size: 10px;
 	/* stylelint-enable */
-	background-color: $viewport-background-color;
 	box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
 }
 
 *,
