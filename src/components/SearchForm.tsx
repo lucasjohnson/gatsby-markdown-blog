@@ -1,27 +1,25 @@
 import React from 'react';
 import ThemeContext from '../context/ThemeContext';
-import { useStaticQuery, graphql } from 'gatsby';
 import { motion } from 'framer-motion';
+import Fuse from 'fuse.js';
 import Button from './Button';
 import Icon from './Icon';
+import { useAllFileSearch } from '../hooks/useAllFileSearch';
 
 const SearchForm: React.FC = () => {
 
-  const Searchdata = useStaticQuery(graphql`
-    query {
-      allMarkdownRemark {
-        nodes {
-          frontmatter {
-            title
-            tags
-            services
-            path
-          }
-          html
-        }
-      }
-    }
-  `);
+  const options = {
+    includeMatches: false,
+    minMatchCharLength: 3,
+    keys: [
+      'frontmatter.html',
+      'frontmatter.services',
+      'frontmatter.tags',
+      'frontmatter.title'
+    ]
+  };
+
+  const fuse = new Fuse(useAllFileSearch(), options);
 
   const searchVariants = {
 		open: { visibility: `visible`, opacity: 1 },
@@ -41,7 +39,7 @@ const SearchForm: React.FC = () => {
           <div className="search-wrapper">
             <div className="block">
               <form className="search-form">
-                <input className="search-field" type="text" name="name" placeholder="What are you looking for?" autocomplete="off" />
+                <input className="search-field" type="text" name="name" placeholder="What are you looking for?" autoComplete="off" />
               </form>
               <div className="buttons">
                 <Button variant="icon" onClick={toggleSearch}>
