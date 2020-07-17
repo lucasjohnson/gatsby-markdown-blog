@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ThemeContext from '../context/ThemeContext';
 import { motion } from 'framer-motion';
 import Fuse from 'fuse.js';
@@ -10,7 +10,6 @@ const SearchForm: React.FC = () => {
 
   const options = {
     includeMatches: false,
-    minMatchCharLength: 3,
     keys: [
       'frontmatter.html',
       'frontmatter.services',
@@ -20,6 +19,9 @@ const SearchForm: React.FC = () => {
   };
 
   const fuse = new Fuse(useAllFileSearch(), options);
+
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
 
   const searchVariants = {
 		open: { visibility: `visible`, opacity: 1 },
@@ -39,7 +41,15 @@ const SearchForm: React.FC = () => {
           <div className="search-wrapper">
             <div className="block">
               <form className="search-form">
-                <input className="search-field" type="text" name="name" placeholder="What are you looking for?" autoComplete="off" />
+                <input
+                  className="search-field"
+                  value={query}
+                  onChange={(event) => setQuery(event.target.value)}
+                  onKeyUp={() => setResults(fuse.search(query))}
+                  type="text"
+                  placeholder="What are you looking for?"
+                  autoComplete="off"
+                />
               </form>
               <div className="buttons">
                 <Button variant="icon" onClick={toggleSearch}>
