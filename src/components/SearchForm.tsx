@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Fuse from 'fuse.js';
 import Button from './Button';
 import Icon from './Icon';
+import Anchor from './Anchor';
 import { useAllFileSearch } from '../hooks/useAllFileSearch';
 
 const SearchForm: React.FC = () => {
@@ -28,7 +29,25 @@ const SearchForm: React.FC = () => {
 		closed: { visibility: `hidden`, opacity: 0 }
 	};
 
-	return (
+  const renderResults: Function = () =>
+    results.map((
+      result: {
+        item: {
+          frontmatter: {
+            path: string;
+            title: string;
+          };
+        };
+      }, index: number) => {
+      const { path, title } = result.item.frontmatter;
+      return (
+        <li className="results-item" key={index}>
+          <Anchor title={title} url={path} variant='link'>{title}</Anchor>
+        </li>
+      );
+    });
+
+  return (
 		<ThemeContext.Consumer>
 			{({ searchOpen, toggleSearch }) => (
 				<motion.div
@@ -51,6 +70,9 @@ const SearchForm: React.FC = () => {
                   autoComplete="off"
                 />
               </form>
+              <ul className="results-items">
+                {renderResults()}
+              </ul>
               <div className="buttons">
                 <Button variant="icon" onClick={toggleSearch}>
                   <Icon type="cross" />
