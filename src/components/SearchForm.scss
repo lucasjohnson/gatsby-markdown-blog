@@ -17,19 +17,11 @@
 		padding: $spacing-large $spacing-large $spacing-small;
 
 		> .block {
-			position: relative;
-
-			&::after {
-				@include pseudo();
-				@include size(100%, 0.1rem);
-				@include background($gray);
-
-				position: absolute;
-				bottom: -$spacing-small;
-				left: 0;
-			}
-
 			> .search-form {
+				padding-bottom: $spacing-small;
+				margin-bottom: $spacing-small;
+				border-bottom: 0.1rem solid $gray;
+
 				> .search-field {
 					margin: 0;
 					border: none;
@@ -40,10 +32,30 @@
 			> .buttons {
 				position: absolute;
 				top: 0;
-				right: $spacing-large /2;
+				right: $spacing-large / 2;
 
 				> .button {
 					margin: 0;
+				}
+			}
+
+			> .results-items {
+				> .results-item {
+					> .link {
+						@include background(transparent);
+
+						padding: $spacing-small / 3;
+						display: block;
+						transition: background ease 100ms;
+
+						&:hover,
+						&:focus {
+							@include background($gray-light);
+
+							color: $font-color-base;
+							text-decoration: none;
+						}
+					}
 				}
 			}
 		}

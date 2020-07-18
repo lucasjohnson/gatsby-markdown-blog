@@ -1,16 +1,17 @@
 import React, { useState } from 'react';
+import Fuse from 'fuse.js';
 import ThemeContext from '../context/ThemeContext';
 import { motion } from 'framer-motion';
-import Fuse from 'fuse.js';
+import { useAllFileSearch } from '../hooks/useAllFileSearch';
+import slugify from '../helpers/slugify';
+import Anchor from './Anchor';
 import Button from './Button';
 import Icon from './Icon';
-import Anchor from './Anchor';
-import { useAllFileSearch } from '../hooks/useAllFileSearch';
 
 const SearchForm: React.FC = () => {
 
   const options = {
-    includeMatches: false,
+    includeMatches: true,
     keys: [
       'frontmatter.html',
       'frontmatter.services',
@@ -42,7 +43,9 @@ const SearchForm: React.FC = () => {
       const { path, title } = result.item.frontmatter;
       return (
         <li className="results-item" key={index}>
-          <Anchor title={title} url={path} variant='link'>{title}</Anchor>
+          <Anchor title={title} url={path !== null ? path : slugify(title)} variant='link'>
+            {title}
+          </Anchor>
         </li>
       );
     });

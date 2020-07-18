@@ -46,7 +46,7 @@
 
 		&.span {
 			padding: 0 $spacing-large $spacing-large;
-			display: flex;
+			display: inline-flex;
 			justify-content: flex-start;
 
 			> .tag-list-item {
