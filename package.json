@@ -7,10 +7,6 @@
   "private": true,
   "devDependencies": {
     "@babel/core": "^7.10.2",
-    "@storybook/addon-actions": "^5.3.19",
-    "@storybook/addon-links": "^5.3.19",
-    "@storybook/addons": "^5.3.19",
-    "@storybook/react": "^5.3.19",
     "@testing-library/cypress": "^6.0.0",
     "@types/jest": "^25.2.3",
     "@types/node": "^14.0.9",
