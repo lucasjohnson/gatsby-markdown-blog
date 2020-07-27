@@ -6,10 +6,8 @@ module.exports = {
 	plugins: [
 		`gatsby-plugin-sass`,
 		`gatsby-plugin-react-helmet`,
-		`gatsby-plugin-netlify`,
 		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-typescript`,
-		`gatsby-plugin-netlify-cms`,
 		{
 			resolve: `gatsby-source-filesystem`,
 			options: {
