@@ -1,60 +1,63 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const defaultState = {
 	contactOpen: false,
 	hamburgerOpen: false,
 	searchOpen: false,
-	toggleContact: () => {},
-	toggleHamburger: () => {},
-	toggleSearch: () => {}
+	toggleContact: (): void => {},
+	toggleHamburger: (): void => {},
+	toggleSearch: (): void => {}
 };
 
 const ThemeContext = React.createContext(defaultState);
 
-class ThemeProvider extends React.Component {
-	state = {
-		contactOpen: false,
-		hamburgerOpen: false,
-		searchOpen: false
+const ThemeProvider: React.FC = ({ children }) => {
+	const [contactOpen, toggleContact] = useState(false);
+	const [hamburgerOpen, toggleHamburger] = useState(false);
+	const [searchOpen, toggleSearch] = useState(false);
+
+	const bodyElement: HTMLCollectionOf<HTMLBodyElement> = document.getElementsByTagName(`body`);
+
+	contactOpen || hamburgerOpen || searchOpen
+		? (bodyElement[0].style.position = `fixed`)
+		: (bodyElement[0].style.position = `static`);
+
+	const closeAllToggles = (): void => {
+		toggleContact(false);
+		toggleHamburger(false);
+		toggleSearch(false);
 	};
 
-	toggleContact = () => {
-		this.setState((prevState) => ({ contactOpen: !prevState.contactOpen, hamburgerOpen: false, searchOpen: false }));
+	const handleContactToggle = (): void => {
+		closeAllToggles();
+		toggleContact(!contactOpen);
 	};
 
-	toggleHamburger = () => {
-		this.setState((prevState) => ({ contactOpen: false, hamburgerOpen: !prevState.hamburgerOpen, searchOpen: false }));
+	const handleHamburgerToggle = (): void => {
+		closeAllToggles();
+		toggleHamburger(!hamburgerOpen);
 	};
 
-	toggleSearch = () => {
-		this.setState((prevState) => ({ contactOpen: false, hamburgerOpen: false, searchOpen: !prevState.searchOpen }));
+	const handleSearchToggle = (): void => {
+		closeAllToggles();
+		toggleSearch(!searchOpen);
 	};
 
-	render() {
-		const { children } = this.props;
-		const { contactOpen, searchOpen, hamburgerOpen } = this.state;
-		const bodyElement: HTMLCollectionOf<HTMLBodyElement> = document.getElementsByTagName(`body`);
-
-		searchOpen || contactOpen || hamburgerOpen
-			? (bodyElement[0].style.position = `fixed`)
-			: (bodyElement[0].style.position = `static`);
-
-		return (
-			<ThemeContext.Provider
-				value={{
-					contactOpen,
-					hamburgerOpen,
-					searchOpen,
-					toggleContact: this.toggleContact,
-					toggleHamburger: this.toggleHamburger,
-					toggleSearch: this.toggleSearch
-				}}
-			>
-				{children}
-			</ThemeContext.Provider>
-		);
-	}
-}
+	return (
+		<ThemeContext.Provider
+			value={{
+				contactOpen,
+				hamburgerOpen,
+				searchOpen,
+				toggleContact: handleContactToggle,
+				toggleHamburger: handleHamburgerToggle,
+				toggleSearch: handleSearchToggle
+			}}
+		>
+			{children}
+		</ThemeContext.Provider>
+	);
+};
 
 export default ThemeContext;
 
