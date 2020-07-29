@@ -3,8 +3,8 @@ import Anchor from './Anchor';
 import Button from './Button';
 import slugify from '../helpers/slugify';
 
-const TagList: React.FC<TagProps> = ({ copy, items, variant }) => {
-  const renderTags: Function = () =>
+const TagList: React.FC<TagProps> = ({ copy, items, variant, filterPostsByTag }) => {
+	const renderTags: Function = () =>
 		items.map((tag: string, index: number) => {
 			let tagElement;
 
@@ -17,7 +17,11 @@ const TagList: React.FC<TagProps> = ({ copy, items, variant }) => {
 					);
 					break;
 				case `button`:
-					tagElement = <Button className="tag-list-button">{tag}</Button>;
+					tagElement = (
+						<Button className="tag-list-button" onClick={() => filterPostsByTag(tag)}>
+							{tag}
+						</Button>
+					);
 					break;
 				case `span`:
 					tagElement = <span className="tag-list-link">{tag}</span>;
@@ -33,13 +37,19 @@ const TagList: React.FC<TagProps> = ({ copy, items, variant }) => {
 			);
 		});
 
-	return (<div className="tag-list">{ copy && <span className="tag-list-copy body-copy">{copy}</span>}<ul className={`tag-list-items ${variant}`}>{renderTags()}</ul></div>);
+	return (
+		<div className="tag-list">
+			{copy && <span className="tag-list-copy body-copy">{copy}</span>}
+			<ul className={`tag-list-items ${variant}`}>{renderTags()}</ul>
+		</div>
+	);
 };
 
 export default TagList;
 
 interface TagProps {
-  copy?: string;
+	copy?: string;
 	items: string[];
 	variant: 'button' | 'link' | 'span';
+	filterPostsByTag?: (item: string) => void;
 }
