@@ -3,7 +3,7 @@ import Anchor from './Anchor';
 import Button from './Button';
 import slugify from '../helpers/slugify';
 
-const TagList: React.FC<TagProps> = ({ copy, items, variant, filterPostsByTag }) => {
+const TagList: React.FC<TagListProps> = ({ copy, items, variant, onClickFunction }) => {
 	const renderTags: Function = () =>
 		items.map((tag: string, index: number) => {
 			let tagElement;
@@ -18,7 +18,7 @@ const TagList: React.FC<TagProps> = ({ copy, items, variant, filterPostsByTag })
 					break;
 				case `button`:
 					tagElement = (
-						<Button className="tag-list-button" onClick={() => filterPostsByTag(tag)}>
+						<Button className="tag-list-button" onClick={() => onClickFunction(tag)}>
 							{tag}
 						</Button>
 					);
@@ -47,9 +47,9 @@ const TagList: React.FC<TagProps> = ({ copy, items, variant, filterPostsByTag })
 
 export default TagList;
 
-interface TagProps {
+interface TagListProps {
 	copy?: string;
 	items: string[];
+	onClickFunction?: (item: string) => void;
 	variant: 'button' | 'link' | 'span';
-	filterPostsByTag?: (item: string) => void;
 }

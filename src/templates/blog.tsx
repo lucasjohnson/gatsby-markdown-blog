@@ -7,12 +7,25 @@ import TagList from '../components/TagList';
 
 const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 	const { allServices, allTags, posts } = pageContext;
-
 	const [filters, setFilter] = useState([]);
+	const filteredPosts: [] = [];
 
-	const filterPostsByTag = (item: string): void => {
+	const filterPosts = filters.forEach((filter) => {
+		posts.forEach((post) => {
+			if (
+				post.node.childMarkdownRemark.frontmatter.tags.includes(filter) ||
+				post.node.childMarkdownRemark.frontmatter.services.includes(filter)
+			) {
+				filteredPosts.includes(post) ? null : filteredPosts.push(post);
+			}
+		});
+	});
+
+	const buildFilterArray = (item: string): void => {
 		filters.includes(item) ? setFilter(filters.filter((filter) => filter !== item)) : setFilter(filters.concat(item));
 	};
+
+	const renderPosts = filteredPosts.length === 0 ? posts : filteredPosts;
 
 	return (
 		<Layout>
@@ -24,11 +37,11 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 						copy="Filter posts by services:"
 						items={allServices}
 						variant="button"
-						filterPostsByTag={filterPostsByTag}
+						onClickFunction={buildFilterArray}
 					/>
-					<TagList copy="Filter posts by tags:" items={allTags} variant="button" filterPostsByTag={filterPostsByTag} />
-					<PostList posts={posts} />
-					<Pagination posts={posts} />
+					<TagList copy="Filter posts by tags:" items={allTags} variant="button" onClickFunction={buildFilterArray} />
+					<PostList posts={renderPosts} />
+					<Pagination posts={renderPosts} />
 				</div>
 			</section>
 		</Layout>
@@ -57,7 +70,8 @@ interface BlogProps {
 							};
 						};
 						path: string;
-						serivces: [];
+						services: string[];
+						tags: string[];
 						title: string;
 					};
 				};
