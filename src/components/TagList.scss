@@ -37,6 +37,17 @@
 					color: $font-color-base;
 					margin-right: $spacing-small;
 
+					> .svg {
+						transition: $animation-base;
+						visibility: hidden;
+						opacity: 0;
+					}
+
+					&.isSelected > .svg {
+						visibility: visible;
+						opacity: 1;
+					}
+
 					&:hover {
 						text-decoration: underline;
 					}

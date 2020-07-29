@@ -1,6 +1,7 @@
 import React from 'react';
 import Anchor from './Anchor';
 import Button from './Button';
+import Icon from './Icon';
 import slugify from '../helpers/slugify';
 
 const TagList: React.FC<TagListProps> = ({ copy, items, variant, onClickFunction }) => {
@@ -18,8 +19,9 @@ const TagList: React.FC<TagListProps> = ({ copy, items, variant, onClickFunction
 					break;
 				case `button`:
 					tagElement = (
-						<Button className="tag-list-button" onClick={() => onClickFunction(tag)}>
+						<Button className="tag-list-button" onClick={(event) => onClickFunction(event, tag)}>
 							{tag}
+							<Icon type="cross" />
 						</Button>
 					);
 					break;
@@ -50,6 +52,6 @@ export default TagList;
 interface TagListProps {
 	copy?: string;
 	items: string[];
-	onClickFunction?: (item: string) => void;
+	onClickFunction?: (event: MouseEvent, item: string) => void;
 	variant: 'button' | 'link' | 'span';
 }

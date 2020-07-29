@@ -11,21 +11,6 @@ import {
 	GoSearch
 } from 'react-icons/go';
 
-interface IconProps {
-	type:
-		| string
-		| 'chevron-down'
-		| 'chevron-left'
-		| 'chevron-right'
-		| 'chevron-up'
-		| 'cross'
-		| 'external'
-		| 'hamburger'
-		| 'search'
-		| 'facebook'
-		| 'twitter';
-}
-
 const Icon: React.FC<IconProps> = ({ type }) => {
 	let icon;
 
@@ -68,3 +53,18 @@ const Icon: React.FC<IconProps> = ({ type }) => {
 };
 
 export default Icon;
+
+interface IconProps {
+	type:
+		| string
+		| 'chevron-down'
+		| 'chevron-left'
+		| 'chevron-right'
+		| 'chevron-up'
+		| 'cross'
+		| 'external'
+		| 'hamburger'
+		| 'search'
+		| 'facebook'
+		| 'twitter';
+}

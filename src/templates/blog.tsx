@@ -21,8 +21,11 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 		});
 	});
 
-	const buildFilterArray = (item: string): void => {
+	const buildFilterArray = (event: MouseEvent, item: string): void => {
 		filters.includes(item) ? setFilter(filters.filter((filter) => filter !== item)) : setFilter(filters.concat(item));
+		const targetedButton = event.target as HTMLButtonElement;
+		targetedButton && targetedButton.classList.toggle(`isSelected`);
+		console.log(targetedButton);
 	};
 
 	const renderPosts = filteredPosts.length === 0 ? posts : filteredPosts;
