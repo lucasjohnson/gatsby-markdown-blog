@@ -3,7 +3,7 @@ import GridBox from '../components/GridBox';
 import GridCard from '../components/GridCard';
 
 const PostList: React.FC<PostProps> = ({ posts }) => {
-	const postsPerPage = 3;
+	const postsPerPage = 5;
 	const [currentPage, setPage] = useState(1);
 	const indexOfLastTodo = currentPage * postsPerPage;
 	const indexOfFirstTodo = indexOfLastTodo - postsPerPage;
@@ -17,6 +17,14 @@ const PostList: React.FC<PostProps> = ({ posts }) => {
 	const handleClick = (event: MouseEvent) => {
 		const targetButton = event.target as HTMLButtonElement;
 		const targetNumber = parseInt(targetButton.innerHTML);
+		const allFilterButtons = document.querySelectorAll(`.pagination-button`);
+		const IS_SELECTED = `isSelected`;
+
+		allFilterButtons.forEach((button) => {
+			button.classList.remove(IS_SELECTED);
+		});
+
+		targetButton.classList.add(IS_SELECTED);
 		setPage(targetNumber);
 	};
 
