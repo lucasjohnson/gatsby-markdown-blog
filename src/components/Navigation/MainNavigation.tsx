@@ -19,7 +19,7 @@ const MainNavigation: React.FC = () => {
 			{({ hamburgerOpen, toggleContact, toggleHamburger, toggleSearch }) => (
 				<React.Fragment>
 					<motion.div
-            className="hamburger-wrapper"
+						className="hamburger-wrapper"
 						initial="closed"
 						animate={hamburgerOpen ? `open` : `closed`}
 						variants={hamburgerVariants}
@@ -28,13 +28,13 @@ const MainNavigation: React.FC = () => {
 						<Navigation data={menuItems} title="main" variant="inline" />
 					</motion.div>
 					<div className="buttons">
-						<Button variant="icon" onClick={toggleSearch}>
+						<Button variant="icon" onClickFunction={toggleSearch}>
 							<Icon type="search" />
 						</Button>
-						<Button variant="primary" onClick={toggleContact}>
+						<Button variant="primary" onClickFunction={toggleContact}>
 							Contact
 						</Button>
-						<Button className="hamburger-button" variant="icon" onClick={toggleHamburger}>
+						<Button className="hamburger-button" variant="icon" onClickFunction={toggleHamburger}>
 							{hamburgerOpen ? <Icon type="cross" /> : <Icon type="hamburger" />}
 						</Button>
 					</div>

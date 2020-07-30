@@ -10,7 +10,7 @@ const ContactForm: React.FC = () => {
 				<div className="ContactForm" data-open={contactOpen}>
 					<div className="contact-box">
 						<div className="buttons">
-							<Button variant="icon" onClick={toggleContact}>
+							<Button variant="icon" onClickFunction={toggleContact}>
 								<Icon type="cross" />
 							</Button>
 						</div>
