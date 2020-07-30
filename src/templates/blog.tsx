@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Layout from '../components/Layout';
-import Pagination from '../components/Navigation/Pagination';
 import PostList from '../components/PostList';
 import SEO from '../components/Head/SEO';
 import TagList from '../components/TagList';
@@ -56,7 +55,6 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 					/>
 					<TagList copy="Filter posts by tags:" items={allTags} variant="button" onClickFunction={handleFilterClick} />
 					<PostList posts={renderPosts} />
-					<Pagination posts={renderPosts} />
 				</div>
 			</section>
 		</Layout>

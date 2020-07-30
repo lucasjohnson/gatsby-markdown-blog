@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GridBox from '../components/GridBox';
 import GridCard from '../components/GridCard';
 
 const PostList: React.FC<PostProps> = ({ posts }) => {
+	const postsPerPage = 3;
+	const [currentPage, setPage] = useState(1);
+	const indexOfLastTodo = currentPage * postsPerPage;
+	const indexOfFirstTodo = indexOfLastTodo - postsPerPage;
+	const currentPosts = posts.slice(indexOfFirstTodo, indexOfLastTodo);
+	const pageNumbers: number[] = [];
+
+	for (let i = 1; i <= Math.ceil(posts.length / postsPerPage); i++) {
+		pageNumbers.push(i);
+	}
+
+	const handleClick = (event: MouseEvent) => {
+		const targetButton = event.target as HTMLButtonElement;
+		const targetNumber = parseInt(targetButton.innerHTML);
+		setPage(targetNumber);
+	};
+
 	const renderCard: Function = () =>
-		posts.map((post, index) => {
+		currentPosts.map((post, index) => {
 			const { node } = post;
 			const { childMarkdownRemark } = node;
 			const { frontmatter } = childMarkdownRemark;
@@ -12,10 +29,24 @@ const PostList: React.FC<PostProps> = ({ posts }) => {
 			return <GridCard data={frontmatter} key={index} />;
 		});
 
+	const renderPagination: Function = () =>
+		pageNumbers.map((number, index) => {
+			return (
+				<li className="pagination-item" key={index}>
+					<button className="pagination-button" onClick={(event) => handleClick(event)}>
+						{number}
+					</button>
+				</li>
+			);
+		});
+
 	return (
-		<GridBox variant="grid-box" column={1} columnMd={2} columnLg={3}>
-			{renderCard()}
-		</GridBox>
+		<React.Fragment>
+			<GridBox variant="grid-box" column={1} columnMd={2} columnLg={3}>
+				{renderCard()}
+			</GridBox>
+			<ul className="pagination-items">{renderPagination()}</ul>
+		</React.Fragment>
 	);
 };
 
@@ -27,7 +58,7 @@ interface PostProps {
 			childMarkdownRemark: {
 				frontmatter: {
 					abstract: string;
-          banner: {
+					banner: {
 						childImageSharp: {
 							fluid: {
 								aspectRatio: number;
