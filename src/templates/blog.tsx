@@ -21,11 +21,23 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 		});
 	});
 
-	const buildFilterArray = (event: MouseEvent, item: string): void => {
-		filters.includes(item) ? setFilter(filters.filter((filter) => filter !== item)) : setFilter(filters.concat(item));
+	const handleFilterClick = (event: MouseEvent, item?: string): void => {
+		const allFilters = allServices.concat(allTags);
+		const allFilterButtons = document.querySelectorAll(`.tag-list-button`);
 		const targetedButton = event.target as HTMLButtonElement;
-		targetedButton && targetedButton.classList.toggle(`isSelected`);
-		console.log(targetedButton);
+		const IS_SELECTED = `isSelected`;
+
+		targetedButton && targetedButton.classList.toggle(IS_SELECTED);
+
+		if (filters.length + 1 === allFilters.length) {
+			setFilter([]);
+
+			allFilterButtons.forEach((button) => {
+				button.classList.remove(IS_SELECTED);
+			});
+		} else {
+			filters.includes(item) ? setFilter(filters.filter((filter) => filter !== item)) : setFilter(filters.concat(item));
+		}
 	};
 
 	const renderPosts = filteredPosts.length === 0 ? posts : filteredPosts;
@@ -40,9 +52,9 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 						copy="Filter posts by services:"
 						items={allServices}
 						variant="button"
-						onClickFunction={buildFilterArray}
+						onClickFunction={handleFilterClick}
 					/>
-					<TagList copy="Filter posts by tags:" items={allTags} variant="button" onClickFunction={buildFilterArray} />
+					<TagList copy="Filter posts by tags:" items={allTags} variant="button" onClickFunction={handleFilterClick} />
 					<PostList posts={renderPosts} />
 					<Pagination posts={renderPosts} />
 				</div>

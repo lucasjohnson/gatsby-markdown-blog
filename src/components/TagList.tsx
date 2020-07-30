@@ -19,7 +19,7 @@ const TagList: React.FC<TagListProps> = ({ copy, items, variant, onClickFunction
 					break;
 				case `button`:
 					tagElement = (
-						<Button className="tag-list-button" onClick={(event) => onClickFunction(event, tag)}>
+						<Button className="tag-list-button" onClickFunction={(event) => onClickFunction(event, tag)}>
 							{tag}
 							<Icon type="cross" />
 						</Button>
