@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IS_SELECTED } from '../constants/toggles';
 import Layout from '../components/Layout';
 import PostList from '../components/PostList';
 import SEO from '../components/Head/SEO';
@@ -24,7 +25,6 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 		const allFilters = allServices.concat(allTags);
 		const allFilterButtons = document.querySelectorAll(`.tag-list-button`);
 		const targetedButton = event.target as HTMLButtonElement;
-		const IS_SELECTED = `isSelected`;
 
 		targetedButton && targetedButton.classList.toggle(IS_SELECTED);
 

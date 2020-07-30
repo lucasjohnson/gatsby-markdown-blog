@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { IS_SELECTED } from '../constants/toggles';
 import GridBox from '../components/GridBox';
 import GridCard from '../components/GridCard';
 
@@ -18,7 +19,6 @@ const PostList: React.FC<PostProps> = ({ posts }) => {
 		const targetButton = event.target as HTMLButtonElement;
 		const targetNumber = parseInt(targetButton.innerHTML);
 		const allFilterButtons = document.querySelectorAll(`.pagination-button`);
-		const IS_SELECTED = `isSelected`;
 
 		allFilterButtons.forEach((button) => {
 			button.classList.remove(IS_SELECTED);
