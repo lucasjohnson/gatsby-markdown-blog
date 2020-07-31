@@ -55,7 +55,75 @@ module.exports = {
 			}
 		},
 		`gatsby-plugin-offline`,
-		`gatsby-plugin-advanced-sitemap`,
+		{
+			resolve: `gatsby-plugin-advanced-sitemap`,
+			options: {
+				query: `{
+          authors: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(authors)/"}}) {
+            nodes {
+              frontmatter {
+                title
+              }
+              id
+            }
+          }
+          pages: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(pages)/"}}) {
+            nodes {
+              frontmatter {
+                title
+                date
+              }
+              id
+            }
+          }
+          posts: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(posts)/"}}) {
+            nodes {
+              frontmatter {
+                title
+                date
+              }
+              id
+            }
+          }
+          services: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(services)/"}}) {
+            nodes {
+              frontmatter {
+                title
+              }
+              id
+            }
+          }
+          tags: allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(tags)/"}}) {
+            nodes {
+              frontmatter {
+                title
+              }
+              id
+            }
+          }
+        }`,
+				mapping: {
+					authors: {
+						sitemap: `authors`
+					},
+					pages: {
+						sitemap: `pages`
+					},
+					posts: {
+						sitemap: `posts`
+					},
+					services: {
+						sitemap: `services`
+					},
+					tags: {
+						sitemap: `tags`
+					}
+				},
+				exclude: [`/dev-404-page`, `/404`, `/404.html`],
+				createLinkInHead: true,
+				addUncaughtPages: true
+			}
+		},
 		{
 			resolve: `gatsby-plugin-feed`,
 			options: {
