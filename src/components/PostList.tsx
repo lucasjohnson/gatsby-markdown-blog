@@ -15,12 +15,12 @@ const PostList: React.FC<PostProps> = ({ posts }) => {
 		pageNumbers.push(i);
 	}
 
-	const handleClick = (event: MouseEvent) => {
+	const handleClick = (event: React.MouseEvent<HTMLButtonElement>): void => {
 		const targetButton = event.target as HTMLButtonElement;
-		const targetNumber = parseInt(targetButton.innerHTML);
-		const allFilterButtons = document.querySelectorAll(`.pagination-button`);
+		const targetNumber: number = parseInt(targetButton.innerHTML);
+		const allFilterButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(`.pagination-button`);
 
-		allFilterButtons.forEach((button) => {
+		allFilterButtons.forEach((button): void => {
 			button.classList.remove(IS_SELECTED);
 		});
 
@@ -72,12 +72,13 @@ interface PostProps {
 								aspectRatio: number;
 								base64: string;
 								sizes: string;
+								src: string;
 								srcSet: string;
 							};
 						};
 					};
 					path: string;
-					serivces: [];
+					services: [];
 					title: string;
 				};
 			};
