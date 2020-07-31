@@ -8,9 +8,9 @@ import TagList from '../components/TagList';
 const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 	const { allServices, allTags, posts } = pageContext;
 	const [filters, setFilter] = useState([]);
-	const filteredPosts [] = [];
+	const filteredPosts: {}[] = [];
 
-	filters.forEach((filter): void => {
+	filters.forEach((filter) => {
 		posts.forEach((post) => {
 			if (
 				post.node.childMarkdownRemark.frontmatter.tags.includes(filter) ||
@@ -21,9 +21,9 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 		});
 	});
 
-	const handleFilterClick = (event: MouseEvent, item?: string): void => {
-		const allFilters = allServices.concat(allTags);
-		const allFilterButtons = document.querySelectorAll(`.tag-list-button`);
+	const handleFilterClick = (event: MouseEvent, item: string | undefined): void => {
+		const allFilters: string[] = allServices.concat(allTags);
+		const allFilterButtons: NodeListOf<HTMLButtonElement> = document.querySelectorAll(`.tag-list-button`);
 		const targetedButton = event.target as HTMLButtonElement;
 
 		targetedButton && targetedButton.classList.toggle(IS_SELECTED);
@@ -31,7 +31,7 @@ const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 		if (filters.length + 1 === allFilters.length) {
 			setFilter([]);
 
-			allFilterButtons.forEach((button) => {
+			allFilterButtons.forEach((button): void => {
 				button.classList.remove(IS_SELECTED);
 			});
 		} else {
