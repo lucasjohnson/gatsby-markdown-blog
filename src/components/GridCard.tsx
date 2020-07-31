@@ -24,7 +24,7 @@ export default GridCard;
 interface GridCardProps {
 	data: {
 		abstract: string;
-    banner: {
+		banner: {
 			childImageSharp: {
 				fluid: {
 					aspectRatio: number;
@@ -35,7 +35,7 @@ interface GridCardProps {
 			};
 		};
 		path: string;
-    services: string[];
+		services: string[];
 		title: string;
 	};
 }

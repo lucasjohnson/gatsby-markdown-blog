@@ -8,9 +8,9 @@ import TagList from '../components/TagList';
 const Blog: React.FC<BlogProps> = ({ pageContext }) => {
 	const { allServices, allTags, posts } = pageContext;
 	const [filters, setFilter] = useState([]);
-	const filteredPosts: [] = [];
+	const filteredPosts [] = [];
 
-	const filterPosts = filters.forEach((filter) => {
+	filters.forEach((filter): void => {
 		posts.forEach((post) => {
 			if (
 				post.node.childMarkdownRemark.frontmatter.tags.includes(filter) ||
