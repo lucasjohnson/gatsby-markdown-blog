@@ -1,12 +1,11 @@
 module.exports = {
 	siteMetadata: {
 		siteLanguage: `en`,
-		siteUrl: `https://gatsby-and.netlify.app/`
+		siteUrl: `https://my-gatsby-starter.vercel.app/`
 	},
 	plugins: [
 		`gatsby-plugin-sass`,
 		`gatsby-plugin-react-helmet`,
-		`gatsby-plugin-sitemap`,
 		`gatsby-plugin-typescript`,
 		{
 			resolve: `gatsby-source-filesystem`,
@@ -55,6 +54,7 @@ module.exports = {
 				cache_busting_mode: `none`
 			}
 		},
-		`gatsby-plugin-offline`
+		`gatsby-plugin-offline`,
+		`gatsby-plugin-advanced-sitemap`
 	]
 };
