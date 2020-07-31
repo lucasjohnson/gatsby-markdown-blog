@@ -55,6 +55,52 @@ module.exports = {
 			}
 		},
 		`gatsby-plugin-offline`,
-		`gatsby-plugin-advanced-sitemap`
+		`gatsby-plugin-advanced-sitemap`,
+		{
+			resolve: `gatsby-plugin-feed`,
+			options: {
+				query: `
+          {
+            site {
+              siteMetadata {
+                siteUrl
+              }
+            }
+          }
+        `,
+				feeds: [
+					{
+						serialize: ({ query: { site, allMarkdownRemark } }) => {
+							return allMarkdownRemark.nodes.map((edge) => {
+								return Object.assign({}, edge.frontmatter, {
+									description: edge.frontmatter.abstract,
+									date: edge.frontmatter.date,
+									url: site.siteMetadata.siteUrl + edge.frontmatter.path,
+									guid: site.siteMetadata.siteUrl + edge.frontmatter.path,
+									custom_elements: [{ 'content:encoded': edge.html }]
+								});
+							});
+						},
+						query: `
+              {
+                allMarkdownRemark(filter: {fileAbsolutePath: {regex: "/(posts)/"}}) {
+                  nodes {
+                    frontmatter {
+                      title
+                      path
+                      date
+                      abstract
+                    }
+                    html
+                  }
+                }
+              }
+            `,
+						output: `/rss.xml`,
+						title: `Your Site's RSS Feed`
+					}
+				]
+			}
+		}
 	]
 };
